@@ -1,0 +1,9 @@
+D:\ECASTool\bin\Debug (Any CPU)\PCANBasicExample.exe
+D:\ECASTool\bin\Debug (Any CPU)\PCANBasicExample.pdb
+D:\ECASTool\obj\Debug\PCANBasicExample.csproj.AssemblyReference.cache
+D:\ECASTool\obj\Debug\ICDIBasic.Form1.resources
+D:\ECASTool\obj\Debug\PCANBasicExample.Properties.Resources.resources
+D:\ECASTool\obj\Debug\PCANBasicExample.csproj.GenerateResource.cache
+D:\ECASTool\obj\Debug\PCANBasicExample.csproj.CoreCompileInputs.cache
+D:\ECASTool\obj\Debug\PCANBasicExample.exe
+D:\ECASTool\obj\Debug\PCANBasicExample.pdb

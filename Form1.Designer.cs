@@ -166,6 +166,44 @@
             this.nudLength = new System.Windows.Forms.NumericUpDown();
             this.tmrRead = new System.Windows.Forms.Timer(this.components);
             this.tmrDisplay = new System.Windows.Forms.Timer(this.components);
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.SuspensionControlRefusalInfo = new System.Windows.Forms.Label();
+            this.SuspensionRemoteControl2 = new System.Windows.Forms.Label();
+            this.SuspensionRemoteControl1 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.FrontAxleInBumperRange = new System.Windows.Forms.Label();
+            this.RearAxleInBumperRange = new System.Windows.Forms.Label();
+            this.LiftAxle2Position = new System.Windows.Forms.Label();
+            this.SecurityDevice = new System.Windows.Forms.Label();
+            this.VehicleMotionInhibit = new System.Windows.Forms.Label();
+            this.DoorRelease = new System.Windows.Forms.Label();
+            this.LiftAxle1Position = new System.Windows.Forms.Label();
+            this.KneelingInfo = new System.Windows.Forms.Label();
+            this.LevelControlMode = new System.Windows.Forms.Label();
+            this.LoweringControlModeRearAxle = new System.Windows.Forms.Label();
+            this.LoweringControlModeFrontAxle = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.LiftingControlModeR = new System.Windows.Forms.Label();
+            this.LiftingControlModeF = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.BelowNominalLevelRearAxle = new System.Windows.Forms.Label();
+            this.BelowNominalLevelFrontAxle = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.AboveNominalLevelFrontAxle = new System.Windows.Forms.Label();
+            this.AboveNominalLevelRearAxle = new System.Windows.Forms.Label();
+            this.NominalLevelFrontAxle = new System.Windows.Forms.Label();
+            this.NominalLevelRearAxle = new System.Windows.Forms.Label();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.ECASStop = new System.Windows.Forms.Button();
+            this.ActivatecheckBox = new System.Windows.Forms.CheckBox();
+            this.kneeling = new System.Windows.Forms.Button();
+            this.Normal1 = new System.Windows.Forms.Button();
+            this.DOWN = new System.Windows.Forms.Button();
+            this.UP = new System.Windows.Forms.Button();
+            this.tmrSend = new System.Windows.Forms.Timer(this.components);
+            this.ID0CFE5A2F = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudIdTo)).BeginInit();
@@ -176,12 +214,14 @@
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudLength)).BeginInit();
+            this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.chbCanFD);
             this.groupBox1.Controls.Add(this.cbbHwType);
             this.groupBox1.Controls.Add(this.cbbInterrupt);
@@ -199,9 +239,11 @@
             this.groupBox1.Controls.Add(this.btnInit);
             this.groupBox1.Controls.Add(this.btnRelease);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.groupBox1.Location = new System.Drawing.Point(8, 8);
+            this.groupBox1.Location = new System.Drawing.Point(8, 7);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(714, 65);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(720, 60);
             this.groupBox1.TabIndex = 42;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = " Connection ";
@@ -209,9 +251,10 @@
             // chbCanFD
             // 
             this.chbCanFD.AutoSize = true;
-            this.chbCanFD.Location = new System.Drawing.Point(574, 34);
+            this.chbCanFD.Location = new System.Drawing.Point(574, 31);
+            this.chbCanFD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chbCanFD.Name = "chbCanFD";
-            this.chbCanFD.Size = new System.Drawing.Size(65, 17);
+            this.chbCanFD.Size = new System.Drawing.Size(66, 16);
             this.chbCanFD.TabIndex = 59;
             this.chbCanFD.Text = "CAN-FD";
             this.chbCanFD.UseVisualStyleBackColor = true;
@@ -228,9 +271,10 @@
             "DNG-82C200 EPP",
             "DNG-SJA1000",
             "DNG-SJA1000 EPP"});
-            this.cbbHwType.Location = new System.Drawing.Point(326, 31);
+            this.cbbHwType.Location = new System.Drawing.Point(326, 29);
+            this.cbbHwType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbbHwType.Name = "cbbHwType";
-            this.cbbHwType.Size = new System.Drawing.Size(120, 21);
+            this.cbbHwType.Size = new System.Drawing.Size(120, 20);
             this.cbbHwType.TabIndex = 50;
             this.cbbHwType.SelectedIndexChanged += new System.EventHandler(this.cbbHwType_SelectedIndexChanged);
             // 
@@ -247,16 +291,17 @@
             "11",
             "12",
             "15"});
-            this.cbbInterrupt.Location = new System.Drawing.Point(513, 31);
+            this.cbbInterrupt.Location = new System.Drawing.Point(513, 29);
+            this.cbbInterrupt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbbInterrupt.Name = "cbbInterrupt";
-            this.cbbInterrupt.Size = new System.Drawing.Size(55, 21);
+            this.cbbInterrupt.Size = new System.Drawing.Size(55, 20);
             this.cbbInterrupt.TabIndex = 52;
             // 
             // laInterrupt
             // 
-            this.laInterrupt.Location = new System.Drawing.Point(515, 15);
+            this.laInterrupt.Location = new System.Drawing.Point(515, 14);
             this.laInterrupt.Name = "laInterrupt";
-            this.laInterrupt.Size = new System.Drawing.Size(53, 23);
+            this.laInterrupt.Size = new System.Drawing.Size(53, 22);
             this.laInterrupt.TabIndex = 56;
             this.laInterrupt.Text = "Interrupt:";
             // 
@@ -288,24 +333,25 @@
             "03E0",
             "03E8",
             "03F8"});
-            this.cbbIO.Location = new System.Drawing.Point(452, 31);
+            this.cbbIO.Location = new System.Drawing.Point(452, 29);
+            this.cbbIO.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbbIO.Name = "cbbIO";
-            this.cbbIO.Size = new System.Drawing.Size(55, 21);
+            this.cbbIO.Size = new System.Drawing.Size(55, 20);
             this.cbbIO.TabIndex = 51;
             // 
             // laIOPort
             // 
-            this.laIOPort.Location = new System.Drawing.Point(452, 15);
+            this.laIOPort.Location = new System.Drawing.Point(452, 14);
             this.laIOPort.Name = "laIOPort";
-            this.laIOPort.Size = new System.Drawing.Size(55, 23);
+            this.laIOPort.Size = new System.Drawing.Size(55, 22);
             this.laIOPort.TabIndex = 55;
             this.laIOPort.Text = "I/O Port:";
             // 
             // laHwType
             // 
-            this.laHwType.Location = new System.Drawing.Point(327, 15);
+            this.laHwType.Location = new System.Drawing.Point(327, 14);
             this.laHwType.Name = "laHwType";
-            this.laHwType.Size = new System.Drawing.Size(90, 23);
+            this.laHwType.Size = new System.Drawing.Size(90, 22);
             this.laHwType.TabIndex = 54;
             this.laHwType.Text = "Hardware Type:";
             // 
@@ -327,36 +373,38 @@
             "20 kBit/sec",
             "10 kBit/sec",
             "5 kBit/sec"});
-            this.cbbBaudrates.Location = new System.Drawing.Point(204, 31);
+            this.cbbBaudrates.Location = new System.Drawing.Point(204, 29);
+            this.cbbBaudrates.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbbBaudrates.Name = "cbbBaudrates";
-            this.cbbBaudrates.Size = new System.Drawing.Size(116, 21);
+            this.cbbBaudrates.Size = new System.Drawing.Size(116, 20);
             this.cbbBaudrates.TabIndex = 49;
             this.cbbBaudrates.SelectedIndexChanged += new System.EventHandler(this.cbbBaudrates_SelectedIndexChanged);
             // 
             // laBaudrate
             // 
-            this.laBaudrate.Location = new System.Drawing.Point(204, 15);
+            this.laBaudrate.Location = new System.Drawing.Point(204, 14);
             this.laBaudrate.Name = "laBaudrate";
-            this.laBaudrate.Size = new System.Drawing.Size(56, 23);
+            this.laBaudrate.Size = new System.Drawing.Size(56, 22);
             this.laBaudrate.TabIndex = 53;
             this.laBaudrate.Text = "Baudrate:";
             // 
             // txtBitrate
             // 
-            this.txtBitrate.Location = new System.Drawing.Point(204, 25);
+            this.txtBitrate.Location = new System.Drawing.Point(204, 23);
+            this.txtBitrate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBitrate.Multiline = true;
             this.txtBitrate.Name = "txtBitrate";
             this.txtBitrate.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtBitrate.Size = new System.Drawing.Size(364, 34);
+            this.txtBitrate.Size = new System.Drawing.Size(364, 32);
             this.txtBitrate.TabIndex = 48;
             this.txtBitrate.Visible = false;
             // 
             // laBitrate
             // 
             this.laBitrate.AutoSize = true;
-            this.laBitrate.Location = new System.Drawing.Point(201, 8);
+            this.laBitrate.Location = new System.Drawing.Point(201, 7);
             this.laBitrate.Name = "laBitrate";
-            this.laBitrate.Size = new System.Drawing.Size(43, 13);
+            this.laBitrate.Size = new System.Drawing.Size(42, 12);
             this.laBitrate.TabIndex = 46;
             this.laBitrate.Text = "Bit rate:";
             this.laBitrate.Visible = false;
@@ -365,9 +413,10 @@
             // 
             this.btnHwRefresh.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnHwRefresh.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnHwRefresh.Location = new System.Drawing.Point(141, 30);
+            this.btnHwRefresh.Location = new System.Drawing.Point(141, 28);
+            this.btnHwRefresh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnHwRefresh.Name = "btnHwRefresh";
-            this.btnHwRefresh.Size = new System.Drawing.Size(57, 23);
+            this.btnHwRefresh.Size = new System.Drawing.Size(57, 22);
             this.btnHwRefresh.TabIndex = 45;
             this.btnHwRefresh.Text = "Refresh";
             this.btnHwRefresh.Click += new System.EventHandler(this.btnHwRefresh_Click);
@@ -405,7 +454,8 @@
             "USB-Channel 6",
             "USB-Channel 7",
             "USB-Channel 8"});
-            this.cbbChannel.Location = new System.Drawing.Point(8, 31);
+            this.cbbChannel.Location = new System.Drawing.Point(8, 29);
+            this.cbbChannel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbbChannel.Name = "cbbChannel";
             this.cbbChannel.Size = new System.Drawing.Size(127, 21);
             this.cbbChannel.TabIndex = 32;
@@ -413,9 +463,9 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(7, 16);
+            this.label1.Location = new System.Drawing.Point(7, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 23);
+            this.label1.Size = new System.Drawing.Size(56, 22);
             this.label1.TabIndex = 40;
             this.label1.Text = "Hardware:";
             // 
@@ -424,9 +474,10 @@
             this.btnInit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnInit.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnInit.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnInit.Location = new System.Drawing.Point(643, 11);
+            this.btnInit.Location = new System.Drawing.Point(649, 10);
+            this.btnInit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnInit.Name = "btnInit";
-            this.btnInit.Size = new System.Drawing.Size(65, 23);
+            this.btnInit.Size = new System.Drawing.Size(65, 22);
             this.btnInit.TabIndex = 34;
             this.btnInit.Text = "Initialize";
             this.btnInit.Click += new System.EventHandler(this.btnInit_Click);
@@ -437,17 +488,18 @@
             this.btnRelease.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnRelease.Enabled = false;
             this.btnRelease.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnRelease.Location = new System.Drawing.Point(643, 36);
+            this.btnRelease.Location = new System.Drawing.Point(649, 34);
+            this.btnRelease.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRelease.Name = "btnRelease";
-            this.btnRelease.Size = new System.Drawing.Size(65, 23);
+            this.btnRelease.Size = new System.Drawing.Size(65, 22);
             this.btnRelease.TabIndex = 35;
             this.btnRelease.Text = "Release";
             this.btnRelease.Click += new System.EventHandler(this.btnRelease_Click);
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.btnFilterQuery);
             this.groupBox3.Controls.Add(this.chbFilterExt);
             this.groupBox3.Controls.Add(this.nudIdTo);
@@ -458,9 +510,11 @@
             this.groupBox3.Controls.Add(this.rdbFilterCustom);
             this.groupBox3.Controls.Add(this.rdbFilterClose);
             this.groupBox3.Controls.Add(this.btnFilterApply);
-            this.groupBox3.Location = new System.Drawing.Point(8, 79);
+            this.groupBox3.Location = new System.Drawing.Point(8, 73);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(714, 58);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox3.Size = new System.Drawing.Size(720, 54);
             this.groupBox3.TabIndex = 44;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = " Message Filtering ";
@@ -470,9 +524,10 @@
             this.btnFilterQuery.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFilterQuery.Enabled = false;
             this.btnFilterQuery.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnFilterQuery.Location = new System.Drawing.Point(643, 26);
+            this.btnFilterQuery.Location = new System.Drawing.Point(649, 24);
+            this.btnFilterQuery.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFilterQuery.Name = "btnFilterQuery";
-            this.btnFilterQuery.Size = new System.Drawing.Size(65, 23);
+            this.btnFilterQuery.Size = new System.Drawing.Size(65, 22);
             this.btnFilterQuery.TabIndex = 55;
             this.btnFilterQuery.Text = "Query";
             this.btnFilterQuery.UseVisualStyleBackColor = true;
@@ -481,9 +536,10 @@
             // chbFilterExt
             // 
             this.chbFilterExt.AutoSize = true;
-            this.chbFilterExt.Location = new System.Drawing.Point(10, 33);
+            this.chbFilterExt.Location = new System.Drawing.Point(10, 30);
+            this.chbFilterExt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chbFilterExt.Name = "chbFilterExt";
-            this.chbFilterExt.Size = new System.Drawing.Size(103, 17);
+            this.chbFilterExt.Size = new System.Drawing.Size(100, 16);
             this.chbFilterExt.TabIndex = 44;
             this.chbFilterExt.Text = "Extended Frame";
             this.chbFilterExt.UseVisualStyleBackColor = true;
@@ -492,14 +548,15 @@
             // nudIdTo
             // 
             this.nudIdTo.Hexadecimal = true;
-            this.nudIdTo.Location = new System.Drawing.Point(438, 29);
+            this.nudIdTo.Location = new System.Drawing.Point(438, 26);
+            this.nudIdTo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nudIdTo.Maximum = new decimal(new int[] {
             2047,
             0,
             0,
             0});
             this.nudIdTo.Name = "nudIdTo";
-            this.nudIdTo.Size = new System.Drawing.Size(69, 20);
+            this.nudIdTo.Size = new System.Drawing.Size(69, 22);
             this.nudIdTo.TabIndex = 6;
             this.nudIdTo.Value = new decimal(new int[] {
             2047,
@@ -510,38 +567,40 @@
             // nudIdFrom
             // 
             this.nudIdFrom.Hexadecimal = true;
-            this.nudIdFrom.Location = new System.Drawing.Point(363, 29);
+            this.nudIdFrom.Location = new System.Drawing.Point(363, 26);
+            this.nudIdFrom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nudIdFrom.Maximum = new decimal(new int[] {
             2047,
             0,
             0,
             0});
             this.nudIdFrom.Name = "nudIdFrom";
-            this.nudIdFrom.Size = new System.Drawing.Size(69, 20);
+            this.nudIdFrom.Size = new System.Drawing.Size(69, 22);
             this.nudIdFrom.TabIndex = 5;
             // 
             // label8
             // 
             this.label8.Location = new System.Drawing.Point(436, 10);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(28, 23);
+            this.label8.Size = new System.Drawing.Size(28, 22);
             this.label8.TabIndex = 43;
             this.label8.Text = "To:";
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(361, 12);
+            this.label7.Location = new System.Drawing.Point(361, 11);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(38, 23);
+            this.label7.Size = new System.Drawing.Size(38, 22);
             this.label7.TabIndex = 42;
             this.label7.Text = "From:";
             // 
             // rdbFilterOpen
             // 
             this.rdbFilterOpen.Checked = true;
-            this.rdbFilterOpen.Location = new System.Drawing.Point(120, 32);
+            this.rdbFilterOpen.Location = new System.Drawing.Point(120, 30);
+            this.rdbFilterOpen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdbFilterOpen.Name = "rdbFilterOpen";
-            this.rdbFilterOpen.Size = new System.Drawing.Size(53, 17);
+            this.rdbFilterOpen.Size = new System.Drawing.Size(53, 16);
             this.rdbFilterOpen.TabIndex = 2;
             this.rdbFilterOpen.TabStop = true;
             this.rdbFilterOpen.Text = "Open";
@@ -549,18 +608,20 @@
             // 
             // rdbFilterCustom
             // 
-            this.rdbFilterCustom.Location = new System.Drawing.Point(238, 32);
+            this.rdbFilterCustom.Location = new System.Drawing.Point(238, 30);
+            this.rdbFilterCustom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdbFilterCustom.Name = "rdbFilterCustom";
-            this.rdbFilterCustom.Size = new System.Drawing.Size(104, 17);
+            this.rdbFilterCustom.Size = new System.Drawing.Size(104, 16);
             this.rdbFilterCustom.TabIndex = 1;
             this.rdbFilterCustom.Text = "Custom (expand)";
             this.rdbFilterCustom.UseVisualStyleBackColor = true;
             // 
             // rdbFilterClose
             // 
-            this.rdbFilterClose.Location = new System.Drawing.Point(177, 32);
+            this.rdbFilterClose.Location = new System.Drawing.Point(177, 30);
+            this.rdbFilterClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdbFilterClose.Name = "rdbFilterClose";
-            this.rdbFilterClose.Size = new System.Drawing.Size(58, 17);
+            this.rdbFilterClose.Size = new System.Drawing.Size(58, 16);
             this.rdbFilterClose.TabIndex = 0;
             this.rdbFilterClose.Text = "Close";
             this.rdbFilterClose.UseVisualStyleBackColor = true;
@@ -570,9 +631,10 @@
             this.btnFilterApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFilterApply.Enabled = false;
             this.btnFilterApply.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnFilterApply.Location = new System.Drawing.Point(572, 26);
+            this.btnFilterApply.Location = new System.Drawing.Point(579, 24);
+            this.btnFilterApply.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFilterApply.Name = "btnFilterApply";
-            this.btnFilterApply.Size = new System.Drawing.Size(65, 23);
+            this.btnFilterApply.Size = new System.Drawing.Size(65, 22);
             this.btnFilterApply.TabIndex = 44;
             this.btnFilterApply.Text = "Apply";
             this.btnFilterApply.UseVisualStyleBackColor = true;
@@ -582,9 +644,10 @@
             // 
             this.btnParameterSet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnParameterSet.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnParameterSet.Location = new System.Drawing.Point(572, 26);
+            this.btnParameterSet.Location = new System.Drawing.Point(579, 24);
+            this.btnParameterSet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnParameterSet.Name = "btnParameterSet";
-            this.btnParameterSet.Size = new System.Drawing.Size(65, 23);
+            this.btnParameterSet.Size = new System.Drawing.Size(65, 22);
             this.btnParameterSet.TabIndex = 46;
             this.btnParameterSet.Text = "Set";
             this.btnParameterSet.UseVisualStyleBackColor = true;
@@ -592,8 +655,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.btnParameterGet);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.nudDeviceIdOrDelay);
@@ -603,9 +666,11 @@
             this.groupBox2.Controls.Add(this.rdbParamActive);
             this.groupBox2.Controls.Add(this.rdbParamInactive);
             this.groupBox2.Controls.Add(this.btnParameterSet);
-            this.groupBox2.Location = new System.Drawing.Point(8, 143);
+            this.groupBox2.Location = new System.Drawing.Point(8, 132);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(714, 58);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Size = new System.Drawing.Size(720, 54);
             this.groupBox2.TabIndex = 45;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = " Configuration Parameters ";
@@ -614,9 +679,10 @@
             // 
             this.btnParameterGet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnParameterGet.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnParameterGet.Location = new System.Drawing.Point(643, 26);
+            this.btnParameterGet.Location = new System.Drawing.Point(649, 24);
+            this.btnParameterGet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnParameterGet.Name = "btnParameterGet";
-            this.btnParameterGet.Size = new System.Drawing.Size(65, 23);
+            this.btnParameterGet.Size = new System.Drawing.Size(65, 22);
             this.btnParameterGet.TabIndex = 54;
             this.btnParameterGet.Text = "Get";
             this.btnParameterGet.UseVisualStyleBackColor = true;
@@ -624,30 +690,31 @@
             // 
             // label10
             // 
-            this.label10.Location = new System.Drawing.Point(241, 11);
+            this.label10.Location = new System.Drawing.Point(241, 10);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(59, 23);
+            this.label10.Size = new System.Drawing.Size(59, 22);
             this.label10.TabIndex = 46;
             this.label10.Text = "Activation:";
             // 
             // nudDeviceIdOrDelay
             // 
             this.nudDeviceIdOrDelay.Enabled = false;
-            this.nudDeviceIdOrDelay.Location = new System.Drawing.Point(408, 29);
+            this.nudDeviceIdOrDelay.Location = new System.Drawing.Point(408, 26);
+            this.nudDeviceIdOrDelay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nudDeviceIdOrDelay.Maximum = new decimal(new int[] {
             -1,
             0,
             0,
             0});
             this.nudDeviceIdOrDelay.Name = "nudDeviceIdOrDelay";
-            this.nudDeviceIdOrDelay.Size = new System.Drawing.Size(99, 20);
+            this.nudDeviceIdOrDelay.Size = new System.Drawing.Size(99, 22);
             this.nudDeviceIdOrDelay.TabIndex = 6;
             // 
             // laDeviceOrDelay
             // 
-            this.laDeviceOrDelay.Location = new System.Drawing.Point(405, 12);
+            this.laDeviceOrDelay.Location = new System.Drawing.Point(405, 11);
             this.laDeviceOrDelay.Name = "laDeviceOrDelay";
-            this.laDeviceOrDelay.Size = new System.Drawing.Size(59, 23);
+            this.laDeviceOrDelay.Size = new System.Drawing.Size(59, 22);
             this.laDeviceOrDelay.TabIndex = 45;
             this.laDeviceOrDelay.Text = "Device ID:";
             // 
@@ -677,26 +744,28 @@
             "Reception of RTR Frames",
             "Reception of Error Frames",
             "Interframe Transmit Delay"});
-            this.cbbParameter.Location = new System.Drawing.Point(10, 31);
+            this.cbbParameter.Location = new System.Drawing.Point(10, 29);
+            this.cbbParameter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbbParameter.Name = "cbbParameter";
-            this.cbbParameter.Size = new System.Drawing.Size(217, 21);
+            this.cbbParameter.Size = new System.Drawing.Size(217, 20);
             this.cbbParameter.TabIndex = 44;
             this.cbbParameter.SelectedIndexChanged += new System.EventHandler(this.cbbParameter_SelectedIndexChanged);
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(7, 14);
+            this.label6.Location = new System.Drawing.Point(7, 13);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 23);
+            this.label6.Size = new System.Drawing.Size(64, 22);
             this.label6.TabIndex = 43;
             this.label6.Text = "Parameter:";
             // 
             // rdbParamActive
             // 
             this.rdbParamActive.Checked = true;
-            this.rdbParamActive.Location = new System.Drawing.Point(238, 32);
+            this.rdbParamActive.Location = new System.Drawing.Point(238, 30);
+            this.rdbParamActive.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdbParamActive.Name = "rdbParamActive";
-            this.rdbParamActive.Size = new System.Drawing.Size(56, 17);
+            this.rdbParamActive.Size = new System.Drawing.Size(56, 16);
             this.rdbParamActive.TabIndex = 2;
             this.rdbParamActive.TabStop = true;
             this.rdbParamActive.Text = "Active";
@@ -704,26 +773,29 @@
             // 
             // rdbParamInactive
             // 
-            this.rdbParamInactive.Location = new System.Drawing.Point(300, 32);
+            this.rdbParamInactive.Location = new System.Drawing.Point(300, 30);
+            this.rdbParamInactive.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdbParamInactive.Name = "rdbParamInactive";
-            this.rdbParamInactive.Size = new System.Drawing.Size(67, 17);
+            this.rdbParamInactive.Size = new System.Drawing.Size(67, 16);
             this.rdbParamInactive.TabIndex = 0;
             this.rdbParamInactive.Text = "Inactive";
             this.rdbParamInactive.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.btnReset);
             this.groupBox4.Controls.Add(this.btnStatus);
             this.groupBox4.Controls.Add(this.btnGetVersions);
             this.groupBox4.Controls.Add(this.lbxInfo);
             this.groupBox4.Controls.Add(this.btnInfoClear);
             this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.groupBox4.Location = new System.Drawing.Point(8, 506);
+            this.groupBox4.Location = new System.Drawing.Point(8, 526);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(714, 87);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox4.Size = new System.Drawing.Size(720, 80);
             this.groupBox4.TabIndex = 47;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Information";
@@ -733,9 +805,10 @@
             this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnReset.Enabled = false;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnReset.Location = new System.Drawing.Point(643, 48);
+            this.btnReset.Location = new System.Drawing.Point(649, 44);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(65, 23);
+            this.btnReset.Size = new System.Drawing.Size(65, 22);
             this.btnReset.TabIndex = 58;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
@@ -746,9 +819,10 @@
             this.btnStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnStatus.Enabled = false;
             this.btnStatus.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnStatus.Location = new System.Drawing.Point(572, 48);
+            this.btnStatus.Location = new System.Drawing.Point(579, 44);
+            this.btnStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStatus.Name = "btnStatus";
-            this.btnStatus.Size = new System.Drawing.Size(65, 23);
+            this.btnStatus.Size = new System.Drawing.Size(65, 22);
             this.btnStatus.TabIndex = 57;
             this.btnStatus.Text = "Status";
             this.btnStatus.UseVisualStyleBackColor = true;
@@ -759,9 +833,10 @@
             this.btnGetVersions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGetVersions.Enabled = false;
             this.btnGetVersions.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnGetVersions.Location = new System.Drawing.Point(572, 19);
+            this.btnGetVersions.Location = new System.Drawing.Point(579, 18);
+            this.btnGetVersions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGetVersions.Name = "btnGetVersions";
-            this.btnGetVersions.Size = new System.Drawing.Size(65, 23);
+            this.btnGetVersions.Size = new System.Drawing.Size(65, 22);
             this.btnGetVersions.TabIndex = 53;
             this.btnGetVersions.Text = "Versions";
             this.btnGetVersions.UseVisualStyleBackColor = true;
@@ -770,16 +845,18 @@
             // lbxInfo
             // 
             this.lbxInfo.FormattingEnabled = true;
+            this.lbxInfo.ItemHeight = 12;
             this.lbxInfo.Items.AddRange(new object[] {
             "Select a Hardware and a configuration for it. Then click \"Initialize\" button",
             "When activated, the Debug-Log file will be found in the same directory as this ap" +
                 "plication",
             "When activated, the PCAN-Trace file will be found in the same directory as this a" +
                 "pplication"});
-            this.lbxInfo.Location = new System.Drawing.Point(10, 19);
+            this.lbxInfo.Location = new System.Drawing.Point(10, 18);
+            this.lbxInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lbxInfo.Name = "lbxInfo";
             this.lbxInfo.ScrollAlwaysVisible = true;
-            this.lbxInfo.Size = new System.Drawing.Size(558, 56);
+            this.lbxInfo.Size = new System.Drawing.Size(558, 52);
             this.lbxInfo.TabIndex = 56;
             this.lbxInfo.DoubleClick += new System.EventHandler(this.lbxInfo_DoubleClick);
             // 
@@ -787,9 +864,10 @@
             // 
             this.btnInfoClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnInfoClear.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnInfoClear.Location = new System.Drawing.Point(643, 19);
+            this.btnInfoClear.Location = new System.Drawing.Point(649, 18);
+            this.btnInfoClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnInfoClear.Name = "btnInfoClear";
-            this.btnInfoClear.Size = new System.Drawing.Size(65, 23);
+            this.btnInfoClear.Size = new System.Drawing.Size(65, 22);
             this.btnInfoClear.TabIndex = 52;
             this.btnInfoClear.Text = "Clear";
             this.btnInfoClear.UseVisualStyleBackColor = true;
@@ -797,8 +875,8 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.Controls.Add(this.chbShowPeriod);
             this.groupBox5.Controls.Add(this.rdbManual);
             this.groupBox5.Controls.Add(this.rdbEvent);
@@ -807,9 +885,11 @@
             this.groupBox5.Controls.Add(this.rdbTimer);
             this.groupBox5.Controls.Add(this.btnRead);
             this.groupBox5.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.groupBox5.Location = new System.Drawing.Point(8, 207);
+            this.groupBox5.Location = new System.Drawing.Point(8, 191);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(714, 140);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox5.Size = new System.Drawing.Size(720, 189);
             this.groupBox5.TabIndex = 48;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = " Messages Reading ";
@@ -819,9 +899,10 @@
             this.chbShowPeriod.AutoSize = true;
             this.chbShowPeriod.Checked = true;
             this.chbShowPeriod.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbShowPeriod.Location = new System.Drawing.Point(374, 15);
+            this.chbShowPeriod.Location = new System.Drawing.Point(374, 14);
+            this.chbShowPeriod.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chbShowPeriod.Name = "chbShowPeriod";
-            this.chbShowPeriod.Size = new System.Drawing.Size(123, 17);
+            this.chbShowPeriod.Size = new System.Drawing.Size(120, 16);
             this.chbShowPeriod.TabIndex = 75;
             this.chbShowPeriod.Text = "Timestamp as period";
             this.chbShowPeriod.UseVisualStyleBackColor = true;
@@ -830,9 +911,10 @@
             // rdbManual
             // 
             this.rdbManual.AutoSize = true;
-            this.rdbManual.Location = new System.Drawing.Point(276, 14);
+            this.rdbManual.Location = new System.Drawing.Point(276, 13);
+            this.rdbManual.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdbManual.Name = "rdbManual";
-            this.rdbManual.Size = new System.Drawing.Size(89, 17);
+            this.rdbManual.Size = new System.Drawing.Size(85, 16);
             this.rdbManual.TabIndex = 74;
             this.rdbManual.Text = "Manual Read";
             this.rdbManual.UseVisualStyleBackColor = true;
@@ -841,9 +923,10 @@
             // rdbEvent
             // 
             this.rdbEvent.AutoSize = true;
-            this.rdbEvent.Location = new System.Drawing.Point(131, 14);
+            this.rdbEvent.Location = new System.Drawing.Point(131, 13);
+            this.rdbEvent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdbEvent.Name = "rdbEvent";
-            this.rdbEvent.Size = new System.Drawing.Size(139, 17);
+            this.rdbEvent.Size = new System.Drawing.Size(134, 16);
             this.rdbEvent.TabIndex = 73;
             this.rdbEvent.Text = "Reading using an Event";
             this.rdbEvent.UseVisualStyleBackColor = true;
@@ -859,10 +942,12 @@
             this.clhRcvTime,
             this.clhData});
             this.lstMessages.FullRowSelect = true;
-            this.lstMessages.Location = new System.Drawing.Point(8, 37);
+            this.lstMessages.HideSelection = false;
+            this.lstMessages.Location = new System.Drawing.Point(8, 34);
+            this.lstMessages.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lstMessages.MultiSelect = false;
             this.lstMessages.Name = "lstMessages";
-            this.lstMessages.Size = new System.Drawing.Size(560, 96);
+            this.lstMessages.Size = new System.Drawing.Size(560, 151);
             this.lstMessages.TabIndex = 28;
             this.lstMessages.UseCompatibleStateImageBehavior = false;
             this.lstMessages.View = System.Windows.Forms.View.Details;
@@ -902,9 +987,10 @@
             // 
             this.btnMsgClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMsgClear.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnMsgClear.Location = new System.Drawing.Point(643, 37);
+            this.btnMsgClear.Location = new System.Drawing.Point(649, 34);
+            this.btnMsgClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMsgClear.Name = "btnMsgClear";
-            this.btnMsgClear.Size = new System.Drawing.Size(65, 23);
+            this.btnMsgClear.Size = new System.Drawing.Size(65, 22);
             this.btnMsgClear.TabIndex = 50;
             this.btnMsgClear.Text = "Clear";
             this.btnMsgClear.UseVisualStyleBackColor = true;
@@ -914,9 +1000,10 @@
             // 
             this.rdbTimer.AutoSize = true;
             this.rdbTimer.Checked = true;
-            this.rdbTimer.Location = new System.Drawing.Point(8, 14);
+            this.rdbTimer.Location = new System.Drawing.Point(8, 13);
+            this.rdbTimer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdbTimer.Name = "rdbTimer";
-            this.rdbTimer.Size = new System.Drawing.Size(117, 17);
+            this.rdbTimer.Size = new System.Drawing.Size(114, 16);
             this.rdbTimer.TabIndex = 72;
             this.rdbTimer.TabStop = true;
             this.rdbTimer.Text = "Read using a Timer";
@@ -928,9 +1015,10 @@
             this.btnRead.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRead.Enabled = false;
             this.btnRead.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnRead.Location = new System.Drawing.Point(572, 37);
+            this.btnRead.Location = new System.Drawing.Point(579, 34);
+            this.btnRead.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRead.Name = "btnRead";
-            this.btnRead.Size = new System.Drawing.Size(65, 23);
+            this.btnRead.Size = new System.Drawing.Size(65, 22);
             this.btnRead.TabIndex = 49;
             this.btnRead.Text = "Read";
             this.btnRead.UseVisualStyleBackColor = true;
@@ -938,8 +1026,8 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox6.Controls.Add(this.label5);
             this.groupBox6.Controls.Add(this.laLength);
             this.groupBox6.Controls.Add(this.label3);
@@ -1017,9 +1105,11 @@
             this.groupBox6.Controls.Add(this.txtData0);
             this.groupBox6.Controls.Add(this.nudLength);
             this.groupBox6.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.groupBox6.Location = new System.Drawing.Point(8, 353);
+            this.groupBox6.Location = new System.Drawing.Point(8, 384);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(714, 149);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox6.Size = new System.Drawing.Size(720, 138);
             this.groupBox6.TabIndex = 51;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Write Messages";
@@ -1027,27 +1117,27 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(665, 16);
+            this.label5.Location = new System.Drawing.Point(665, 14);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 13);
+            this.label5.Size = new System.Drawing.Size(41, 12);
             this.label5.TabIndex = 113;
             this.label5.Text = "Length:";
             // 
             // laLength
             // 
             this.laLength.AutoSize = true;
-            this.laLength.Location = new System.Drawing.Point(672, 41);
+            this.laLength.Location = new System.Drawing.Point(672, 38);
             this.laLength.Name = "laLength";
-            this.laLength.Size = new System.Drawing.Size(26, 13);
+            this.laLength.Size = new System.Drawing.Size(25, 12);
             this.laLength.TabIndex = 112;
             this.laLength.Text = "8 B.";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 16);
+            this.label3.Location = new System.Drawing.Point(7, 14);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 13);
+            this.label3.Size = new System.Drawing.Size(59, 12);
             this.label3.TabIndex = 111;
             this.label3.Text = "Data (Hex):";
             // 
@@ -1055,10 +1145,11 @@
             // 
             this.txtData60.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData60.Enabled = false;
-            this.txtData60.Location = new System.Drawing.Point(368, 116);
+            this.txtData60.Location = new System.Drawing.Point(368, 107);
+            this.txtData60.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData60.MaxLength = 2;
             this.txtData60.Name = "txtData60";
-            this.txtData60.Size = new System.Drawing.Size(24, 20);
+            this.txtData60.Size = new System.Drawing.Size(24, 22);
             this.txtData60.TabIndex = 66;
             this.txtData60.Text = "00";
             this.txtData60.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1069,10 +1160,11 @@
             // 
             this.txtData62.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData62.Enabled = false;
-            this.txtData62.Location = new System.Drawing.Point(428, 116);
+            this.txtData62.Location = new System.Drawing.Point(428, 107);
+            this.txtData62.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData62.MaxLength = 2;
             this.txtData62.Name = "txtData62";
-            this.txtData62.Size = new System.Drawing.Size(24, 20);
+            this.txtData62.Size = new System.Drawing.Size(24, 22);
             this.txtData62.TabIndex = 68;
             this.txtData62.Text = "00";
             this.txtData62.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1083,10 +1175,11 @@
             // 
             this.txtData47.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData47.Enabled = false;
-            this.txtData47.Location = new System.Drawing.Point(458, 90);
+            this.txtData47.Location = new System.Drawing.Point(458, 83);
+            this.txtData47.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData47.MaxLength = 2;
             this.txtData47.Name = "txtData47";
-            this.txtData47.Size = new System.Drawing.Size(24, 20);
+            this.txtData47.Size = new System.Drawing.Size(24, 22);
             this.txtData47.TabIndex = 53;
             this.txtData47.Text = "00";
             this.txtData47.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1097,10 +1190,11 @@
             // 
             this.txtData58.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData58.Enabled = false;
-            this.txtData58.Location = new System.Drawing.Point(308, 116);
+            this.txtData58.Location = new System.Drawing.Point(308, 107);
+            this.txtData58.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData58.MaxLength = 2;
             this.txtData58.Name = "txtData58";
-            this.txtData58.Size = new System.Drawing.Size(24, 20);
+            this.txtData58.Size = new System.Drawing.Size(24, 22);
             this.txtData58.TabIndex = 64;
             this.txtData58.Text = "00";
             this.txtData58.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1111,10 +1205,11 @@
             // 
             this.txtData57.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData57.Enabled = false;
-            this.txtData57.Location = new System.Drawing.Point(278, 116);
+            this.txtData57.Location = new System.Drawing.Point(278, 107);
+            this.txtData57.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData57.MaxLength = 2;
             this.txtData57.Name = "txtData57";
-            this.txtData57.Size = new System.Drawing.Size(24, 20);
+            this.txtData57.Size = new System.Drawing.Size(24, 22);
             this.txtData57.TabIndex = 63;
             this.txtData57.Text = "00";
             this.txtData57.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1125,10 +1220,11 @@
             // 
             this.txtData56.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData56.Enabled = false;
-            this.txtData56.Location = new System.Drawing.Point(248, 116);
+            this.txtData56.Location = new System.Drawing.Point(248, 107);
+            this.txtData56.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData56.MaxLength = 2;
             this.txtData56.Name = "txtData56";
-            this.txtData56.Size = new System.Drawing.Size(24, 20);
+            this.txtData56.Size = new System.Drawing.Size(24, 22);
             this.txtData56.TabIndex = 62;
             this.txtData56.Text = "00";
             this.txtData56.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1139,10 +1235,11 @@
             // 
             this.txtData55.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData55.Enabled = false;
-            this.txtData55.Location = new System.Drawing.Point(218, 116);
+            this.txtData55.Location = new System.Drawing.Point(218, 107);
+            this.txtData55.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData55.MaxLength = 2;
             this.txtData55.Name = "txtData55";
-            this.txtData55.Size = new System.Drawing.Size(24, 20);
+            this.txtData55.Size = new System.Drawing.Size(24, 22);
             this.txtData55.TabIndex = 61;
             this.txtData55.Text = "00";
             this.txtData55.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1153,10 +1250,11 @@
             // 
             this.txtData54.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData54.Enabled = false;
-            this.txtData54.Location = new System.Drawing.Point(188, 116);
+            this.txtData54.Location = new System.Drawing.Point(188, 107);
+            this.txtData54.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData54.MaxLength = 2;
             this.txtData54.Name = "txtData54";
-            this.txtData54.Size = new System.Drawing.Size(24, 20);
+            this.txtData54.Size = new System.Drawing.Size(24, 22);
             this.txtData54.TabIndex = 60;
             this.txtData54.Text = "00";
             this.txtData54.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1167,10 +1265,11 @@
             // 
             this.txtData61.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData61.Enabled = false;
-            this.txtData61.Location = new System.Drawing.Point(398, 116);
+            this.txtData61.Location = new System.Drawing.Point(398, 107);
+            this.txtData61.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData61.MaxLength = 2;
             this.txtData61.Name = "txtData61";
-            this.txtData61.Size = new System.Drawing.Size(24, 20);
+            this.txtData61.Size = new System.Drawing.Size(24, 22);
             this.txtData61.TabIndex = 67;
             this.txtData61.Text = "00";
             this.txtData61.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1181,10 +1280,11 @@
             // 
             this.txtData63.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData63.Enabled = false;
-            this.txtData63.Location = new System.Drawing.Point(458, 116);
+            this.txtData63.Location = new System.Drawing.Point(458, 107);
+            this.txtData63.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData63.MaxLength = 2;
             this.txtData63.Name = "txtData63";
-            this.txtData63.Size = new System.Drawing.Size(24, 20);
+            this.txtData63.Size = new System.Drawing.Size(24, 22);
             this.txtData63.TabIndex = 69;
             this.txtData63.Text = "00";
             this.txtData63.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1195,10 +1295,11 @@
             // 
             this.txtData48.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData48.Enabled = false;
-            this.txtData48.Location = new System.Drawing.Point(8, 116);
+            this.txtData48.Location = new System.Drawing.Point(8, 107);
+            this.txtData48.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData48.MaxLength = 2;
             this.txtData48.Name = "txtData48";
-            this.txtData48.Size = new System.Drawing.Size(24, 20);
+            this.txtData48.Size = new System.Drawing.Size(24, 22);
             this.txtData48.TabIndex = 54;
             this.txtData48.Text = "00";
             this.txtData48.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1209,10 +1310,11 @@
             // 
             this.txtData53.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData53.Enabled = false;
-            this.txtData53.Location = new System.Drawing.Point(158, 116);
+            this.txtData53.Location = new System.Drawing.Point(158, 107);
+            this.txtData53.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData53.MaxLength = 2;
             this.txtData53.Name = "txtData53";
-            this.txtData53.Size = new System.Drawing.Size(24, 20);
+            this.txtData53.Size = new System.Drawing.Size(24, 22);
             this.txtData53.TabIndex = 59;
             this.txtData53.Text = "00";
             this.txtData53.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1223,10 +1325,11 @@
             // 
             this.txtData52.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData52.Enabled = false;
-            this.txtData52.Location = new System.Drawing.Point(128, 116);
+            this.txtData52.Location = new System.Drawing.Point(128, 107);
+            this.txtData52.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData52.MaxLength = 2;
             this.txtData52.Name = "txtData52";
-            this.txtData52.Size = new System.Drawing.Size(24, 20);
+            this.txtData52.Size = new System.Drawing.Size(24, 22);
             this.txtData52.TabIndex = 58;
             this.txtData52.Text = "00";
             this.txtData52.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1237,10 +1340,11 @@
             // 
             this.txtData51.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData51.Enabled = false;
-            this.txtData51.Location = new System.Drawing.Point(98, 116);
+            this.txtData51.Location = new System.Drawing.Point(98, 107);
+            this.txtData51.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData51.MaxLength = 2;
             this.txtData51.Name = "txtData51";
-            this.txtData51.Size = new System.Drawing.Size(24, 20);
+            this.txtData51.Size = new System.Drawing.Size(24, 22);
             this.txtData51.TabIndex = 57;
             this.txtData51.Text = "00";
             this.txtData51.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1251,10 +1355,11 @@
             // 
             this.txtData50.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData50.Enabled = false;
-            this.txtData50.Location = new System.Drawing.Point(68, 116);
+            this.txtData50.Location = new System.Drawing.Point(68, 107);
+            this.txtData50.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData50.MaxLength = 2;
             this.txtData50.Name = "txtData50";
-            this.txtData50.Size = new System.Drawing.Size(24, 20);
+            this.txtData50.Size = new System.Drawing.Size(24, 22);
             this.txtData50.TabIndex = 56;
             this.txtData50.Text = "00";
             this.txtData50.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1265,10 +1370,11 @@
             // 
             this.txtData49.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData49.Enabled = false;
-            this.txtData49.Location = new System.Drawing.Point(38, 116);
+            this.txtData49.Location = new System.Drawing.Point(38, 107);
+            this.txtData49.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData49.MaxLength = 2;
             this.txtData49.Name = "txtData49";
-            this.txtData49.Size = new System.Drawing.Size(24, 20);
+            this.txtData49.Size = new System.Drawing.Size(24, 22);
             this.txtData49.TabIndex = 55;
             this.txtData49.Text = "00";
             this.txtData49.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1279,10 +1385,11 @@
             // 
             this.txtData59.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData59.Enabled = false;
-            this.txtData59.Location = new System.Drawing.Point(338, 116);
+            this.txtData59.Location = new System.Drawing.Point(338, 107);
+            this.txtData59.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData59.MaxLength = 2;
             this.txtData59.Name = "txtData59";
-            this.txtData59.Size = new System.Drawing.Size(24, 20);
+            this.txtData59.Size = new System.Drawing.Size(24, 22);
             this.txtData59.TabIndex = 65;
             this.txtData59.Text = "00";
             this.txtData59.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1293,10 +1400,11 @@
             // 
             this.txtData46.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData46.Enabled = false;
-            this.txtData46.Location = new System.Drawing.Point(428, 90);
+            this.txtData46.Location = new System.Drawing.Point(428, 83);
+            this.txtData46.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData46.MaxLength = 2;
             this.txtData46.Name = "txtData46";
-            this.txtData46.Size = new System.Drawing.Size(24, 20);
+            this.txtData46.Size = new System.Drawing.Size(24, 22);
             this.txtData46.TabIndex = 52;
             this.txtData46.Text = "00";
             this.txtData46.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1307,10 +1415,11 @@
             // 
             this.txtData45.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData45.Enabled = false;
-            this.txtData45.Location = new System.Drawing.Point(398, 90);
+            this.txtData45.Location = new System.Drawing.Point(398, 83);
+            this.txtData45.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData45.MaxLength = 2;
             this.txtData45.Name = "txtData45";
-            this.txtData45.Size = new System.Drawing.Size(24, 20);
+            this.txtData45.Size = new System.Drawing.Size(24, 22);
             this.txtData45.TabIndex = 51;
             this.txtData45.Text = "00";
             this.txtData45.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1321,10 +1430,11 @@
             // 
             this.txtData44.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData44.Enabled = false;
-            this.txtData44.Location = new System.Drawing.Point(368, 90);
+            this.txtData44.Location = new System.Drawing.Point(368, 83);
+            this.txtData44.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData44.MaxLength = 2;
             this.txtData44.Name = "txtData44";
-            this.txtData44.Size = new System.Drawing.Size(24, 20);
+            this.txtData44.Size = new System.Drawing.Size(24, 22);
             this.txtData44.TabIndex = 50;
             this.txtData44.Text = "00";
             this.txtData44.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1335,10 +1445,11 @@
             // 
             this.txtData43.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData43.Enabled = false;
-            this.txtData43.Location = new System.Drawing.Point(338, 90);
+            this.txtData43.Location = new System.Drawing.Point(338, 83);
+            this.txtData43.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData43.MaxLength = 2;
             this.txtData43.Name = "txtData43";
-            this.txtData43.Size = new System.Drawing.Size(24, 20);
+            this.txtData43.Size = new System.Drawing.Size(24, 22);
             this.txtData43.TabIndex = 49;
             this.txtData43.Text = "00";
             this.txtData43.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1349,10 +1460,11 @@
             // 
             this.txtData42.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData42.Enabled = false;
-            this.txtData42.Location = new System.Drawing.Point(308, 90);
+            this.txtData42.Location = new System.Drawing.Point(308, 83);
+            this.txtData42.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData42.MaxLength = 2;
             this.txtData42.Name = "txtData42";
-            this.txtData42.Size = new System.Drawing.Size(24, 20);
+            this.txtData42.Size = new System.Drawing.Size(24, 22);
             this.txtData42.TabIndex = 48;
             this.txtData42.Text = "00";
             this.txtData42.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1363,10 +1475,11 @@
             // 
             this.txtData41.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData41.Enabled = false;
-            this.txtData41.Location = new System.Drawing.Point(278, 90);
+            this.txtData41.Location = new System.Drawing.Point(278, 83);
+            this.txtData41.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData41.MaxLength = 2;
             this.txtData41.Name = "txtData41";
-            this.txtData41.Size = new System.Drawing.Size(24, 20);
+            this.txtData41.Size = new System.Drawing.Size(24, 22);
             this.txtData41.TabIndex = 47;
             this.txtData41.Text = "00";
             this.txtData41.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1377,10 +1490,11 @@
             // 
             this.txtData40.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData40.Enabled = false;
-            this.txtData40.Location = new System.Drawing.Point(248, 90);
+            this.txtData40.Location = new System.Drawing.Point(248, 83);
+            this.txtData40.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData40.MaxLength = 2;
             this.txtData40.Name = "txtData40";
-            this.txtData40.Size = new System.Drawing.Size(24, 20);
+            this.txtData40.Size = new System.Drawing.Size(24, 22);
             this.txtData40.TabIndex = 46;
             this.txtData40.Text = "00";
             this.txtData40.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1391,10 +1505,11 @@
             // 
             this.txtData39.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData39.Enabled = false;
-            this.txtData39.Location = new System.Drawing.Point(218, 90);
+            this.txtData39.Location = new System.Drawing.Point(218, 83);
+            this.txtData39.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData39.MaxLength = 2;
             this.txtData39.Name = "txtData39";
-            this.txtData39.Size = new System.Drawing.Size(24, 20);
+            this.txtData39.Size = new System.Drawing.Size(24, 22);
             this.txtData39.TabIndex = 45;
             this.txtData39.Text = "00";
             this.txtData39.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1405,10 +1520,11 @@
             // 
             this.txtData38.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData38.Enabled = false;
-            this.txtData38.Location = new System.Drawing.Point(188, 90);
+            this.txtData38.Location = new System.Drawing.Point(188, 83);
+            this.txtData38.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData38.MaxLength = 2;
             this.txtData38.Name = "txtData38";
-            this.txtData38.Size = new System.Drawing.Size(24, 20);
+            this.txtData38.Size = new System.Drawing.Size(24, 22);
             this.txtData38.TabIndex = 44;
             this.txtData38.Text = "00";
             this.txtData38.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1419,10 +1535,11 @@
             // 
             this.txtData37.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData37.Enabled = false;
-            this.txtData37.Location = new System.Drawing.Point(158, 90);
+            this.txtData37.Location = new System.Drawing.Point(158, 83);
+            this.txtData37.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData37.MaxLength = 2;
             this.txtData37.Name = "txtData37";
-            this.txtData37.Size = new System.Drawing.Size(24, 20);
+            this.txtData37.Size = new System.Drawing.Size(24, 22);
             this.txtData37.TabIndex = 43;
             this.txtData37.Text = "00";
             this.txtData37.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1433,10 +1550,11 @@
             // 
             this.txtData36.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData36.Enabled = false;
-            this.txtData36.Location = new System.Drawing.Point(128, 90);
+            this.txtData36.Location = new System.Drawing.Point(128, 83);
+            this.txtData36.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData36.MaxLength = 2;
             this.txtData36.Name = "txtData36";
-            this.txtData36.Size = new System.Drawing.Size(24, 20);
+            this.txtData36.Size = new System.Drawing.Size(24, 22);
             this.txtData36.TabIndex = 42;
             this.txtData36.Text = "00";
             this.txtData36.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1447,10 +1565,11 @@
             // 
             this.txtData35.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData35.Enabled = false;
-            this.txtData35.Location = new System.Drawing.Point(98, 90);
+            this.txtData35.Location = new System.Drawing.Point(98, 83);
+            this.txtData35.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData35.MaxLength = 2;
             this.txtData35.Name = "txtData35";
-            this.txtData35.Size = new System.Drawing.Size(24, 20);
+            this.txtData35.Size = new System.Drawing.Size(24, 22);
             this.txtData35.TabIndex = 41;
             this.txtData35.Text = "00";
             this.txtData35.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1461,10 +1580,11 @@
             // 
             this.txtData34.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData34.Enabled = false;
-            this.txtData34.Location = new System.Drawing.Point(68, 90);
+            this.txtData34.Location = new System.Drawing.Point(68, 83);
+            this.txtData34.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData34.MaxLength = 2;
             this.txtData34.Name = "txtData34";
-            this.txtData34.Size = new System.Drawing.Size(24, 20);
+            this.txtData34.Size = new System.Drawing.Size(24, 22);
             this.txtData34.TabIndex = 40;
             this.txtData34.Text = "00";
             this.txtData34.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1475,10 +1595,11 @@
             // 
             this.txtData33.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData33.Enabled = false;
-            this.txtData33.Location = new System.Drawing.Point(38, 90);
+            this.txtData33.Location = new System.Drawing.Point(38, 83);
+            this.txtData33.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData33.MaxLength = 2;
             this.txtData33.Name = "txtData33";
-            this.txtData33.Size = new System.Drawing.Size(24, 20);
+            this.txtData33.Size = new System.Drawing.Size(24, 22);
             this.txtData33.TabIndex = 39;
             this.txtData33.Text = "00";
             this.txtData33.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1489,10 +1610,11 @@
             // 
             this.txtData32.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData32.Enabled = false;
-            this.txtData32.Location = new System.Drawing.Point(8, 90);
+            this.txtData32.Location = new System.Drawing.Point(8, 83);
+            this.txtData32.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData32.MaxLength = 2;
             this.txtData32.Name = "txtData32";
-            this.txtData32.Size = new System.Drawing.Size(24, 20);
+            this.txtData32.Size = new System.Drawing.Size(24, 22);
             this.txtData32.TabIndex = 38;
             this.txtData32.Text = "00";
             this.txtData32.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1503,10 +1625,11 @@
             // 
             this.txtData31.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData31.Enabled = false;
-            this.txtData31.Location = new System.Drawing.Point(458, 64);
+            this.txtData31.Location = new System.Drawing.Point(458, 59);
+            this.txtData31.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData31.MaxLength = 2;
             this.txtData31.Name = "txtData31";
-            this.txtData31.Size = new System.Drawing.Size(24, 20);
+            this.txtData31.Size = new System.Drawing.Size(24, 22);
             this.txtData31.TabIndex = 37;
             this.txtData31.Text = "00";
             this.txtData31.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1517,10 +1640,11 @@
             // 
             this.txtData30.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData30.Enabled = false;
-            this.txtData30.Location = new System.Drawing.Point(428, 64);
+            this.txtData30.Location = new System.Drawing.Point(428, 59);
+            this.txtData30.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData30.MaxLength = 2;
             this.txtData30.Name = "txtData30";
-            this.txtData30.Size = new System.Drawing.Size(24, 20);
+            this.txtData30.Size = new System.Drawing.Size(24, 22);
             this.txtData30.TabIndex = 36;
             this.txtData30.Text = "00";
             this.txtData30.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1531,10 +1655,11 @@
             // 
             this.txtData29.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData29.Enabled = false;
-            this.txtData29.Location = new System.Drawing.Point(398, 64);
+            this.txtData29.Location = new System.Drawing.Point(398, 59);
+            this.txtData29.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData29.MaxLength = 2;
             this.txtData29.Name = "txtData29";
-            this.txtData29.Size = new System.Drawing.Size(24, 20);
+            this.txtData29.Size = new System.Drawing.Size(24, 22);
             this.txtData29.TabIndex = 35;
             this.txtData29.Text = "00";
             this.txtData29.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1545,10 +1670,11 @@
             // 
             this.txtData28.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData28.Enabled = false;
-            this.txtData28.Location = new System.Drawing.Point(368, 64);
+            this.txtData28.Location = new System.Drawing.Point(368, 59);
+            this.txtData28.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData28.MaxLength = 2;
             this.txtData28.Name = "txtData28";
-            this.txtData28.Size = new System.Drawing.Size(24, 20);
+            this.txtData28.Size = new System.Drawing.Size(24, 22);
             this.txtData28.TabIndex = 34;
             this.txtData28.Text = "00";
             this.txtData28.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1559,10 +1685,11 @@
             // 
             this.txtData27.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData27.Enabled = false;
-            this.txtData27.Location = new System.Drawing.Point(338, 64);
+            this.txtData27.Location = new System.Drawing.Point(338, 59);
+            this.txtData27.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData27.MaxLength = 2;
             this.txtData27.Name = "txtData27";
-            this.txtData27.Size = new System.Drawing.Size(24, 20);
+            this.txtData27.Size = new System.Drawing.Size(24, 22);
             this.txtData27.TabIndex = 33;
             this.txtData27.Text = "00";
             this.txtData27.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1573,10 +1700,11 @@
             // 
             this.txtData26.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData26.Enabled = false;
-            this.txtData26.Location = new System.Drawing.Point(308, 64);
+            this.txtData26.Location = new System.Drawing.Point(308, 59);
+            this.txtData26.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData26.MaxLength = 2;
             this.txtData26.Name = "txtData26";
-            this.txtData26.Size = new System.Drawing.Size(24, 20);
+            this.txtData26.Size = new System.Drawing.Size(24, 22);
             this.txtData26.TabIndex = 32;
             this.txtData26.Text = "00";
             this.txtData26.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1587,10 +1715,11 @@
             // 
             this.txtData25.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData25.Enabled = false;
-            this.txtData25.Location = new System.Drawing.Point(278, 64);
+            this.txtData25.Location = new System.Drawing.Point(278, 59);
+            this.txtData25.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData25.MaxLength = 2;
             this.txtData25.Name = "txtData25";
-            this.txtData25.Size = new System.Drawing.Size(24, 20);
+            this.txtData25.Size = new System.Drawing.Size(24, 22);
             this.txtData25.TabIndex = 31;
             this.txtData25.Text = "00";
             this.txtData25.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1601,10 +1730,11 @@
             // 
             this.txtData24.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData24.Enabled = false;
-            this.txtData24.Location = new System.Drawing.Point(248, 64);
+            this.txtData24.Location = new System.Drawing.Point(248, 59);
+            this.txtData24.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData24.MaxLength = 2;
             this.txtData24.Name = "txtData24";
-            this.txtData24.Size = new System.Drawing.Size(24, 20);
+            this.txtData24.Size = new System.Drawing.Size(24, 22);
             this.txtData24.TabIndex = 30;
             this.txtData24.Text = "00";
             this.txtData24.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1615,10 +1745,11 @@
             // 
             this.txtData23.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData23.Enabled = false;
-            this.txtData23.Location = new System.Drawing.Point(218, 64);
+            this.txtData23.Location = new System.Drawing.Point(218, 59);
+            this.txtData23.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData23.MaxLength = 2;
             this.txtData23.Name = "txtData23";
-            this.txtData23.Size = new System.Drawing.Size(24, 20);
+            this.txtData23.Size = new System.Drawing.Size(24, 22);
             this.txtData23.TabIndex = 29;
             this.txtData23.Text = "00";
             this.txtData23.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1629,10 +1760,11 @@
             // 
             this.txtData22.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData22.Enabled = false;
-            this.txtData22.Location = new System.Drawing.Point(188, 64);
+            this.txtData22.Location = new System.Drawing.Point(188, 59);
+            this.txtData22.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData22.MaxLength = 2;
             this.txtData22.Name = "txtData22";
-            this.txtData22.Size = new System.Drawing.Size(24, 20);
+            this.txtData22.Size = new System.Drawing.Size(24, 22);
             this.txtData22.TabIndex = 28;
             this.txtData22.Text = "00";
             this.txtData22.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1643,10 +1775,11 @@
             // 
             this.txtData21.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData21.Enabled = false;
-            this.txtData21.Location = new System.Drawing.Point(158, 64);
+            this.txtData21.Location = new System.Drawing.Point(158, 59);
+            this.txtData21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData21.MaxLength = 2;
             this.txtData21.Name = "txtData21";
-            this.txtData21.Size = new System.Drawing.Size(24, 20);
+            this.txtData21.Size = new System.Drawing.Size(24, 22);
             this.txtData21.TabIndex = 27;
             this.txtData21.Text = "00";
             this.txtData21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1657,10 +1790,11 @@
             // 
             this.txtData20.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData20.Enabled = false;
-            this.txtData20.Location = new System.Drawing.Point(128, 64);
+            this.txtData20.Location = new System.Drawing.Point(128, 59);
+            this.txtData20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData20.MaxLength = 2;
             this.txtData20.Name = "txtData20";
-            this.txtData20.Size = new System.Drawing.Size(24, 20);
+            this.txtData20.Size = new System.Drawing.Size(24, 22);
             this.txtData20.TabIndex = 26;
             this.txtData20.Text = "00";
             this.txtData20.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1671,10 +1805,11 @@
             // 
             this.txtData19.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData19.Enabled = false;
-            this.txtData19.Location = new System.Drawing.Point(98, 64);
+            this.txtData19.Location = new System.Drawing.Point(98, 59);
+            this.txtData19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData19.MaxLength = 2;
             this.txtData19.Name = "txtData19";
-            this.txtData19.Size = new System.Drawing.Size(24, 20);
+            this.txtData19.Size = new System.Drawing.Size(24, 22);
             this.txtData19.TabIndex = 25;
             this.txtData19.Text = "00";
             this.txtData19.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1685,10 +1820,11 @@
             // 
             this.txtData18.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData18.Enabled = false;
-            this.txtData18.Location = new System.Drawing.Point(69, 64);
+            this.txtData18.Location = new System.Drawing.Point(69, 59);
+            this.txtData18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData18.MaxLength = 2;
             this.txtData18.Name = "txtData18";
-            this.txtData18.Size = new System.Drawing.Size(24, 20);
+            this.txtData18.Size = new System.Drawing.Size(24, 22);
             this.txtData18.TabIndex = 24;
             this.txtData18.Text = "00";
             this.txtData18.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1699,10 +1835,11 @@
             // 
             this.txtData17.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData17.Enabled = false;
-            this.txtData17.Location = new System.Drawing.Point(39, 64);
+            this.txtData17.Location = new System.Drawing.Point(39, 59);
+            this.txtData17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData17.MaxLength = 2;
             this.txtData17.Name = "txtData17";
-            this.txtData17.Size = new System.Drawing.Size(24, 20);
+            this.txtData17.Size = new System.Drawing.Size(24, 22);
             this.txtData17.TabIndex = 23;
             this.txtData17.Text = "00";
             this.txtData17.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1713,10 +1850,11 @@
             // 
             this.txtData16.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData16.Enabled = false;
-            this.txtData16.Location = new System.Drawing.Point(8, 64);
+            this.txtData16.Location = new System.Drawing.Point(8, 59);
+            this.txtData16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData16.MaxLength = 2;
             this.txtData16.Name = "txtData16";
-            this.txtData16.Size = new System.Drawing.Size(24, 20);
+            this.txtData16.Size = new System.Drawing.Size(24, 22);
             this.txtData16.TabIndex = 22;
             this.txtData16.Text = "00";
             this.txtData16.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1727,10 +1865,11 @@
             // 
             this.txtData15.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData15.Enabled = false;
-            this.txtData15.Location = new System.Drawing.Point(458, 38);
+            this.txtData15.Location = new System.Drawing.Point(458, 35);
+            this.txtData15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData15.MaxLength = 2;
             this.txtData15.Name = "txtData15";
-            this.txtData15.Size = new System.Drawing.Size(24, 20);
+            this.txtData15.Size = new System.Drawing.Size(24, 22);
             this.txtData15.TabIndex = 21;
             this.txtData15.Text = "00";
             this.txtData15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1741,10 +1880,11 @@
             // 
             this.txtData14.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData14.Enabled = false;
-            this.txtData14.Location = new System.Drawing.Point(428, 38);
+            this.txtData14.Location = new System.Drawing.Point(428, 35);
+            this.txtData14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData14.MaxLength = 2;
             this.txtData14.Name = "txtData14";
-            this.txtData14.Size = new System.Drawing.Size(24, 20);
+            this.txtData14.Size = new System.Drawing.Size(24, 22);
             this.txtData14.TabIndex = 20;
             this.txtData14.Text = "00";
             this.txtData14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1755,10 +1895,11 @@
             // 
             this.txtData13.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData13.Enabled = false;
-            this.txtData13.Location = new System.Drawing.Point(398, 38);
+            this.txtData13.Location = new System.Drawing.Point(398, 35);
+            this.txtData13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData13.MaxLength = 2;
             this.txtData13.Name = "txtData13";
-            this.txtData13.Size = new System.Drawing.Size(24, 20);
+            this.txtData13.Size = new System.Drawing.Size(24, 22);
             this.txtData13.TabIndex = 19;
             this.txtData13.Text = "00";
             this.txtData13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1769,10 +1910,11 @@
             // 
             this.txtData12.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData12.Enabled = false;
-            this.txtData12.Location = new System.Drawing.Point(368, 38);
+            this.txtData12.Location = new System.Drawing.Point(368, 35);
+            this.txtData12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData12.MaxLength = 2;
             this.txtData12.Name = "txtData12";
-            this.txtData12.Size = new System.Drawing.Size(24, 20);
+            this.txtData12.Size = new System.Drawing.Size(24, 22);
             this.txtData12.TabIndex = 18;
             this.txtData12.Text = "00";
             this.txtData12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1783,10 +1925,11 @@
             // 
             this.txtData11.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData11.Enabled = false;
-            this.txtData11.Location = new System.Drawing.Point(338, 38);
+            this.txtData11.Location = new System.Drawing.Point(338, 35);
+            this.txtData11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData11.MaxLength = 2;
             this.txtData11.Name = "txtData11";
-            this.txtData11.Size = new System.Drawing.Size(24, 20);
+            this.txtData11.Size = new System.Drawing.Size(24, 22);
             this.txtData11.TabIndex = 17;
             this.txtData11.Text = "00";
             this.txtData11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1797,10 +1940,11 @@
             // 
             this.txtData10.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData10.Enabled = false;
-            this.txtData10.Location = new System.Drawing.Point(308, 38);
+            this.txtData10.Location = new System.Drawing.Point(308, 35);
+            this.txtData10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData10.MaxLength = 2;
             this.txtData10.Name = "txtData10";
-            this.txtData10.Size = new System.Drawing.Size(24, 20);
+            this.txtData10.Size = new System.Drawing.Size(24, 22);
             this.txtData10.TabIndex = 16;
             this.txtData10.Text = "00";
             this.txtData10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1811,10 +1955,11 @@
             // 
             this.txtData9.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData9.Enabled = false;
-            this.txtData9.Location = new System.Drawing.Point(278, 38);
+            this.txtData9.Location = new System.Drawing.Point(278, 35);
+            this.txtData9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData9.MaxLength = 2;
             this.txtData9.Name = "txtData9";
-            this.txtData9.Size = new System.Drawing.Size(24, 20);
+            this.txtData9.Size = new System.Drawing.Size(24, 22);
             this.txtData9.TabIndex = 15;
             this.txtData9.Text = "00";
             this.txtData9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1825,10 +1970,11 @@
             // 
             this.txtData8.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData8.Enabled = false;
-            this.txtData8.Location = new System.Drawing.Point(248, 38);
+            this.txtData8.Location = new System.Drawing.Point(248, 35);
+            this.txtData8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData8.MaxLength = 2;
             this.txtData8.Name = "txtData8";
-            this.txtData8.Size = new System.Drawing.Size(24, 20);
+            this.txtData8.Size = new System.Drawing.Size(24, 22);
             this.txtData8.TabIndex = 14;
             this.txtData8.Text = "00";
             this.txtData8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1840,9 +1986,10 @@
             this.chbBRS.Cursor = System.Windows.Forms.Cursors.Default;
             this.chbBRS.Enabled = false;
             this.chbBRS.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chbBRS.Location = new System.Drawing.Point(568, 86);
+            this.chbBRS.Location = new System.Drawing.Point(568, 79);
+            this.chbBRS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chbBRS.Name = "chbBRS";
-            this.chbBRS.Size = new System.Drawing.Size(40, 24);
+            this.chbBRS.Size = new System.Drawing.Size(40, 22);
             this.chbBRS.TabIndex = 5;
             this.chbBRS.Text = "BRS";
             this.chbBRS.Visible = false;
@@ -1851,9 +1998,10 @@
             // 
             this.chbFD.Cursor = System.Windows.Forms.Cursors.Default;
             this.chbFD.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chbFD.Location = new System.Drawing.Point(500, 86);
+            this.chbFD.Location = new System.Drawing.Point(500, 79);
+            this.chbFD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chbFD.Name = "chbFD";
-            this.chbFD.Size = new System.Drawing.Size(37, 24);
+            this.chbFD.Size = new System.Drawing.Size(37, 22);
             this.chbFD.TabIndex = 4;
             this.chbFD.Text = "FD";
             this.chbFD.Visible = false;
@@ -1863,9 +2011,10 @@
             // 
             this.chbRemote.Cursor = System.Windows.Forms.Cursors.Default;
             this.chbRemote.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chbRemote.Location = new System.Drawing.Point(568, 64);
+            this.chbRemote.Location = new System.Drawing.Point(568, 59);
+            this.chbRemote.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chbRemote.Name = "chbRemote";
-            this.chbRemote.Size = new System.Drawing.Size(44, 24);
+            this.chbRemote.Size = new System.Drawing.Size(44, 22);
             this.chbRemote.TabIndex = 3;
             this.chbRemote.Text = "RTR";
             this.chbRemote.CheckedChanged += new System.EventHandler(this.chbRemote_CheckedChanged);
@@ -1874,9 +2023,10 @@
             // 
             this.chbExtended.Cursor = System.Windows.Forms.Cursors.Default;
             this.chbExtended.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chbExtended.Location = new System.Drawing.Point(500, 64);
+            this.chbExtended.Location = new System.Drawing.Point(500, 59);
+            this.chbExtended.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chbExtended.Name = "chbExtended";
-            this.chbExtended.Size = new System.Drawing.Size(62, 24);
+            this.chbExtended.Size = new System.Drawing.Size(62, 22);
             this.chbExtended.TabIndex = 2;
             this.chbExtended.Text = "Extended";
             this.chbExtended.CheckedChanged += new System.EventHandler(this.chbExtended_CheckedChanged);
@@ -1887,9 +2037,10 @@
             this.btnWrite.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnWrite.Enabled = false;
             this.btnWrite.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnWrite.Location = new System.Drawing.Point(639, 86);
+            this.btnWrite.Location = new System.Drawing.Point(646, 79);
+            this.btnWrite.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnWrite.Name = "btnWrite";
-            this.btnWrite.Size = new System.Drawing.Size(65, 23);
+            this.btnWrite.Size = new System.Drawing.Size(65, 22);
             this.btnWrite.TabIndex = 6;
             this.btnWrite.Text = "Write";
             this.btnWrite.Click += new System.EventHandler(this.btnWrite_Click);
@@ -1897,28 +2048,29 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(615, 16);
+            this.label12.Location = new System.Drawing.Point(615, 14);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(31, 13);
+            this.label12.Size = new System.Drawing.Size(31, 12);
             this.label12.TabIndex = 31;
             this.label12.Text = "DLC:";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(497, 16);
+            this.label13.Location = new System.Drawing.Point(497, 14);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(49, 13);
+            this.label13.Size = new System.Drawing.Size(50, 12);
             this.label13.TabIndex = 30;
             this.label13.Text = "ID (Hex):";
             // 
             // txtID
             // 
             this.txtID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtID.Location = new System.Drawing.Point(500, 38);
+            this.txtID.Location = new System.Drawing.Point(500, 35);
+            this.txtID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtID.MaxLength = 3;
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(112, 20);
+            this.txtID.Size = new System.Drawing.Size(112, 22);
             this.txtID.TabIndex = 0;
             this.txtID.Text = "0";
             this.txtID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtID_KeyPress);
@@ -1927,10 +2079,11 @@
             // txtData7
             // 
             this.txtData7.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtData7.Location = new System.Drawing.Point(218, 38);
+            this.txtData7.Location = new System.Drawing.Point(218, 35);
+            this.txtData7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData7.MaxLength = 2;
             this.txtData7.Name = "txtData7";
-            this.txtData7.Size = new System.Drawing.Size(24, 20);
+            this.txtData7.Size = new System.Drawing.Size(24, 22);
             this.txtData7.TabIndex = 13;
             this.txtData7.Text = "00";
             this.txtData7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1940,10 +2093,11 @@
             // txtData6
             // 
             this.txtData6.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtData6.Location = new System.Drawing.Point(188, 38);
+            this.txtData6.Location = new System.Drawing.Point(188, 35);
+            this.txtData6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData6.MaxLength = 2;
             this.txtData6.Name = "txtData6";
-            this.txtData6.Size = new System.Drawing.Size(24, 20);
+            this.txtData6.Size = new System.Drawing.Size(24, 22);
             this.txtData6.TabIndex = 12;
             this.txtData6.Text = "00";
             this.txtData6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1953,10 +2107,11 @@
             // txtData5
             // 
             this.txtData5.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtData5.Location = new System.Drawing.Point(158, 38);
+            this.txtData5.Location = new System.Drawing.Point(158, 35);
+            this.txtData5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData5.MaxLength = 2;
             this.txtData5.Name = "txtData5";
-            this.txtData5.Size = new System.Drawing.Size(24, 20);
+            this.txtData5.Size = new System.Drawing.Size(24, 22);
             this.txtData5.TabIndex = 11;
             this.txtData5.Text = "00";
             this.txtData5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1966,10 +2121,11 @@
             // txtData4
             // 
             this.txtData4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtData4.Location = new System.Drawing.Point(128, 38);
+            this.txtData4.Location = new System.Drawing.Point(128, 35);
+            this.txtData4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData4.MaxLength = 2;
             this.txtData4.Name = "txtData4";
-            this.txtData4.Size = new System.Drawing.Size(24, 20);
+            this.txtData4.Size = new System.Drawing.Size(24, 22);
             this.txtData4.TabIndex = 10;
             this.txtData4.Text = "00";
             this.txtData4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1979,10 +2135,11 @@
             // txtData3
             // 
             this.txtData3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtData3.Location = new System.Drawing.Point(98, 38);
+            this.txtData3.Location = new System.Drawing.Point(98, 35);
+            this.txtData3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData3.MaxLength = 2;
             this.txtData3.Name = "txtData3";
-            this.txtData3.Size = new System.Drawing.Size(24, 20);
+            this.txtData3.Size = new System.Drawing.Size(24, 22);
             this.txtData3.TabIndex = 9;
             this.txtData3.Text = "00";
             this.txtData3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1992,10 +2149,11 @@
             // txtData2
             // 
             this.txtData2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtData2.Location = new System.Drawing.Point(69, 38);
+            this.txtData2.Location = new System.Drawing.Point(69, 35);
+            this.txtData2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData2.MaxLength = 2;
             this.txtData2.Name = "txtData2";
-            this.txtData2.Size = new System.Drawing.Size(24, 20);
+            this.txtData2.Size = new System.Drawing.Size(24, 22);
             this.txtData2.TabIndex = 8;
             this.txtData2.Text = "00";
             this.txtData2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2005,10 +2163,11 @@
             // txtData1
             // 
             this.txtData1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtData1.Location = new System.Drawing.Point(39, 38);
+            this.txtData1.Location = new System.Drawing.Point(39, 35);
+            this.txtData1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData1.MaxLength = 2;
             this.txtData1.Name = "txtData1";
-            this.txtData1.Size = new System.Drawing.Size(24, 20);
+            this.txtData1.Size = new System.Drawing.Size(24, 22);
             this.txtData1.TabIndex = 7;
             this.txtData1.Text = "00";
             this.txtData1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2018,10 +2177,11 @@
             // txtData0
             // 
             this.txtData0.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtData0.Location = new System.Drawing.Point(8, 38);
+            this.txtData0.Location = new System.Drawing.Point(8, 35);
+            this.txtData0.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtData0.MaxLength = 2;
             this.txtData0.Name = "txtData0";
-            this.txtData0.Size = new System.Drawing.Size(24, 20);
+            this.txtData0.Size = new System.Drawing.Size(24, 22);
             this.txtData0.TabIndex = 6;
             this.txtData0.Text = "00";
             this.txtData0.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2031,7 +2191,8 @@
             // nudLength
             // 
             this.nudLength.BackColor = System.Drawing.Color.White;
-            this.nudLength.Location = new System.Drawing.Point(618, 38);
+            this.nudLength.Location = new System.Drawing.Point(618, 35);
+            this.nudLength.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nudLength.Maximum = new decimal(new int[] {
             8,
             0,
@@ -2039,7 +2200,7 @@
             0});
             this.nudLength.Name = "nudLength";
             this.nudLength.ReadOnly = true;
-            this.nudLength.Size = new System.Drawing.Size(41, 20);
+            this.nudLength.Size = new System.Drawing.Size(41, 22);
             this.nudLength.TabIndex = 1;
             this.nudLength.Value = new decimal(new int[] {
             8,
@@ -2057,11 +2218,430 @@
             // 
             this.tmrDisplay.Tick += new System.EventHandler(this.tmrDisplay_Tick);
             // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.ID0CFE5A2F);
+            this.groupBox7.Controls.Add(this.SuspensionControlRefusalInfo);
+            this.groupBox7.Controls.Add(this.SuspensionRemoteControl2);
+            this.groupBox7.Controls.Add(this.SuspensionRemoteControl1);
+            this.groupBox7.Controls.Add(this.label18);
+            this.groupBox7.Controls.Add(this.FrontAxleInBumperRange);
+            this.groupBox7.Controls.Add(this.RearAxleInBumperRange);
+            this.groupBox7.Controls.Add(this.LiftAxle2Position);
+            this.groupBox7.Controls.Add(this.SecurityDevice);
+            this.groupBox7.Controls.Add(this.VehicleMotionInhibit);
+            this.groupBox7.Controls.Add(this.DoorRelease);
+            this.groupBox7.Controls.Add(this.LiftAxle1Position);
+            this.groupBox7.Controls.Add(this.KneelingInfo);
+            this.groupBox7.Controls.Add(this.LevelControlMode);
+            this.groupBox7.Controls.Add(this.LoweringControlModeRearAxle);
+            this.groupBox7.Controls.Add(this.LoweringControlModeFrontAxle);
+            this.groupBox7.Controls.Add(this.label16);
+            this.groupBox7.Controls.Add(this.LiftingControlModeR);
+            this.groupBox7.Controls.Add(this.LiftingControlModeF);
+            this.groupBox7.Controls.Add(this.label11);
+            this.groupBox7.Controls.Add(this.BelowNominalLevelRearAxle);
+            this.groupBox7.Controls.Add(this.BelowNominalLevelFrontAxle);
+            this.groupBox7.Controls.Add(this.label9);
+            this.groupBox7.Controls.Add(this.label2);
+            this.groupBox7.Controls.Add(this.label4);
+            this.groupBox7.Controls.Add(this.AboveNominalLevelFrontAxle);
+            this.groupBox7.Controls.Add(this.AboveNominalLevelRearAxle);
+            this.groupBox7.Controls.Add(this.NominalLevelFrontAxle);
+            this.groupBox7.Controls.Add(this.NominalLevelRearAxle);
+            this.groupBox7.Location = new System.Drawing.Point(733, 14);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox7.Size = new System.Drawing.Size(654, 291);
+            this.groupBox7.TabIndex = 52;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Air Suspension control 1";
+            // 
+            // SuspensionControlRefusalInfo
+            // 
+            this.SuspensionControlRefusalInfo.AutoSize = true;
+            this.SuspensionControlRefusalInfo.Location = new System.Drawing.Point(13, 251);
+            this.SuspensionControlRefusalInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.SuspensionControlRefusalInfo.Name = "SuspensionControlRefusalInfo";
+            this.SuspensionControlRefusalInfo.Size = new System.Drawing.Size(191, 12);
+            this.SuspensionControlRefusalInfo.TabIndex = 27;
+            this.SuspensionControlRefusalInfo.Text = "Suspension control refusal information: ";
+            // 
+            // SuspensionRemoteControl2
+            // 
+            this.SuspensionRemoteControl2.AutoSize = true;
+            this.SuspensionRemoteControl2.Location = new System.Drawing.Point(372, 214);
+            this.SuspensionRemoteControl2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.SuspensionRemoteControl2.Name = "SuspensionRemoteControl2";
+            this.SuspensionRemoteControl2.Size = new System.Drawing.Size(150, 12);
+            this.SuspensionRemoteControl2.TabIndex = 26;
+            this.SuspensionRemoteControl2.Text = "Suspension Remote control #2:";
+            // 
+            // SuspensionRemoteControl1
+            // 
+            this.SuspensionRemoteControl1.AutoSize = true;
+            this.SuspensionRemoteControl1.Location = new System.Drawing.Point(372, 192);
+            this.SuspensionRemoteControl1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.SuspensionRemoteControl1.Name = "SuspensionRemoteControl1";
+            this.SuspensionRemoteControl1.Size = new System.Drawing.Size(150, 12);
+            this.SuspensionRemoteControl1.TabIndex = 25;
+            this.SuspensionRemoteControl1.Text = "Suspension Remote control #1:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(13, 190);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(140, 12);
+            this.label18.TabIndex = 24;
+            this.label18.Text = "Actual level in bumper range";
+            // 
+            // FrontAxleInBumperRange
+            // 
+            this.FrontAxleInBumperRange.AutoSize = true;
+            this.FrontAxleInBumperRange.Location = new System.Drawing.Point(28, 202);
+            this.FrontAxleInBumperRange.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.FrontAxleInBumperRange.Name = "FrontAxleInBumperRange";
+            this.FrontAxleInBumperRange.Size = new System.Drawing.Size(55, 12);
+            this.FrontAxleInBumperRange.TabIndex = 23;
+            this.FrontAxleInBumperRange.Text = "Front axle:";
+            // 
+            // RearAxleInBumperRange
+            // 
+            this.RearAxleInBumperRange.AutoSize = true;
+            this.RearAxleInBumperRange.Location = new System.Drawing.Point(205, 202);
+            this.RearAxleInBumperRange.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.RearAxleInBumperRange.Name = "RearAxleInBumperRange";
+            this.RearAxleInBumperRange.Size = new System.Drawing.Size(52, 12);
+            this.RearAxleInBumperRange.TabIndex = 22;
+            this.RearAxleInBumperRange.Text = "Rear axle:";
+            // 
+            // LiftAxle2Position
+            // 
+            this.LiftAxle2Position.AutoSize = true;
+            this.LiftAxle2Position.Location = new System.Drawing.Point(372, 171);
+            this.LiftAxle2Position.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LiftAxle2Position.Name = "LiftAxle2Position";
+            this.LiftAxle2Position.Size = new System.Drawing.Size(96, 12);
+            this.LiftAxle2Position.TabIndex = 21;
+            this.LiftAxle2Position.Text = "Lift axle 2 position:";
+            // 
+            // SecurityDevice
+            // 
+            this.SecurityDevice.AutoSize = true;
+            this.SecurityDevice.Location = new System.Drawing.Point(372, 149);
+            this.SecurityDevice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.SecurityDevice.Name = "SecurityDevice";
+            this.SecurityDevice.Size = new System.Drawing.Size(79, 12);
+            this.SecurityDevice.TabIndex = 20;
+            this.SecurityDevice.Text = "Security device:";
+            // 
+            // VehicleMotionInhibit
+            // 
+            this.VehicleMotionInhibit.AutoSize = true;
+            this.VehicleMotionInhibit.Location = new System.Drawing.Point(372, 127);
+            this.VehicleMotionInhibit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.VehicleMotionInhibit.Name = "VehicleMotionInhibit";
+            this.VehicleMotionInhibit.Size = new System.Drawing.Size(112, 12);
+            this.VehicleMotionInhibit.TabIndex = 19;
+            this.VehicleMotionInhibit.Text = "Vehicle motion inhibit:";
+            // 
+            // DoorRelease
+            // 
+            this.DoorRelease.AutoSize = true;
+            this.DoorRelease.Location = new System.Drawing.Point(372, 106);
+            this.DoorRelease.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.DoorRelease.Name = "DoorRelease";
+            this.DoorRelease.Size = new System.Drawing.Size(66, 12);
+            this.DoorRelease.TabIndex = 18;
+            this.DoorRelease.Text = "Door release:";
+            // 
+            // LiftAxle1Position
+            // 
+            this.LiftAxle1Position.AutoSize = true;
+            this.LiftAxle1Position.Location = new System.Drawing.Point(372, 84);
+            this.LiftAxle1Position.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LiftAxle1Position.Name = "LiftAxle1Position";
+            this.LiftAxle1Position.Size = new System.Drawing.Size(96, 12);
+            this.LiftAxle1Position.TabIndex = 17;
+            this.LiftAxle1Position.Text = "Lift axle 1 position:";
+            // 
+            // KneelingInfo
+            // 
+            this.KneelingInfo.AutoSize = true;
+            this.KneelingInfo.Location = new System.Drawing.Point(372, 63);
+            this.KneelingInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.KneelingInfo.Name = "KneelingInfo";
+            this.KneelingInfo.Size = new System.Drawing.Size(108, 12);
+            this.KneelingInfo.TabIndex = 16;
+            this.KneelingInfo.Text = "Kneeling information:";
+            // 
+            // LevelControlMode
+            // 
+            this.LevelControlMode.AutoSize = true;
+            this.LevelControlMode.Location = new System.Drawing.Point(372, 41);
+            this.LevelControlMode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LevelControlMode.Name = "LevelControlMode";
+            this.LevelControlMode.Size = new System.Drawing.Size(99, 12);
+            this.LevelControlMode.TabIndex = 15;
+            this.LevelControlMode.Text = "Level control mode:";
+            // 
+            // LoweringControlModeRearAxle
+            // 
+            this.LoweringControlModeRearAxle.AutoSize = true;
+            this.LoweringControlModeRearAxle.Location = new System.Drawing.Point(205, 170);
+            this.LoweringControlModeRearAxle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LoweringControlModeRearAxle.Name = "LoweringControlModeRearAxle";
+            this.LoweringControlModeRearAxle.Size = new System.Drawing.Size(55, 12);
+            this.LoweringControlModeRearAxle.TabIndex = 14;
+            this.LoweringControlModeRearAxle.Text = "Rear axle: ";
+            // 
+            // LoweringControlModeFrontAxle
+            // 
+            this.LoweringControlModeFrontAxle.AutoSize = true;
+            this.LoweringControlModeFrontAxle.Location = new System.Drawing.Point(28, 170);
+            this.LoweringControlModeFrontAxle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LoweringControlModeFrontAxle.Name = "LoweringControlModeFrontAxle";
+            this.LoweringControlModeFrontAxle.Size = new System.Drawing.Size(55, 12);
+            this.LoweringControlModeFrontAxle.TabIndex = 13;
+            this.LoweringControlModeFrontAxle.Text = "Front axle:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(13, 158);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(115, 12);
+            this.label16.TabIndex = 12;
+            this.label16.Text = "Lowering control mode";
+            // 
+            // LiftingControlModeR
+            // 
+            this.LiftingControlModeR.AutoSize = true;
+            this.LiftingControlModeR.Location = new System.Drawing.Point(205, 137);
+            this.LiftingControlModeR.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LiftingControlModeR.Name = "LiftingControlModeR";
+            this.LiftingControlModeR.Size = new System.Drawing.Size(55, 12);
+            this.LiftingControlModeR.TabIndex = 11;
+            this.LiftingControlModeR.Text = "Rear axle: ";
+            // 
+            // LiftingControlModeF
+            // 
+            this.LiftingControlModeF.AutoSize = true;
+            this.LiftingControlModeF.Location = new System.Drawing.Point(28, 137);
+            this.LiftingControlModeF.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LiftingControlModeF.Name = "LiftingControlModeF";
+            this.LiftingControlModeF.Size = new System.Drawing.Size(55, 12);
+            this.LiftingControlModeF.TabIndex = 10;
+            this.LiftingControlModeF.Text = "Front axle:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(12, 125);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(102, 12);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "Lifting control mode";
+            // 
+            // BelowNominalLevelRearAxle
+            // 
+            this.BelowNominalLevelRearAxle.AutoSize = true;
+            this.BelowNominalLevelRearAxle.Location = new System.Drawing.Point(205, 104);
+            this.BelowNominalLevelRearAxle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.BelowNominalLevelRearAxle.Name = "BelowNominalLevelRearAxle";
+            this.BelowNominalLevelRearAxle.Size = new System.Drawing.Size(55, 12);
+            this.BelowNominalLevelRearAxle.TabIndex = 8;
+            this.BelowNominalLevelRearAxle.Text = "Rear axle: ";
+            // 
+            // BelowNominalLevelFrontAxle
+            // 
+            this.BelowNominalLevelFrontAxle.AutoSize = true;
+            this.BelowNominalLevelFrontAxle.Location = new System.Drawing.Point(25, 104);
+            this.BelowNominalLevelFrontAxle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.BelowNominalLevelFrontAxle.Name = "BelowNominalLevelFrontAxle";
+            this.BelowNominalLevelFrontAxle.Size = new System.Drawing.Size(55, 12);
+            this.BelowNominalLevelFrontAxle.TabIndex = 7;
+            this.BelowNominalLevelFrontAxle.Text = "Front axle:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 90);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(101, 12);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "Below nominal level";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 28);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 12);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Nominal level";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 59);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(102, 12);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Above nominal level";
+            // 
+            // AboveNominalLevelFrontAxle
+            // 
+            this.AboveNominalLevelFrontAxle.AutoSize = true;
+            this.AboveNominalLevelFrontAxle.Location = new System.Drawing.Point(25, 71);
+            this.AboveNominalLevelFrontAxle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.AboveNominalLevelFrontAxle.Name = "AboveNominalLevelFrontAxle";
+            this.AboveNominalLevelFrontAxle.Size = new System.Drawing.Size(55, 12);
+            this.AboveNominalLevelFrontAxle.TabIndex = 3;
+            this.AboveNominalLevelFrontAxle.Text = "Front axle:";
+            // 
+            // AboveNominalLevelRearAxle
+            // 
+            this.AboveNominalLevelRearAxle.AutoSize = true;
+            this.AboveNominalLevelRearAxle.Location = new System.Drawing.Point(205, 71);
+            this.AboveNominalLevelRearAxle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.AboveNominalLevelRearAxle.Name = "AboveNominalLevelRearAxle";
+            this.AboveNominalLevelRearAxle.Size = new System.Drawing.Size(55, 12);
+            this.AboveNominalLevelRearAxle.TabIndex = 2;
+            this.AboveNominalLevelRearAxle.Text = "Rear axle: ";
+            // 
+            // NominalLevelFrontAxle
+            // 
+            this.NominalLevelFrontAxle.AutoSize = true;
+            this.NominalLevelFrontAxle.Location = new System.Drawing.Point(25, 40);
+            this.NominalLevelFrontAxle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.NominalLevelFrontAxle.Name = "NominalLevelFrontAxle";
+            this.NominalLevelFrontAxle.Size = new System.Drawing.Size(58, 12);
+            this.NominalLevelFrontAxle.TabIndex = 1;
+            this.NominalLevelFrontAxle.Text = "Front axle: ";
+            // 
+            // NominalLevelRearAxle
+            // 
+            this.NominalLevelRearAxle.AutoSize = true;
+            this.NominalLevelRearAxle.Location = new System.Drawing.Point(205, 41);
+            this.NominalLevelRearAxle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.NominalLevelRearAxle.Name = "NominalLevelRearAxle";
+            this.NominalLevelRearAxle.Size = new System.Drawing.Size(52, 12);
+            this.NominalLevelRearAxle.TabIndex = 0;
+            this.NominalLevelRearAxle.Text = "Rear axle:";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.ECASStop);
+            this.groupBox8.Controls.Add(this.ActivatecheckBox);
+            this.groupBox8.Controls.Add(this.kneeling);
+            this.groupBox8.Controls.Add(this.Normal1);
+            this.groupBox8.Controls.Add(this.DOWN);
+            this.groupBox8.Controls.Add(this.UP);
+            this.groupBox8.Location = new System.Drawing.Point(733, 309);
+            this.groupBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox8.Size = new System.Drawing.Size(323, 84);
+            this.groupBox8.TabIndex = 53;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Air Suspension control 2";
+            // 
+            // ECASStop
+            // 
+            this.ECASStop.Location = new System.Drawing.Point(261, 29);
+            this.ECASStop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ECASStop.Name = "ECASStop";
+            this.ECASStop.Size = new System.Drawing.Size(41, 33);
+            this.ECASStop.TabIndex = 55;
+            this.ECASStop.Text = "STOP";
+            this.ECASStop.UseVisualStyleBackColor = true;
+            this.ECASStop.Click += new System.EventHandler(this.ECASStop_Click);
+            // 
+            // ActivatecheckBox
+            // 
+            this.ActivatecheckBox.AutoSize = true;
+            this.ActivatecheckBox.Location = new System.Drawing.Point(133, 0);
+            this.ActivatecheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ActivatecheckBox.Name = "ActivatecheckBox";
+            this.ActivatecheckBox.Size = new System.Drawing.Size(62, 16);
+            this.ActivatecheckBox.TabIndex = 54;
+            this.ActivatecheckBox.Text = "Activate";
+            this.ActivatecheckBox.UseVisualStyleBackColor = true;
+            this.ActivatecheckBox.CheckedChanged += new System.EventHandler(this.ActivatecheckBox_CheckedChanged);
+            // 
+            // kneeling
+            // 
+            this.kneeling.Location = new System.Drawing.Point(79, 29);
+            this.kneeling.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.kneeling.Name = "kneeling";
+            this.kneeling.Size = new System.Drawing.Size(67, 34);
+            this.kneeling.TabIndex = 3;
+            this.kneeling.Text = "kneeling";
+            this.kneeling.UseVisualStyleBackColor = true;
+            this.kneeling.Click += new System.EventHandler(this.kneeling_Click);
+            // 
+            // Normal1
+            // 
+            this.Normal1.Location = new System.Drawing.Point(8, 29);
+            this.Normal1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Normal1.Name = "Normal1";
+            this.Normal1.Size = new System.Drawing.Size(67, 34);
+            this.Normal1.TabIndex = 2;
+            this.Normal1.Text = "Normal 1";
+            this.Normal1.UseVisualStyleBackColor = true;
+            this.Normal1.Click += new System.EventHandler(this.Normal1_Click);
+            // 
+            // DOWN
+            // 
+            this.DOWN.Location = new System.Drawing.Point(206, 29);
+            this.DOWN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DOWN.Name = "DOWN";
+            this.DOWN.Size = new System.Drawing.Size(51, 34);
+            this.DOWN.TabIndex = 1;
+            this.DOWN.Text = "DOWN";
+            this.DOWN.UseVisualStyleBackColor = true;
+            this.DOWN.Click += new System.EventHandler(this.DOWN_Click);
+            // 
+            // UP
+            // 
+            this.UP.Location = new System.Drawing.Point(150, 29);
+            this.UP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.UP.Name = "UP";
+            this.UP.Size = new System.Drawing.Size(51, 34);
+            this.UP.TabIndex = 0;
+            this.UP.Text = "UP";
+            this.UP.UseVisualStyleBackColor = true;
+            this.UP.Click += new System.EventHandler(this.UP_Click);
+            // 
+            // tmrSend
+            // 
+            this.tmrSend.Tick += new System.EventHandler(this.tmrSend_Tick);
+            // 
+            // ID0CFE5A2F
+            // 
+            this.ID0CFE5A2F.AutoSize = true;
+            this.ID0CFE5A2F.Location = new System.Drawing.Point(148, 0);
+            this.ID0CFE5A2F.Name = "ID0CFE5A2F";
+            this.ID0CFE5A2F.Size = new System.Drawing.Size(76, 12);
+            this.ID0CFE5A2F.TabIndex = 56;
+            this.ID0CFE5A2F.Text = "0x0CFE5A2F: ";
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 605);
+            this.ClientSize = new System.Drawing.Size(1398, 617);
+            this.Controls.Add(this.groupBox8);
+            this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -2069,6 +2649,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -2088,6 +2669,10 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudLength)).EndInit();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2231,6 +2816,44 @@
         private System.Windows.Forms.ComboBox cbbBaudrates;
         private System.Windows.Forms.Label laBaudrate;
         private System.Windows.Forms.CheckBox chbCanFD;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label AboveNominalLevelFrontAxle;
+        private System.Windows.Forms.Label AboveNominalLevelRearAxle;
+        private System.Windows.Forms.Label NominalLevelFrontAxle;
+        private System.Windows.Forms.Label NominalLevelRearAxle;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label BelowNominalLevelRearAxle;
+        private System.Windows.Forms.Label BelowNominalLevelFrontAxle;
+        private System.Windows.Forms.Label LiftAxle1Position;
+        private System.Windows.Forms.Label KneelingInfo;
+        private System.Windows.Forms.Label LevelControlMode;
+        private System.Windows.Forms.Label LoweringControlModeRearAxle;
+        private System.Windows.Forms.Label LoweringControlModeFrontAxle;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label LiftingControlModeR;
+        private System.Windows.Forms.Label LiftingControlModeF;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label DoorRelease;
+        private System.Windows.Forms.Label VehicleMotionInhibit;
+        private System.Windows.Forms.Label FrontAxleInBumperRange;
+        private System.Windows.Forms.Label RearAxleInBumperRange;
+        private System.Windows.Forms.Label LiftAxle2Position;
+        private System.Windows.Forms.Label SecurityDevice;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label SuspensionRemoteControl2;
+        private System.Windows.Forms.Label SuspensionRemoteControl1;
+        private System.Windows.Forms.Label SuspensionControlRefusalInfo;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Button kneeling;
+        private System.Windows.Forms.Button Normal1;
+        private System.Windows.Forms.Button DOWN;
+        private System.Windows.Forms.Button UP;
+        private System.Windows.Forms.Timer tmrSend;
+        private System.Windows.Forms.CheckBox ActivatecheckBox;
+        private System.Windows.Forms.Button ECASStop;
+        private System.Windows.Forms.Label ID0CFE5A2F;
     }
 }
 

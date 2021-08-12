@@ -24,6 +24,10 @@ namespace ICDIBasic
         /// Message Status structure used to show CAN Messages
         /// in a ListView
         /// </summary>
+        /// 
+
+        public uint ECASlevelChange;
+
         private class MessageStatus
         {
             private TPCANMsgFD m_Msg;
@@ -167,16 +171,16 @@ namespace ICDIBasic
                     strTemp += "/RTR";
                 else
                     if ((int)m_Msg.MSGTYPE > (int)TPCANMessageType.PCAN_MESSAGE_EXTENDED)
-                    {
-                        strTemp += " [ ";
-                        if ((m_Msg.MSGTYPE & TPCANMessageType.PCAN_MESSAGE_FD) == TPCANMessageType.PCAN_MESSAGE_FD)
-                            strTemp += " FD";
-                        if ((m_Msg.MSGTYPE & TPCANMessageType.PCAN_MESSAGE_BRS) == TPCANMessageType.PCAN_MESSAGE_BRS)
-                            strTemp += " BRS";
-                        if ((m_Msg.MSGTYPE & TPCANMessageType.PCAN_MESSAGE_ESI) == TPCANMessageType.PCAN_MESSAGE_ESI)
-                            strTemp += " ESI";
-                        strTemp += " ]";
-                    }
+                {
+                    strTemp += " [ ";
+                    if ((m_Msg.MSGTYPE & TPCANMessageType.PCAN_MESSAGE_FD) == TPCANMessageType.PCAN_MESSAGE_FD)
+                        strTemp += " FD";
+                    if ((m_Msg.MSGTYPE & TPCANMessageType.PCAN_MESSAGE_BRS) == TPCANMessageType.PCAN_MESSAGE_BRS)
+                        strTemp += " BRS";
+                    if ((m_Msg.MSGTYPE & TPCANMessageType.PCAN_MESSAGE_ESI) == TPCANMessageType.PCAN_MESSAGE_ESI)
+                        strTemp += " ESI";
+                    strTemp += " ]";
+                }
 
                 return strTemp;
             }
@@ -243,11 +247,11 @@ namespace ICDIBasic
             if (dlc <= 8)
                 return dlc;
 
-             if (isSTD)
+            if (isSTD)
                 return 8;
 
-             switch (dlc)
-             {
+            switch (dlc)
+            {
                 case 9: return 12;
                 case 10: return 16;
                 case 11: return 20;
@@ -275,8 +279,8 @@ namespace ICDIBasic
             m_ReceiveEvent = new System.Threading.AutoResetEvent(false);
             // Creates an array with all possible non plug-and-play PCAN-Channels
             //
-            m_NonPnPHandles = new TPCANHandle[] 
-            { 
+            m_NonPnPHandles = new TPCANHandle[]
+            {
                 PCANBasic.PCAN_ISABUS1,
                 PCANBasic.PCAN_ISABUS2,
                 PCANBasic.PCAN_ISABUS3,
@@ -593,8 +597,91 @@ namespace ICDIBasic
         /// </summary>
         /// <param name="theMsg">The received PCAN-Basic message</param>
         /// <returns>True if the message must be created, false if it must be modified</returns>
+        
         private void ProcessMessage(TPCANMsgFD theMsg, TPCANTimestampFD itsTimeStamp)
-        {
+        {           
+            string[] LCM = { "Normal operation", "Traction help (load transfer)", "Load fixing",
+                                 "Pressure ratio 1", "Pressure ratio 2", "Optimum Traction 1",
+                                 "Optimum Traction 2", "Traction help (Load reduce)",
+                                 "Exhausting bellow function", "not defined","not defined","not defined",
+                                 "not defined","not defined","error state, level control not possible","not available"};
+
+            string[] NL = { "Level not specified", "Normal Level 1", "Normal Level 2", "Normal Level 3", "Preset Level",
+                                 "Customer Level", "Upper Level", "Lower Level","not defined","not defined","not defined",
+                                 "not defined","not defined","not defined","not defined","not defined","not available" };
+
+            string[] ANL = { "Not above", "Above", "not defined", "not defined", "not defined" };
+
+            string[] BNL = { "Not below", "Below", "not defined", "not defined", "not defined" };
+
+            string[] LiftCM = { "Lifting not active", "Lifting active", "Error state lifting not possible", "not defined", "not defined" };
+
+            string[] LowerCM = { "Lowering", "Lowering active", "Error state lowering not possible", "not defined", "not defined" };
+
+            string[] KI = { "Not active", "Lowering active", "Kneeling level reached", "lifting active", "Kneeling aborted",
+                                "not defined", "not defined", "not defined", "not defined", "not defined", "not defined", "not defined",
+                                "not defined", "not defined", "not defined", "not available" };
+
+            string[] LAP = { "Lift axle position down / tag axle laden", "Lift axle position up / tag axle unladen", "not defined", "not defined", "not defined" };
+
+            string[] DR = { "Doors may not be opened", "Doors may be opened", "not defined", "not defined", "not defined" };
+
+            string[] VMI = { "Vehicle may be moved", "Vehicle motion is inhibited", "not defined", "not defined", "not defined" };
+
+            String[] SD = { "Not active", "Active", "not defined", "not defined", "not defined" };
+
+            String[] RB = { "Actual level out of bumper range", "Actual level within bumper range", "not defined", "not defined", "not defined" };
+
+            String[] SCRI = { "Actual request not refused", "Axle load limit reached (load transfer)", "Would exceed load limit (tag axle)",
+                                  "Bogie differential not locked","Above speed limit","Below speed limit","General reject","not defined", "not defined",
+                                  "not defined", "not defined", "not defined","not defined",
+                                  "not defined", "not defined", "not defined", "not available"};
+
+            switch (theMsg.ID)
+            {
+                case 0x0CFE5A2F:
+                    string newdata = "";                    
+                    for (int i = 0; i < 8; i++)
+                        newdata += theMsg.DATA[i].ToString("X") +" ";
+
+                    ID0CFE5A2F.Text = "0x0CFE5A2F: " + newdata;
+
+                    NominalLevelRearAxle.Text = "Rear axle: " + Convert.ToString(NL[theMsg.DATA[0] >> 4]);
+                    NominalLevelFrontAxle.Text = "Front axle: " + Convert.ToString(NL[theMsg.DATA[0] & 0x0F]);
+
+                    AboveNominalLevelRearAxle.Text = "Rear axle: " + Convert.ToString(ANL[theMsg.DATA[1] >> 6]);
+                    AboveNominalLevelFrontAxle.Text = "Front axle: " + Convert.ToString(ANL[theMsg.DATA[1] >> 4 & 3]);
+                    BelowNominalLevelRearAxle.Text = "Rear axle: " + Convert.ToString(BNL[theMsg.DATA[1] & 0x0F >> 2]);
+                    BelowNominalLevelFrontAxle.Text = "Front axle: " + Convert.ToString(BNL[theMsg.DATA[1] & 0x03]);
+
+                    LiftingControlModeR.Text = "Rear axle: " + Convert.ToString(LiftCM[theMsg.DATA[2] >> 6]);
+                    LiftingControlModeF.Text = "Front axle: " + Convert.ToString(LiftCM[theMsg.DATA[2] >> 4 & 3]);
+                    LoweringControlModeRearAxle.Text = "Rear axle: " + Convert.ToString(LowerCM[theMsg.DATA[2] & 0x0F >> 2]);
+                    LoweringControlModeFrontAxle.Text = "Front axle: " + Convert.ToString(LowerCM[theMsg.DATA[2] & 0x03]);
+
+                    LevelControlMode.Text = "Level control mode: " + Convert.ToString(LCM[theMsg.DATA[3] >> 4]);
+                    KneelingInfo.Text = "Kneeling information: " + Convert.ToString(KI[theMsg.DATA[3] & 0x0F]);
+
+                    LiftAxle1Position.Text = "Lift axle 1 position: " + Convert.ToString(LAP[theMsg.DATA[4] >> 6]);
+                    DoorRelease.Text = "Door release: " + Convert.ToString(DR[theMsg.DATA[4] >> 4 & 3]);
+                    VehicleMotionInhibit.Text = "Vehicle motion inhibit: " + Convert.ToString(VMI[theMsg.DATA[4] & 0x0F >> 2]);
+                    SecurityDevice.Text = "Security device: " + Convert.ToString(SD[theMsg.DATA[4] & 0x03]);
+
+                    LiftAxle2Position.Text = "Lift axle 2 position: " + Convert.ToString(LAP[theMsg.DATA[5] >> 6]);
+                    RearAxleInBumperRange.Text = "Rear axle: " + Convert.ToString(RB[theMsg.DATA[5] & 0x0F >> 2]);
+                    FrontAxleInBumperRange.Text = "Front axle: " + Convert.ToString(RB[theMsg.DATA[5] & 0x03]);
+
+                    SuspensionRemoteControl2.Text = "Suspension Remote control #2: " + Convert.ToString(SD[theMsg.DATA[6] & 0x0F >> 2]);
+                    SuspensionRemoteControl1.Text = "Suspension Remote control #1: " + Convert.ToString(SD[theMsg.DATA[6] & 0x03]);
+
+                    SuspensionControlRefusalInfo.Text = "Suspension control refusal information: " + Convert.ToString(SCRI[theMsg.DATA[7] & 0x0F]);
+
+                    break;
+
+                default:
+                    break;
+            }
+
             // We search if a message (Same ID and Type) is 
             // already received or if this is a new message
             //
@@ -616,6 +703,7 @@ namespace ICDIBasic
             }
         }
 
+        
         /// <summary>
         /// Processes a received message, in order to show it in the Message-ListView
         /// </summary>
@@ -894,7 +982,7 @@ namespace ICDIBasic
             try
             {
                 // Includes all no-Plug&Play Handles
-                for (int i = 0; i < m_NonPnPHandles.Length; i++)                    
+                for (int i = 0; i < m_NonPnPHandles.Length; i++)
                     cbbChannel.Items.Add(FormatChannelName(m_NonPnPHandles[i]));
 
                 // Checks for available Plug&Play channels
@@ -922,7 +1010,7 @@ namespace ICDIBasic
                 if (stsResult != TPCANStatus.PCAN_ERROR_OK)
                     MessageBox.Show(GetFormatedError(stsResult));
             }
-            catch(DllNotFoundException)
+            catch (DllNotFoundException)
             {
                 MessageBox.Show("Unable to find the library: PCANBasic.dll !", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Environment.Exit(-1);
@@ -1159,7 +1247,7 @@ namespace ICDIBasic
                     if (stsResult == TPCANStatus.PCAN_ERROR_OK)
                         IncludeTextMessage(string.Format("The feature for bit rate adaptation was successfully {0}", bActivate ? "activated" : "deactivated"));
                     break;
-                
+
                 // The option "Allow Status Frames" will be set
                 //
                 case 17:
@@ -1316,7 +1404,7 @@ namespace ICDIBasic
                     if (stsResult == TPCANStatus.PCAN_ERROR_OK)
                     {
                         IncludeTextMessage("The bit rate FD of the channel is represented by the following values:");
-                        foreach(string strPart in strBuffer.ToString().Split(','))
+                        foreach (string strPart in strBuffer.ToString().Split(','))
                             IncludeTextMessage("   * " + strPart);
                     }
                     break;
@@ -1417,7 +1505,7 @@ namespace ICDIBasic
             if (stsResult == TPCANStatus.PCAN_ERROR_OK)
             {
                 IncludeTextMessage("API Version: " + strTemp.ToString());
-                
+
                 // We get the version of the firmware on the device
                 //
                 stsResult = PCANBasic.GetValue(m_PcanHandle, TPCANParameter.PCAN_FIRMWARE_VERSION, strTemp, 256);
@@ -1436,7 +1524,7 @@ namespace ICDIBasic
                     IncludeTextMessage("Channel/Driver Version: ");
                     for (int i = 0; i < strArrayVersion.Length; i++)
                         IncludeTextMessage("     * " + strArrayVersion[i]);
-                }               
+                }
             }
 
             // If an error ccurred, a message is shown
@@ -1464,6 +1552,62 @@ namespace ICDIBasic
             //
             lbxInfo.Items.Clear();
         }
+
+        private void CANSEND(uint ID, byte[] data,byte len)
+        {
+            TPCANStatus stsResult;
+
+            // Send the message
+            //
+            stsResult = CANWrite(ID,data,len);
+
+            // The message was successfully sent
+            //
+            if (stsResult != TPCANStatus.PCAN_ERROR_OK)
+            {
+                tmrSend.Enabled = false;
+                MessageBox.Show(GetFormatedError(stsResult));
+            }
+                
+        }
+
+
+
+        private TPCANStatus CANWrite(uint ID,byte[] data,byte len)
+        {
+            TPCANMsg CANMsg;
+            CANMsg = new TPCANMsg();
+            CANMsg.DATA = new byte[8];
+
+            CANMsg.ID = ID;
+            CANMsg.LEN = len;
+            for (int i = 0; i < GetLengthFromDLC(CANMsg.LEN, true); i++)
+            {
+                CANMsg.DATA[i] = data[i];
+            }
+            CANMsg.MSGTYPE = (chbExtended.Checked) ? TPCANMessageType.PCAN_MESSAGE_EXTENDED : TPCANMessageType.PCAN_MESSAGE_STANDARD;
+
+            return PCANBasic.Write(m_PcanHandle, ref CANMsg);
+        }
+
+        private TPCANStatus CANWriteFD(uint ID, byte[] data)
+        {
+            TPCANMsgFD CANMsg;
+            CANMsg = new TPCANMsgFD();
+            CANMsg.DATA = new byte[8];
+            byte len = 8;
+            CANMsg.ID = ID;
+            CANMsg.DLC = len;
+            for (int i = 0; i < len; i++)
+            {
+                CANMsg.DATA[i] = data[i];
+            }
+            CANMsg.MSGTYPE = (chbExtended.Checked) ? TPCANMessageType.PCAN_MESSAGE_EXTENDED : TPCANMessageType.PCAN_MESSAGE_STANDARD;
+
+            return PCANBasic.WriteFD(m_PcanHandle, ref CANMsg);
+        }
+
+
 
         private TPCANStatus WriteFrame()
         {
@@ -1897,8 +2041,91 @@ namespace ICDIBasic
                     txtbCurrentTextBox = (TextBox)this.Controls.Find("txtData" + i.ToString(), true)[0];
             }
         }
-        #endregion        
-        #endregion        
-        #endregion        
+
+
+
+        #endregion
+
+        #endregion
+
+        #endregion
+
+        private void ActivatecheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ActivatecheckBox.Checked) tmrSend.Enabled = true;
+            else tmrSend.Enabled = false;
+        }
+
+        private void tmrSend_Tick(object sender, EventArgs e)
+        {
+            byte[] data = { 0x10, 0x7D, 0x7D, 0xE0, 0x15, 0x00, 0x00, 0x7D };
+            CANSEND(0x0CF00400,data,8);
+
+            byte[] data1 = { 00, 00, 0x70 ,0x70, 00, 00, 00 ,00 };
+            CANSEND(0x18FEAE30, data1,8);
+
+            byte[] data2 = { 00, 00, 00, 00, 00, 00, 00, 00 };
+            CANSEND(0x0CFE6CEE, data2,8);
+
+            byte[] data3= { 04, 00, 00, 00, 00, 00, 00, 00 };
+            CANSEND(0x18FEF100, data3,8);
+
+            switch (ECASlevelChange)
+            {
+                case 0:
+                    byte[] data4 = { 0x40, 00 ,0xF0, 0xFF ,0xFF ,0xFF ,00 ,0xFF };
+                    CANSEND(0x0CD22F27, data4,8);                    
+                    break;
+                case 1:
+                    byte[] data5 = { 0x40, 0x11, 0xF0, 0xFF, 0xFF, 0xFF, 00, 0xFF };
+                    CANSEND(0x0CD22F27, data5,8);
+                    break;
+                case 2:
+                    byte[] data6 = { 0x50, 00, 0xF0, 0xFF, 0xFF, 0xFF, 0x05, 0xFF };
+                    CANSEND(0x0CD22F27, data6,8);
+                    break;
+                case 3:
+                    byte[] data7 = { 0x40, 0x66, 0x00, 0xFF, 0xFF, 0xFF, 00, 0xFF };
+                    CANSEND(0x0CD22F27, data7,8);
+                    break;
+                case 4:
+                    byte[] data8 = { 0x40, 0x77, 0x50, 0xFF, 0xFF, 0xFF, 00, 0xFF };
+                    CANSEND(0x0CD22F27, data8,8);
+                    break;
+                case 5:
+                    byte[] data9 = { 0x40, 00, 0xF0, 0xFF, 0xFF, 0xFF, 00, 0xFF };                   
+                    CANSEND(0x0CD22F27, data9,8);
+                    break;
+                default:
+                    byte[] data10 = { 0x40, 00, 0xF0, 0xFF, 0xFF, 0xFF, 00, 0xFF };
+                    CANSEND(0x0CD22F27, data10,8);
+                    break;
+            }
+        }
+
+        private void Normal1_Click(object sender, EventArgs e)
+        {
+            ECASlevelChange = 1;
+        }
+
+        private void kneeling_Click(object sender, EventArgs e)
+        {
+            ECASlevelChange = 2;
+        }
+
+        private void UP_Click(object sender, EventArgs e)
+        {
+            ECASlevelChange = 3;
+        }
+
+        private void DOWN_Click(object sender, EventArgs e)
+        {
+            ECASlevelChange = 4;
+        }
+
+        private void ECASStop_Click(object sender, EventArgs e)
+        {
+            ECASlevelChange = 5;
+        }
     }
 }
