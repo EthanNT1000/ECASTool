@@ -628,11 +628,11 @@ namespace ICDIBasic
 
             string[] VMI = { "Vehicle may be moved", "Vehicle motion is inhibited", "not defined", "not defined", "not defined" };
 
-            String[] SD = { "Not active", "Active", "not defined", "not defined", "not defined" };
+            string[] SD = { "Not active", "Active", "not defined", "not defined", "not defined" };
 
-            String[] RB = { "Actual level out of bumper range", "Actual level within bumper range", "not defined", "not defined", "not defined" };
+            string[] RB = { "Actual level out of bumper range", "Actual level within bumper range", "not defined", "not defined", "not defined" };
 
-            String[] SCRI = { "Actual request not refused", "Axle load limit reached (load transfer)", "Would exceed load limit (tag axle)",
+            string[] SCRI = { "Actual request not refused", "Axle load limit reached (load transfer)", "Would exceed load limit (tag axle)",
                                   "Bogie differential not locked","Above speed limit","Below speed limit","General reject","not defined", "not defined",
                                   "not defined", "not defined", "not defined","not defined",
                                   "not defined", "not defined", "not defined", "not available"};
@@ -642,7 +642,7 @@ namespace ICDIBasic
                 case 0x0CFE5A2F:
                     string newdata = "";                    
                     for (int i = 0; i < 8; i++)
-                        newdata += theMsg.DATA[i].ToString("X") +" ";
+                        newdata += theMsg.DATA[i].ToString("X2") +" ";
 
                     ID0CFE5A2F.Text = "0x0CFE5A2F: " + newdata;
 
