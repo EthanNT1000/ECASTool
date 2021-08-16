@@ -1585,8 +1585,9 @@ namespace ICDIBasic
             {
                 CANMsg.DATA[i] = data[i];
             }
-            CANMsg.MSGTYPE = (chbExtended.Checked) ? TPCANMessageType.PCAN_MESSAGE_EXTENDED : TPCANMessageType.PCAN_MESSAGE_STANDARD;
 
+            CANMsg.MSGTYPE = CANMsg.ID > 4095 ? TPCANMessageType.PCAN_MESSAGE_EXTENDED : TPCANMessageType.PCAN_MESSAGE_STANDARD;
+            
             return PCANBasic.Write(m_PcanHandle, ref CANMsg);
         }
 
@@ -2058,18 +2059,18 @@ namespace ICDIBasic
 
         private void tmrSend_Tick(object sender, EventArgs e)
         {
-            byte[] data = { 0x10, 0x7D, 0x7D, 0xE0, 0x15, 0x00, 0x00, 0x7D };
+            byte[] data = { 0x00, 0x00, 0x00, 0xE0, 0x15, 0x00, 0x00, 0x00 };
             CANSEND(0x0CF00400,data,8);
 
-            byte[] data1 = { 00, 00, 0x70 ,0x70, 00, 00, 00 ,00 };
-            CANSEND(0x18FEAE30, data1,8);
+            //byte[] data1 = { 00, 00, 0x70 ,0x70, 00, 00, 00 ,00 };
+            //CANSEND(0x18FEAE30, data1,8);
 
-            byte[] data2 = { 00, 00, 00, 00, 00, 00, 00, 00 };
-            CANSEND(0x0CFE6CEE, data2,8);
+            //byte[] data2 = { 00, 00, 00, 00, 00, 00, 00, 00 };
+            //CANSEND(0x0CFE6CEE, data2,8);
 
             byte[] data3= { 04, 00, 00, 00, 00, 00, 00, 00 };
             CANSEND(0x18FEF100, data3,8);
-
+            /*
             switch (ECASlevelChange)
             {
                 case 0:
@@ -2101,6 +2102,7 @@ namespace ICDIBasic
                     CANSEND(0x0CD22F27, data10,8);
                     break;
             }
+            */
         }
 
         private void Normal1_Click(object sender, EventArgs e)
