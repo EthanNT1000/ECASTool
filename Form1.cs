@@ -1057,6 +1057,7 @@ namespace ICDIBasic
 
         private void btnRelease_Click(object sender, EventArgs e)
         {
+            ActivatecheckBox.Checked = false;
             // Releases a current connected PCAN-Basic channel
             //
             PCANBasic.Uninitialize(m_PcanHandle);
@@ -1565,7 +1566,7 @@ namespace ICDIBasic
             //
             if (stsResult != TPCANStatus.PCAN_ERROR_OK)
             {
-                tmrSend.Enabled = false;
+                ActivatecheckBox.Checked = false;
                 MessageBox.Show(GetFormatedError(stsResult));
             }
                 
@@ -2053,23 +2054,34 @@ namespace ICDIBasic
 
         private void ActivatecheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (ActivatecheckBox.Checked) tmrSend.Enabled = true;
-            else tmrSend.Enabled = false;
+            if (ActivatecheckBox.Checked)
+            {
+                tmrSend.Enabled = true;
+                timer10ms.Enabled = true;
+                timer250.Enabled = true;
+            }
+            else
+            {
+                tmrSend.Enabled = false;
+                timer10ms.Enabled = false;
+                timer250.Enabled = false;
+            }
         }
 
         private void tmrSend_Tick(object sender, EventArgs e)
         {
-            byte[] data = { 0x00, 0x00, 0x00, 0xE0, 0x15, 0x00, 0x00, 0x00 };
-            CANSEND(0x0CF00400,data,8);
+            //byte[] AIR1 = { 00, 00, 0x70 ,0x70, 00, 00, 00 ,00 };
+            //CANSEND(0x18FEAE30, AIR1,8);
 
-            //byte[] data1 = { 00, 00, 0x70 ,0x70, 00, 00, 00 ,00 };
-            //CANSEND(0x18FEAE30, data1,8);
+            //byte[] TCO1 = { 00, 00, 00, 00, 00, 00, 00, 00 };
+            //CANSEND(0x0CFE6CEE, TCO1,8);
 
-            //byte[] data2 = { 00, 00, 00, 00, 00, 00, 00, 00 };
-            //CANSEND(0x0CFE6CEE, data2,8);
+            byte[] CCVS= { 04, 00, 00, 00, 00, 00, 00, 00 };
+            CANSEND(0x18FEF100, CCVS,8);
 
-            byte[] data3= { 04, 00, 00, 00, 00, 00, 00, 00 };
-            CANSEND(0x18FEF100, data3,8);
+            byte[] DC = { 02, 00, 00, 00, 00, 00, 00, 00 };
+            CANSEND(0x18FE4EEC, DC, 8);
+
             /*
             switch (ECASlevelChange)
             {
@@ -2128,6 +2140,18 @@ namespace ICDIBasic
         private void ECASStop_Click(object sender, EventArgs e)
         {
             ECASlevelChange = 5;
+        }
+
+        private void timer10ms_Tick(object sender, EventArgs e)
+        {
+            byte[] EEC1 = { 0x00, 0x00, 0x00, 0xE0, 0x15, 0x00, 0x00, 0x00 };
+            CANSEND(0x0CF00400, EEC1, 8);
+        }
+
+        private void timer250_Tick(object sender, EventArgs e)
+        {
+            byte[] AC = { 00, 00, 00, 00, 00, 00, 00, 00 };
+            CANSEND(0x18FEA81B, AC, 8);
         }
     }
 }
