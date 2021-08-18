@@ -198,6 +198,7 @@
             this.NominalLevelRearAxle = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.ECASStop = new System.Windows.Forms.Button();
+            this.ActivatecheckBox = new System.Windows.Forms.CheckBox();
             this.kneeling = new System.Windows.Forms.Button();
             this.Normal1 = new System.Windows.Forms.Button();
             this.DOWN = new System.Windows.Forms.Button();
@@ -205,7 +206,7 @@
             this.tmrSend = new System.Windows.Forms.Timer(this.components);
             this.timer10ms = new System.Windows.Forms.Timer(this.components);
             this.timer250 = new System.Windows.Forms.Timer(this.components);
-            this.ActivatecheckBox = new System.Windows.Forms.CheckBox();
+            this.timer50ms = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudIdTo)).BeginInit();
@@ -2577,6 +2578,18 @@
             this.ECASStop.UseVisualStyleBackColor = true;
             this.ECASStop.Click += new System.EventHandler(this.ECASStop_Click);
             // 
+            // ActivatecheckBox
+            // 
+            this.ActivatecheckBox.AutoSize = true;
+            this.ActivatecheckBox.Location = new System.Drawing.Point(133, 0);
+            this.ActivatecheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ActivatecheckBox.Name = "ActivatecheckBox";
+            this.ActivatecheckBox.Size = new System.Drawing.Size(62, 16);
+            this.ActivatecheckBox.TabIndex = 54;
+            this.ActivatecheckBox.Text = "Activate";
+            this.ActivatecheckBox.UseVisualStyleBackColor = true;
+            this.ActivatecheckBox.CheckedChanged += new System.EventHandler(this.ActivatecheckBox_CheckedChanged);
+            // 
             // kneeling
             // 
             this.kneeling.Location = new System.Drawing.Point(79, 29);
@@ -2635,23 +2648,16 @@
             this.timer250.Interval = 250;
             this.timer250.Tick += new System.EventHandler(this.timer250_Tick);
             // 
-            // ActivatecheckBox
+            // timer50ms
             // 
-            this.ActivatecheckBox.AutoSize = true;
-            this.ActivatecheckBox.Location = new System.Drawing.Point(133, 0);
-            this.ActivatecheckBox.Margin = new System.Windows.Forms.Padding(2);
-            this.ActivatecheckBox.Name = "ActivatecheckBox";
-            this.ActivatecheckBox.Size = new System.Drawing.Size(62, 16);
-            this.ActivatecheckBox.TabIndex = 54;
-            this.ActivatecheckBox.Text = "Activate";
-            this.ActivatecheckBox.UseVisualStyleBackColor = true;
-            this.ActivatecheckBox.CheckedChanged += new System.EventHandler(this.ActivatecheckBox_CheckedChanged);
+            this.timer50ms.Interval = 50;
+            this.timer50ms.Tick += new System.EventHandler(this.timer50ms_Tick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1412, 617);
+            this.ClientSize = new System.Drawing.Size(1391, 617);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
@@ -2868,6 +2874,7 @@
         private System.Windows.Forms.Timer timer10ms;
         private System.Windows.Forms.Timer timer250;
         private System.Windows.Forms.CheckBox ActivatecheckBox;
+        private System.Windows.Forms.Timer timer50ms;
     }
 }
 

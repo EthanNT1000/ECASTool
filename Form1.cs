@@ -2058,12 +2058,14 @@ namespace ICDIBasic
                 tmrSend.Enabled = true;
                 timer10ms.Enabled = true;
                 timer250.Enabled = true;
+                timer50ms.Enabled = true;
             }
             else
             {
                 tmrSend.Enabled = false;
                 timer10ms.Enabled = false;
                 timer250.Enabled = false;
+                timer50ms.Enabled = false;
             }
         }
 
@@ -2071,9 +2073,6 @@ namespace ICDIBasic
         {
             byte[] AIR1 = { 00, 00, 0x70 ,0x70, 00, 00, 00 ,00 };
             CANSEND(0x18FEAE30, AIR1,8);
-
-            byte[] TCO1 = { 00, 00, 00, 00, 00, 00, 00, 00 };
-            CANSEND(0x0CFE6CEE, TCO1,8);
 
             byte[] CCVS= { 04, 00, 00, 00, 00, 00, 00, 00 };
             CANSEND(0x18FEF100, CCVS,8);
@@ -2150,6 +2149,12 @@ namespace ICDIBasic
         {
             byte[] AC = { 00, 00, 00, 00, 00, 00, 00, 00 };
             CANSEND(0x18FEA81B, AC, 8);
+        }
+
+        private void timer50ms_Tick(object sender, EventArgs e)
+        {
+            byte[] TCO1 = { 00, 00, 00, 00, 00, 00, 00, 00 };
+            CANSEND(0x0CFE6CEE, TCO1, 8);
         }
     }
 }
