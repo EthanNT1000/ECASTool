@@ -1586,7 +1586,7 @@ namespace ICDIBasic
             {
                 CANMsg.DATA[i] = data[i];
             }
-            CANMsg.MSGTYPE = (chbExtended.Checked) ? TPCANMessageType.PCAN_MESSAGE_EXTENDED : TPCANMessageType.PCAN_MESSAGE_STANDARD;
+            CANMsg.MSGTYPE = CANMsg.ID > 4095 ? TPCANMessageType.PCAN_MESSAGE_EXTENDED : TPCANMessageType.PCAN_MESSAGE_STANDARD;
 
             return PCANBasic.Write(m_PcanHandle, ref CANMsg);
         }
