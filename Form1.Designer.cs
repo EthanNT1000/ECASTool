@@ -1,6 +1,6 @@
-﻿namespace ICDIBasic
+﻿namespace GW.PACAN
 {
-    partial class Form1
+    partial class PCANForm
     {
         /// <summary>
         /// Required designer variable.
@@ -166,47 +166,51 @@
             this.nudLength = new System.Windows.Forms.NumericUpDown();
             this.tmrRead = new System.Windows.Forms.Timer(this.components);
             this.tmrDisplay = new System.Windows.Forms.Timer(this.components);
+            this.SendChannelgroups = new System.Windows.Forms.GroupBox();
+            this.SendchbCanFD = new System.Windows.Forms.CheckBox();
+            this.SendcbbHwType = new System.Windows.Forms.ComboBox();
+            this.SendcbbInterrupt = new System.Windows.Forms.ComboBox();
+            this.SendlaInterrupt = new System.Windows.Forms.Label();
+            this.SendcbbIO = new System.Windows.Forms.ComboBox();
+            this.SendlaIOPort = new System.Windows.Forms.Label();
+            this.SendlaHwType = new System.Windows.Forms.Label();
+            this.SendcbbBaudrates = new System.Windows.Forms.ComboBox();
+            this.SendlaBaudrate = new System.Windows.Forms.Label();
+            this.SendtxtBitrate = new System.Windows.Forms.TextBox();
+            this.SendlaBitrate = new System.Windows.Forms.Label();
+            this.SendbtnHwRefresh = new System.Windows.Forms.Button();
+            this.SendcbbChannel = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.SendbtnInit = new System.Windows.Forms.Button();
+            this.SendbtnRelease = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.ID0CFE5A2F = new System.Windows.Forms.Label();
-            this.SuspensionControlRefusalInfo = new System.Windows.Forms.Label();
-            this.SuspensionRemoteControl2 = new System.Windows.Forms.Label();
-            this.SuspensionRemoteControl1 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.FrontAxleInBumperRange = new System.Windows.Forms.Label();
-            this.RearAxleInBumperRange = new System.Windows.Forms.Label();
-            this.LiftAxle2Position = new System.Windows.Forms.Label();
-            this.SecurityDevice = new System.Windows.Forms.Label();
-            this.VehicleMotionInhibit = new System.Windows.Forms.Label();
-            this.DoorRelease = new System.Windows.Forms.Label();
-            this.LiftAxle1Position = new System.Windows.Forms.Label();
-            this.KneelingInfo = new System.Windows.Forms.Label();
-            this.LevelControlMode = new System.Windows.Forms.Label();
-            this.LoweringControlModeRearAxle = new System.Windows.Forms.Label();
-            this.LoweringControlModeFrontAxle = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.LiftingControlModeR = new System.Windows.Forms.Label();
-            this.LiftingControlModeF = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.BelowNominalLevelRearAxle = new System.Windows.Forms.Label();
-            this.BelowNominalLevelFrontAxle = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.AboveNominalLevelFrontAxle = new System.Windows.Forms.Label();
-            this.AboveNominalLevelRearAxle = new System.Windows.Forms.Label();
-            this.NominalLevelFrontAxle = new System.Windows.Forms.Label();
-            this.NominalLevelRearAxle = new System.Windows.Forms.Label();
+            this.SendbtnReset = new System.Windows.Forms.Button();
+            this.SendbtnStatus = new System.Windows.Forms.Button();
+            this.SendbtnGetVersions = new System.Windows.Forms.Button();
+            this.SendlbxInfo = new System.Windows.Forms.ListBox();
+            this.SendbtnInfoClear = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.ECASStop = new System.Windows.Forms.Button();
-            this.ActivatecheckBox = new System.Windows.Forms.CheckBox();
-            this.kneeling = new System.Windows.Forms.Button();
-            this.Normal1 = new System.Windows.Forms.Button();
-            this.DOWN = new System.Windows.Forms.Button();
-            this.UP = new System.Windows.Forms.Button();
-            this.tmrSend = new System.Windows.Forms.Timer(this.components);
-            this.timer10ms = new System.Windows.Forms.Timer(this.components);
-            this.timer250 = new System.Windows.Forms.Timer(this.components);
-            this.timer50ms = new System.Windows.Forms.Timer(this.components);
+            this.ClearQueueBT = new System.Windows.Forms.Button();
+            this.SendQueueBT = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.Samples = new System.Windows.Forms.NumericUpDown();
+            this.cBRandom = new System.Windows.Forms.CheckBox();
+            this.SendTInterval = new System.Windows.Forms.NumericUpDown();
+            this.label11 = new System.Windows.Forms.Label();
+            this.SendBT = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.Datatb = new System.Windows.Forms.TextBox();
+            this.IDtb = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.ESIcb = new System.Windows.Forms.CheckBox();
+            this.BRScb = new System.Windows.Forms.CheckBox();
+            this.FDFcb = new System.Windows.Forms.CheckBox();
+            this.FrameTypecb = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.SendQueueList = new System.Windows.Forms.ListView();
+            this.QueueType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.QueueID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.QueueData = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudIdTo)).BeginInit();
@@ -217,8 +221,11 @@
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudLength)).BeginInit();
+            this.SendChannelgroups.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Samples)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SendTInterval)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -246,10 +253,10 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(720, 60);
+            this.groupBox1.Size = new System.Drawing.Size(716, 60);
             this.groupBox1.TabIndex = 42;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = " Connection ";
+            this.groupBox1.Text = "Read Channel Connection ";
             // 
             // chbCanFD
             // 
@@ -477,7 +484,7 @@
             this.btnInit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnInit.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnInit.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnInit.Location = new System.Drawing.Point(649, 10);
+            this.btnInit.Location = new System.Drawing.Point(645, 10);
             this.btnInit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnInit.Name = "btnInit";
             this.btnInit.Size = new System.Drawing.Size(65, 22);
@@ -491,7 +498,7 @@
             this.btnRelease.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnRelease.Enabled = false;
             this.btnRelease.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnRelease.Location = new System.Drawing.Point(649, 34);
+            this.btnRelease.Location = new System.Drawing.Point(645, 34);
             this.btnRelease.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRelease.Name = "btnRelease";
             this.btnRelease.Size = new System.Drawing.Size(65, 22);
@@ -517,17 +524,17 @@
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(720, 54);
+            this.groupBox3.Size = new System.Drawing.Size(716, 54);
             this.groupBox3.TabIndex = 44;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = " Message Filtering ";
+            this.groupBox3.Text = "Read Channel Message Filtering ";
             // 
             // btnFilterQuery
             // 
             this.btnFilterQuery.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFilterQuery.Enabled = false;
             this.btnFilterQuery.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnFilterQuery.Location = new System.Drawing.Point(649, 24);
+            this.btnFilterQuery.Location = new System.Drawing.Point(645, 24);
             this.btnFilterQuery.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFilterQuery.Name = "btnFilterQuery";
             this.btnFilterQuery.Size = new System.Drawing.Size(65, 22);
@@ -634,7 +641,7 @@
             this.btnFilterApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFilterApply.Enabled = false;
             this.btnFilterApply.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnFilterApply.Location = new System.Drawing.Point(579, 24);
+            this.btnFilterApply.Location = new System.Drawing.Point(575, 24);
             this.btnFilterApply.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFilterApply.Name = "btnFilterApply";
             this.btnFilterApply.Size = new System.Drawing.Size(65, 22);
@@ -647,7 +654,7 @@
             // 
             this.btnParameterSet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnParameterSet.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnParameterSet.Location = new System.Drawing.Point(579, 24);
+            this.btnParameterSet.Location = new System.Drawing.Point(575, 24);
             this.btnParameterSet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnParameterSet.Name = "btnParameterSet";
             this.btnParameterSet.Size = new System.Drawing.Size(65, 22);
@@ -673,16 +680,16 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(720, 54);
+            this.groupBox2.Size = new System.Drawing.Size(716, 54);
             this.groupBox2.TabIndex = 45;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = " Configuration Parameters ";
+            this.groupBox2.Text = "Read Channel Configuration Parameters ";
             // 
             // btnParameterGet
             // 
             this.btnParameterGet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnParameterGet.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnParameterGet.Location = new System.Drawing.Point(649, 24);
+            this.btnParameterGet.Location = new System.Drawing.Point(645, 24);
             this.btnParameterGet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnParameterGet.Name = "btnParameterGet";
             this.btnParameterGet.Size = new System.Drawing.Size(65, 22);
@@ -798,17 +805,17 @@
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox4.Size = new System.Drawing.Size(720, 80);
+            this.groupBox4.Size = new System.Drawing.Size(716, 80);
             this.groupBox4.TabIndex = 47;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Information";
+            this.groupBox4.Text = "Read Channel Information";
             // 
             // btnReset
             // 
             this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnReset.Enabled = false;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnReset.Location = new System.Drawing.Point(649, 44);
+            this.btnReset.Location = new System.Drawing.Point(645, 44);
             this.btnReset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(65, 22);
@@ -822,7 +829,7 @@
             this.btnStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnStatus.Enabled = false;
             this.btnStatus.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnStatus.Location = new System.Drawing.Point(579, 44);
+            this.btnStatus.Location = new System.Drawing.Point(575, 44);
             this.btnStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStatus.Name = "btnStatus";
             this.btnStatus.Size = new System.Drawing.Size(65, 22);
@@ -836,7 +843,7 @@
             this.btnGetVersions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGetVersions.Enabled = false;
             this.btnGetVersions.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnGetVersions.Location = new System.Drawing.Point(579, 18);
+            this.btnGetVersions.Location = new System.Drawing.Point(575, 18);
             this.btnGetVersions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGetVersions.Name = "btnGetVersions";
             this.btnGetVersions.Size = new System.Drawing.Size(65, 22);
@@ -867,7 +874,7 @@
             // 
             this.btnInfoClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnInfoClear.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnInfoClear.Location = new System.Drawing.Point(649, 18);
+            this.btnInfoClear.Location = new System.Drawing.Point(645, 18);
             this.btnInfoClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnInfoClear.Name = "btnInfoClear";
             this.btnInfoClear.Size = new System.Drawing.Size(65, 22);
@@ -892,10 +899,10 @@
             this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox5.Size = new System.Drawing.Size(720, 189);
+            this.groupBox5.Size = new System.Drawing.Size(716, 189);
             this.groupBox5.TabIndex = 48;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = " Messages Reading ";
+            this.groupBox5.Text = "Read Channel Messages Reading ";
             // 
             // chbShowPeriod
             // 
@@ -990,7 +997,7 @@
             // 
             this.btnMsgClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMsgClear.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnMsgClear.Location = new System.Drawing.Point(649, 34);
+            this.btnMsgClear.Location = new System.Drawing.Point(645, 34);
             this.btnMsgClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMsgClear.Name = "btnMsgClear";
             this.btnMsgClear.Size = new System.Drawing.Size(65, 22);
@@ -1018,7 +1025,7 @@
             this.btnRead.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRead.Enabled = false;
             this.btnRead.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnRead.Location = new System.Drawing.Point(579, 34);
+            this.btnRead.Location = new System.Drawing.Point(575, 34);
             this.btnRead.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRead.Name = "btnRead";
             this.btnRead.Size = new System.Drawing.Size(65, 22);
@@ -1112,10 +1119,10 @@
             this.groupBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox6.Size = new System.Drawing.Size(720, 138);
+            this.groupBox6.Size = new System.Drawing.Size(716, 138);
             this.groupBox6.TabIndex = 51;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Write Messages";
+            this.groupBox6.Text = "Read Channel Write Messages";
             // 
             // label5
             // 
@@ -2040,7 +2047,7 @@
             this.btnWrite.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnWrite.Enabled = false;
             this.btnWrite.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnWrite.Location = new System.Drawing.Point(646, 79);
+            this.btnWrite.Location = new System.Drawing.Point(642, 79);
             this.btnWrite.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnWrite.Name = "btnWrite";
             this.btnWrite.Size = new System.Drawing.Size(65, 22);
@@ -2221,445 +2228,634 @@
             // 
             this.tmrDisplay.Tick += new System.EventHandler(this.tmrDisplay_Tick);
             // 
+            // SendChannelgroups
+            // 
+            this.SendChannelgroups.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SendChannelgroups.Controls.Add(this.SendchbCanFD);
+            this.SendChannelgroups.Controls.Add(this.SendcbbHwType);
+            this.SendChannelgroups.Controls.Add(this.SendcbbInterrupt);
+            this.SendChannelgroups.Controls.Add(this.SendlaInterrupt);
+            this.SendChannelgroups.Controls.Add(this.SendcbbIO);
+            this.SendChannelgroups.Controls.Add(this.SendlaIOPort);
+            this.SendChannelgroups.Controls.Add(this.SendlaHwType);
+            this.SendChannelgroups.Controls.Add(this.SendcbbBaudrates);
+            this.SendChannelgroups.Controls.Add(this.SendlaBaudrate);
+            this.SendChannelgroups.Controls.Add(this.SendtxtBitrate);
+            this.SendChannelgroups.Controls.Add(this.SendlaBitrate);
+            this.SendChannelgroups.Controls.Add(this.SendbtnHwRefresh);
+            this.SendChannelgroups.Controls.Add(this.SendcbbChannel);
+            this.SendChannelgroups.Controls.Add(this.label15);
+            this.SendChannelgroups.Controls.Add(this.SendbtnInit);
+            this.SendChannelgroups.Controls.Add(this.SendbtnRelease);
+            this.SendChannelgroups.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.SendChannelgroups.Location = new System.Drawing.Point(746, 7);
+            this.SendChannelgroups.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SendChannelgroups.Name = "SendChannelgroups";
+            this.SendChannelgroups.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SendChannelgroups.Size = new System.Drawing.Size(716, 60);
+            this.SendChannelgroups.TabIndex = 60;
+            this.SendChannelgroups.TabStop = false;
+            this.SendChannelgroups.Text = "Send Channel Connection ";
+            // 
+            // SendchbCanFD
+            // 
+            this.SendchbCanFD.AutoSize = true;
+            this.SendchbCanFD.Location = new System.Drawing.Point(574, 31);
+            this.SendchbCanFD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SendchbCanFD.Name = "SendchbCanFD";
+            this.SendchbCanFD.Size = new System.Drawing.Size(66, 16);
+            this.SendchbCanFD.TabIndex = 59;
+            this.SendchbCanFD.Text = "CAN-FD";
+            this.SendchbCanFD.UseVisualStyleBackColor = true;
+            this.SendchbCanFD.CheckedChanged += new System.EventHandler(this.SendchbCanFD_CheckedChanged);
+            // 
+            // SendcbbHwType
+            // 
+            this.SendcbbHwType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SendcbbHwType.Items.AddRange(new object[] {
+            "ISA-82C200",
+            "ISA-SJA1000",
+            "ISA-PHYTEC",
+            "DNG-82C200",
+            "DNG-82C200 EPP",
+            "DNG-SJA1000",
+            "DNG-SJA1000 EPP"});
+            this.SendcbbHwType.Location = new System.Drawing.Point(326, 29);
+            this.SendcbbHwType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SendcbbHwType.Name = "SendcbbHwType";
+            this.SendcbbHwType.Size = new System.Drawing.Size(120, 20);
+            this.SendcbbHwType.TabIndex = 50;
+            this.SendcbbHwType.SelectedIndexChanged += new System.EventHandler(this.SendcbbHwType_SelectedIndexChanged);
+            // 
+            // SendcbbInterrupt
+            // 
+            this.SendcbbInterrupt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SendcbbInterrupt.Items.AddRange(new object[] {
+            "3",
+            "4",
+            "5",
+            "7",
+            "9",
+            "10",
+            "11",
+            "12",
+            "15"});
+            this.SendcbbInterrupt.Location = new System.Drawing.Point(513, 29);
+            this.SendcbbInterrupt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SendcbbInterrupt.Name = "SendcbbInterrupt";
+            this.SendcbbInterrupt.Size = new System.Drawing.Size(55, 20);
+            this.SendcbbInterrupt.TabIndex = 52;
+            // 
+            // SendlaInterrupt
+            // 
+            this.SendlaInterrupt.Location = new System.Drawing.Point(515, 14);
+            this.SendlaInterrupt.Name = "SendlaInterrupt";
+            this.SendlaInterrupt.Size = new System.Drawing.Size(53, 22);
+            this.SendlaInterrupt.TabIndex = 56;
+            this.SendlaInterrupt.Text = "Interrupt:";
+            // 
+            // SendcbbIO
+            // 
+            this.SendcbbIO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SendcbbIO.Items.AddRange(new object[] {
+            "0100",
+            "0120",
+            "0140",
+            "0200",
+            "0220",
+            "0240",
+            "0260",
+            "0278",
+            "0280",
+            "02A0",
+            "02C0",
+            "02E0",
+            "02E8",
+            "02F8",
+            "0300",
+            "0320",
+            "0340",
+            "0360",
+            "0378",
+            "0380",
+            "03BC",
+            "03E0",
+            "03E8",
+            "03F8"});
+            this.SendcbbIO.Location = new System.Drawing.Point(452, 29);
+            this.SendcbbIO.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SendcbbIO.Name = "SendcbbIO";
+            this.SendcbbIO.Size = new System.Drawing.Size(55, 20);
+            this.SendcbbIO.TabIndex = 51;
+            // 
+            // SendlaIOPort
+            // 
+            this.SendlaIOPort.Location = new System.Drawing.Point(452, 14);
+            this.SendlaIOPort.Name = "SendlaIOPort";
+            this.SendlaIOPort.Size = new System.Drawing.Size(55, 22);
+            this.SendlaIOPort.TabIndex = 55;
+            this.SendlaIOPort.Text = "I/O Port:";
+            // 
+            // SendlaHwType
+            // 
+            this.SendlaHwType.Location = new System.Drawing.Point(327, 14);
+            this.SendlaHwType.Name = "SendlaHwType";
+            this.SendlaHwType.Size = new System.Drawing.Size(90, 22);
+            this.SendlaHwType.TabIndex = 54;
+            this.SendlaHwType.Text = "Hardware Type:";
+            // 
+            // SendcbbBaudrates
+            // 
+            this.SendcbbBaudrates.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SendcbbBaudrates.Items.AddRange(new object[] {
+            "1 MBit/sec",
+            "800 kBit/s",
+            "500 kBit/sec",
+            "250 kBit/sec",
+            "125 kBit/sec",
+            "100 kBit/sec",
+            "95,238 kBit/s",
+            "83,333 kBit/s",
+            "50 kBit/sec",
+            "47,619 kBit/s",
+            "33,333 kBit/s",
+            "20 kBit/sec",
+            "10 kBit/sec",
+            "5 kBit/sec"});
+            this.SendcbbBaudrates.Location = new System.Drawing.Point(204, 29);
+            this.SendcbbBaudrates.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SendcbbBaudrates.Name = "SendcbbBaudrates";
+            this.SendcbbBaudrates.Size = new System.Drawing.Size(116, 20);
+            this.SendcbbBaudrates.TabIndex = 49;
+            this.SendcbbBaudrates.SelectedIndexChanged += new System.EventHandler(this.SendcbbBaudrates_SelectedIndexChanged);
+            // 
+            // SendlaBaudrate
+            // 
+            this.SendlaBaudrate.Location = new System.Drawing.Point(204, 14);
+            this.SendlaBaudrate.Name = "SendlaBaudrate";
+            this.SendlaBaudrate.Size = new System.Drawing.Size(56, 22);
+            this.SendlaBaudrate.TabIndex = 53;
+            this.SendlaBaudrate.Text = "Baudrate:";
+            // 
+            // SendtxtBitrate
+            // 
+            this.SendtxtBitrate.Location = new System.Drawing.Point(204, 23);
+            this.SendtxtBitrate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SendtxtBitrate.Multiline = true;
+            this.SendtxtBitrate.Name = "SendtxtBitrate";
+            this.SendtxtBitrate.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.SendtxtBitrate.Size = new System.Drawing.Size(364, 32);
+            this.SendtxtBitrate.TabIndex = 48;
+            this.SendtxtBitrate.Visible = false;
+            // 
+            // SendlaBitrate
+            // 
+            this.SendlaBitrate.AutoSize = true;
+            this.SendlaBitrate.Location = new System.Drawing.Point(201, 7);
+            this.SendlaBitrate.Name = "SendlaBitrate";
+            this.SendlaBitrate.Size = new System.Drawing.Size(42, 12);
+            this.SendlaBitrate.TabIndex = 46;
+            this.SendlaBitrate.Text = "Bit rate:";
+            this.SendlaBitrate.Visible = false;
+            // 
+            // SendbtnHwRefresh
+            // 
+            this.SendbtnHwRefresh.Cursor = System.Windows.Forms.Cursors.Default;
+            this.SendbtnHwRefresh.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.SendbtnHwRefresh.Location = new System.Drawing.Point(141, 28);
+            this.SendbtnHwRefresh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SendbtnHwRefresh.Name = "SendbtnHwRefresh";
+            this.SendbtnHwRefresh.Size = new System.Drawing.Size(57, 22);
+            this.SendbtnHwRefresh.TabIndex = 45;
+            this.SendbtnHwRefresh.Text = "Refresh";
+            this.SendbtnHwRefresh.Click += new System.EventHandler(this.SendbtnHwRefresh_Click);
+            // 
+            // SendcbbChannel
+            // 
+            this.SendcbbChannel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SendcbbChannel.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SendcbbChannel.Items.AddRange(new object[] {
+            "None",
+            "DNG-Channel 1",
+            "ISA-Channel 1",
+            "ISA-Channel 2",
+            "ISA-Channel 3",
+            "ISA-Channel 4",
+            "ISA-Channel 5",
+            "ISA-Channel 6",
+            "ISA-Channel 7",
+            "ISA-Channel 8",
+            "PCC-Channel 1",
+            "PCC-Channel 2",
+            "PCI-Channel 1",
+            "PCI-Channel 2",
+            "PCI-Channel 3",
+            "PCI-Channel 4",
+            "PCI-Channel 5",
+            "PCI-Channel 6",
+            "PCI-Channel 7",
+            "PCI-Channel 8",
+            "USB-Channel 1",
+            "USB-Channel 2",
+            "USB-Channel 3",
+            "USB-Channel 4",
+            "USB-Channel 5",
+            "USB-Channel 6",
+            "USB-Channel 7",
+            "USB-Channel 8"});
+            this.SendcbbChannel.Location = new System.Drawing.Point(9, 29);
+            this.SendcbbChannel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SendcbbChannel.Name = "SendcbbChannel";
+            this.SendcbbChannel.Size = new System.Drawing.Size(127, 21);
+            this.SendcbbChannel.TabIndex = 32;
+            this.SendcbbChannel.SelectedIndexChanged += new System.EventHandler(this.SendcbbChannel_SelectedIndexChanged);
+            // 
+            // label15
+            // 
+            this.label15.Location = new System.Drawing.Point(7, 14);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(56, 22);
+            this.label15.TabIndex = 40;
+            this.label15.Text = "Hardware:";
+            // 
+            // SendbtnInit
+            // 
+            this.SendbtnInit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SendbtnInit.Cursor = System.Windows.Forms.Cursors.Default;
+            this.SendbtnInit.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.SendbtnInit.Location = new System.Drawing.Point(645, 10);
+            this.SendbtnInit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SendbtnInit.Name = "SendbtnInit";
+            this.SendbtnInit.Size = new System.Drawing.Size(65, 22);
+            this.SendbtnInit.TabIndex = 34;
+            this.SendbtnInit.Text = "Initialize";
+            this.SendbtnInit.Click += new System.EventHandler(this.SendbtnInit_Click);
+            // 
+            // SendbtnRelease
+            // 
+            this.SendbtnRelease.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SendbtnRelease.Cursor = System.Windows.Forms.Cursors.Default;
+            this.SendbtnRelease.Enabled = false;
+            this.SendbtnRelease.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.SendbtnRelease.Location = new System.Drawing.Point(645, 34);
+            this.SendbtnRelease.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SendbtnRelease.Name = "SendbtnRelease";
+            this.SendbtnRelease.Size = new System.Drawing.Size(65, 22);
+            this.SendbtnRelease.TabIndex = 35;
+            this.SendbtnRelease.Text = "Release";
+            this.SendbtnRelease.Click += new System.EventHandler(this.SendbtnRelease_Click);
+            // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.ID0CFE5A2F);
-            this.groupBox7.Controls.Add(this.SuspensionControlRefusalInfo);
-            this.groupBox7.Controls.Add(this.SuspensionRemoteControl2);
-            this.groupBox7.Controls.Add(this.SuspensionRemoteControl1);
-            this.groupBox7.Controls.Add(this.label18);
-            this.groupBox7.Controls.Add(this.FrontAxleInBumperRange);
-            this.groupBox7.Controls.Add(this.RearAxleInBumperRange);
-            this.groupBox7.Controls.Add(this.LiftAxle2Position);
-            this.groupBox7.Controls.Add(this.SecurityDevice);
-            this.groupBox7.Controls.Add(this.VehicleMotionInhibit);
-            this.groupBox7.Controls.Add(this.DoorRelease);
-            this.groupBox7.Controls.Add(this.LiftAxle1Position);
-            this.groupBox7.Controls.Add(this.KneelingInfo);
-            this.groupBox7.Controls.Add(this.LevelControlMode);
-            this.groupBox7.Controls.Add(this.LoweringControlModeRearAxle);
-            this.groupBox7.Controls.Add(this.LoweringControlModeFrontAxle);
-            this.groupBox7.Controls.Add(this.label16);
-            this.groupBox7.Controls.Add(this.LiftingControlModeR);
-            this.groupBox7.Controls.Add(this.LiftingControlModeF);
-            this.groupBox7.Controls.Add(this.label11);
-            this.groupBox7.Controls.Add(this.BelowNominalLevelRearAxle);
-            this.groupBox7.Controls.Add(this.BelowNominalLevelFrontAxle);
-            this.groupBox7.Controls.Add(this.label9);
-            this.groupBox7.Controls.Add(this.label2);
-            this.groupBox7.Controls.Add(this.label4);
-            this.groupBox7.Controls.Add(this.AboveNominalLevelFrontAxle);
-            this.groupBox7.Controls.Add(this.AboveNominalLevelRearAxle);
-            this.groupBox7.Controls.Add(this.NominalLevelFrontAxle);
-            this.groupBox7.Controls.Add(this.NominalLevelRearAxle);
-            this.groupBox7.Location = new System.Drawing.Point(733, 14);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox7.Controls.Add(this.SendbtnReset);
+            this.groupBox7.Controls.Add(this.SendbtnStatus);
+            this.groupBox7.Controls.Add(this.SendbtnGetVersions);
+            this.groupBox7.Controls.Add(this.SendlbxInfo);
+            this.groupBox7.Controls.Add(this.SendbtnInfoClear);
+            this.groupBox7.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.groupBox7.Location = new System.Drawing.Point(746, 73);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox7.Size = new System.Drawing.Size(654, 277);
-            this.groupBox7.TabIndex = 52;
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox7.Size = new System.Drawing.Size(716, 80);
+            this.groupBox7.TabIndex = 61;
             this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Air Suspension control 1";
+            this.groupBox7.Text = "Send Channel Information";
             // 
-            // ID0CFE5A2F
+            // SendbtnReset
             // 
-            this.ID0CFE5A2F.AutoSize = true;
-            this.ID0CFE5A2F.Location = new System.Drawing.Point(148, 0);
-            this.ID0CFE5A2F.Name = "ID0CFE5A2F";
-            this.ID0CFE5A2F.Size = new System.Drawing.Size(76, 12);
-            this.ID0CFE5A2F.TabIndex = 56;
-            this.ID0CFE5A2F.Text = "0x0CFE5A2F: ";
+            this.SendbtnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SendbtnReset.Enabled = false;
+            this.SendbtnReset.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.SendbtnReset.Location = new System.Drawing.Point(645, 44);
+            this.SendbtnReset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SendbtnReset.Name = "SendbtnReset";
+            this.SendbtnReset.Size = new System.Drawing.Size(65, 22);
+            this.SendbtnReset.TabIndex = 58;
+            this.SendbtnReset.Text = "Reset";
+            this.SendbtnReset.UseVisualStyleBackColor = true;
+            this.SendbtnReset.Click += new System.EventHandler(this.SendbtnReset_Click);
             // 
-            // SuspensionControlRefusalInfo
+            // SendbtnStatus
             // 
-            this.SuspensionControlRefusalInfo.AutoSize = true;
-            this.SuspensionControlRefusalInfo.Location = new System.Drawing.Point(13, 238);
-            this.SuspensionControlRefusalInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.SuspensionControlRefusalInfo.Name = "SuspensionControlRefusalInfo";
-            this.SuspensionControlRefusalInfo.Size = new System.Drawing.Size(191, 12);
-            this.SuspensionControlRefusalInfo.TabIndex = 27;
-            this.SuspensionControlRefusalInfo.Text = "Suspension control refusal information: ";
+            this.SendbtnStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SendbtnStatus.Enabled = false;
+            this.SendbtnStatus.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.SendbtnStatus.Location = new System.Drawing.Point(575, 44);
+            this.SendbtnStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SendbtnStatus.Name = "SendbtnStatus";
+            this.SendbtnStatus.Size = new System.Drawing.Size(65, 22);
+            this.SendbtnStatus.TabIndex = 57;
+            this.SendbtnStatus.Text = "Status";
+            this.SendbtnStatus.UseVisualStyleBackColor = true;
+            this.SendbtnStatus.Click += new System.EventHandler(this.SendbtnStatus_Click);
             // 
-            // SuspensionRemoteControl2
+            // SendbtnGetVersions
             // 
-            this.SuspensionRemoteControl2.AutoSize = true;
-            this.SuspensionRemoteControl2.Location = new System.Drawing.Point(372, 214);
-            this.SuspensionRemoteControl2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.SuspensionRemoteControl2.Name = "SuspensionRemoteControl2";
-            this.SuspensionRemoteControl2.Size = new System.Drawing.Size(150, 12);
-            this.SuspensionRemoteControl2.TabIndex = 26;
-            this.SuspensionRemoteControl2.Text = "Suspension Remote control #2:";
+            this.SendbtnGetVersions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SendbtnGetVersions.Enabled = false;
+            this.SendbtnGetVersions.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.SendbtnGetVersions.Location = new System.Drawing.Point(575, 18);
+            this.SendbtnGetVersions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SendbtnGetVersions.Name = "SendbtnGetVersions";
+            this.SendbtnGetVersions.Size = new System.Drawing.Size(65, 22);
+            this.SendbtnGetVersions.TabIndex = 53;
+            this.SendbtnGetVersions.Text = "Versions";
+            this.SendbtnGetVersions.UseVisualStyleBackColor = true;
+            this.SendbtnGetVersions.Click += new System.EventHandler(this.SendbtnGetVersions_Click);
             // 
-            // SuspensionRemoteControl1
+            // SendlbxInfo
             // 
-            this.SuspensionRemoteControl1.AutoSize = true;
-            this.SuspensionRemoteControl1.Location = new System.Drawing.Point(372, 192);
-            this.SuspensionRemoteControl1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.SuspensionRemoteControl1.Name = "SuspensionRemoteControl1";
-            this.SuspensionRemoteControl1.Size = new System.Drawing.Size(150, 12);
-            this.SuspensionRemoteControl1.TabIndex = 25;
-            this.SuspensionRemoteControl1.Text = "Suspension Remote control #1:";
+            this.SendlbxInfo.FormattingEnabled = true;
+            this.SendlbxInfo.ItemHeight = 12;
+            this.SendlbxInfo.Items.AddRange(new object[] {
+            "Select a Hardware and a configuration for it. Then click \"Initialize\" button",
+            "When activated, the Debug-Log file will be found in the same directory as this ap" +
+                "plication",
+            "When activated, the PCAN-Trace file will be found in the same directory as this a" +
+                "pplication"});
+            this.SendlbxInfo.Location = new System.Drawing.Point(10, 18);
+            this.SendlbxInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SendlbxInfo.Name = "SendlbxInfo";
+            this.SendlbxInfo.ScrollAlwaysVisible = true;
+            this.SendlbxInfo.Size = new System.Drawing.Size(558, 52);
+            this.SendlbxInfo.TabIndex = 56;
             // 
-            // label18
+            // SendbtnInfoClear
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(13, 190);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(140, 12);
-            this.label18.TabIndex = 24;
-            this.label18.Text = "Actual level in bumper range";
+            this.SendbtnInfoClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SendbtnInfoClear.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.SendbtnInfoClear.Location = new System.Drawing.Point(645, 18);
+            this.SendbtnInfoClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SendbtnInfoClear.Name = "SendbtnInfoClear";
+            this.SendbtnInfoClear.Size = new System.Drawing.Size(65, 22);
+            this.SendbtnInfoClear.TabIndex = 52;
+            this.SendbtnInfoClear.Text = "Clear";
+            this.SendbtnInfoClear.UseVisualStyleBackColor = true;
+            this.SendbtnInfoClear.Click += new System.EventHandler(this.SendbtnInfoClear_Click);
             // 
-            // FrontAxleInBumperRange
+            // groupBox8
             // 
-            this.FrontAxleInBumperRange.AutoSize = true;
-            this.FrontAxleInBumperRange.Location = new System.Drawing.Point(28, 202);
-            this.FrontAxleInBumperRange.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.FrontAxleInBumperRange.Name = "FrontAxleInBumperRange";
-            this.FrontAxleInBumperRange.Size = new System.Drawing.Size(55, 12);
-            this.FrontAxleInBumperRange.TabIndex = 23;
-            this.FrontAxleInBumperRange.Text = "Front axle:";
+            this.groupBox8.Controls.Add(this.SendQueueList);
+            this.groupBox8.Controls.Add(this.ClearQueueBT);
+            this.groupBox8.Controls.Add(this.SendQueueBT);
+            this.groupBox8.Controls.Add(this.label14);
+            this.groupBox8.Controls.Add(this.Samples);
+            this.groupBox8.Controls.Add(this.cBRandom);
+            this.groupBox8.Controls.Add(this.SendTInterval);
+            this.groupBox8.Controls.Add(this.label11);
+            this.groupBox8.Controls.Add(this.SendBT);
+            this.groupBox8.Controls.Add(this.label9);
+            this.groupBox8.Controls.Add(this.Datatb);
+            this.groupBox8.Controls.Add(this.IDtb);
+            this.groupBox8.Controls.Add(this.label4);
+            this.groupBox8.Controls.Add(this.ESIcb);
+            this.groupBox8.Controls.Add(this.BRScb);
+            this.groupBox8.Controls.Add(this.FDFcb);
+            this.groupBox8.Controls.Add(this.FrameTypecb);
+            this.groupBox8.Controls.Add(this.label2);
+            this.groupBox8.Location = new System.Drawing.Point(746, 163);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(715, 260);
+            this.groupBox8.TabIndex = 62;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Send";
             // 
-            // RearAxleInBumperRange
+            // ClearQueueBT
             // 
-            this.RearAxleInBumperRange.AutoSize = true;
-            this.RearAxleInBumperRange.Location = new System.Drawing.Point(205, 202);
-            this.RearAxleInBumperRange.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.RearAxleInBumperRange.Name = "RearAxleInBumperRange";
-            this.RearAxleInBumperRange.Size = new System.Drawing.Size(52, 12);
-            this.RearAxleInBumperRange.TabIndex = 22;
-            this.RearAxleInBumperRange.Text = "Rear axle:";
+            this.ClearQueueBT.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClearQueueBT.Location = new System.Drawing.Point(409, 62);
+            this.ClearQueueBT.Name = "ClearQueueBT";
+            this.ClearQueueBT.Size = new System.Drawing.Size(74, 44);
+            this.ClearQueueBT.TabIndex = 124;
+            this.ClearQueueBT.Text = "Clear";
+            this.ClearQueueBT.UseVisualStyleBackColor = true;
+            this.ClearQueueBT.Click += new System.EventHandler(this.ClearQueueBT_Click);
             // 
-            // LiftAxle2Position
+            // SendQueueBT
             // 
-            this.LiftAxle2Position.AutoSize = true;
-            this.LiftAxle2Position.Location = new System.Drawing.Point(372, 171);
-            this.LiftAxle2Position.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.LiftAxle2Position.Name = "LiftAxle2Position";
-            this.LiftAxle2Position.Size = new System.Drawing.Size(96, 12);
-            this.LiftAxle2Position.TabIndex = 21;
-            this.LiftAxle2Position.Text = "Lift axle 2 position:";
+            this.SendQueueBT.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SendQueueBT.Location = new System.Drawing.Point(329, 62);
+            this.SendQueueBT.Name = "SendQueueBT";
+            this.SendQueueBT.Size = new System.Drawing.Size(74, 44);
+            this.SendQueueBT.TabIndex = 123;
+            this.SendQueueBT.Text = "Add";
+            this.SendQueueBT.UseVisualStyleBackColor = true;
+            this.SendQueueBT.Click += new System.EventHandler(this.SendQueueBT_Click);
             // 
-            // SecurityDevice
+            // label14
             // 
-            this.SecurityDevice.AutoSize = true;
-            this.SecurityDevice.Location = new System.Drawing.Point(372, 149);
-            this.SecurityDevice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.SecurityDevice.Name = "SecurityDevice";
-            this.SecurityDevice.Size = new System.Drawing.Size(79, 12);
-            this.SecurityDevice.TabIndex = 20;
-            this.SecurityDevice.Text = "Security device:";
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(411, 14);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(43, 12);
+            this.label14.TabIndex = 122;
+            this.label14.Text = "Samples";
             // 
-            // VehicleMotionInhibit
+            // Samples
             // 
-            this.VehicleMotionInhibit.AutoSize = true;
-            this.VehicleMotionInhibit.Location = new System.Drawing.Point(372, 127);
-            this.VehicleMotionInhibit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.VehicleMotionInhibit.Name = "VehicleMotionInhibit";
-            this.VehicleMotionInhibit.Size = new System.Drawing.Size(112, 12);
-            this.VehicleMotionInhibit.TabIndex = 19;
-            this.VehicleMotionInhibit.Text = "Vehicle motion inhibit:";
+            this.Samples.Location = new System.Drawing.Point(413, 29);
+            this.Samples.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.Samples.Name = "Samples";
+            this.Samples.Size = new System.Drawing.Size(56, 22);
+            this.Samples.TabIndex = 121;
+            this.Samples.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
-            // DoorRelease
+            // cBRandom
             // 
-            this.DoorRelease.AutoSize = true;
-            this.DoorRelease.Location = new System.Drawing.Point(372, 106);
-            this.DoorRelease.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.DoorRelease.Name = "DoorRelease";
-            this.DoorRelease.Size = new System.Drawing.Size(66, 12);
-            this.DoorRelease.TabIndex = 18;
-            this.DoorRelease.Text = "Door release:";
+            this.cBRandom.AutoSize = true;
+            this.cBRandom.Location = new System.Drawing.Point(343, 33);
+            this.cBRandom.Name = "cBRandom";
+            this.cBRandom.Size = new System.Drawing.Size(64, 16);
+            this.cBRandom.TabIndex = 120;
+            this.cBRandom.Text = "Random";
+            this.cBRandom.UseVisualStyleBackColor = true;
             // 
-            // LiftAxle1Position
+            // SendTInterval
             // 
-            this.LiftAxle1Position.AutoSize = true;
-            this.LiftAxle1Position.Location = new System.Drawing.Point(372, 84);
-            this.LiftAxle1Position.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.LiftAxle1Position.Name = "LiftAxle1Position";
-            this.LiftAxle1Position.Size = new System.Drawing.Size(96, 12);
-            this.LiftAxle1Position.TabIndex = 17;
-            this.LiftAxle1Position.Text = "Lift axle 1 position:";
-            // 
-            // KneelingInfo
-            // 
-            this.KneelingInfo.AutoSize = true;
-            this.KneelingInfo.Location = new System.Drawing.Point(372, 63);
-            this.KneelingInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.KneelingInfo.Name = "KneelingInfo";
-            this.KneelingInfo.Size = new System.Drawing.Size(108, 12);
-            this.KneelingInfo.TabIndex = 16;
-            this.KneelingInfo.Text = "Kneeling information:";
-            // 
-            // LevelControlMode
-            // 
-            this.LevelControlMode.AutoSize = true;
-            this.LevelControlMode.Location = new System.Drawing.Point(372, 41);
-            this.LevelControlMode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.LevelControlMode.Name = "LevelControlMode";
-            this.LevelControlMode.Size = new System.Drawing.Size(99, 12);
-            this.LevelControlMode.TabIndex = 15;
-            this.LevelControlMode.Text = "Level control mode:";
-            // 
-            // LoweringControlModeRearAxle
-            // 
-            this.LoweringControlModeRearAxle.AutoSize = true;
-            this.LoweringControlModeRearAxle.Location = new System.Drawing.Point(205, 170);
-            this.LoweringControlModeRearAxle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.LoweringControlModeRearAxle.Name = "LoweringControlModeRearAxle";
-            this.LoweringControlModeRearAxle.Size = new System.Drawing.Size(55, 12);
-            this.LoweringControlModeRearAxle.TabIndex = 14;
-            this.LoweringControlModeRearAxle.Text = "Rear axle: ";
-            // 
-            // LoweringControlModeFrontAxle
-            // 
-            this.LoweringControlModeFrontAxle.AutoSize = true;
-            this.LoweringControlModeFrontAxle.Location = new System.Drawing.Point(28, 170);
-            this.LoweringControlModeFrontAxle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.LoweringControlModeFrontAxle.Name = "LoweringControlModeFrontAxle";
-            this.LoweringControlModeFrontAxle.Size = new System.Drawing.Size(55, 12);
-            this.LoweringControlModeFrontAxle.TabIndex = 13;
-            this.LoweringControlModeFrontAxle.Text = "Front axle:";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(13, 158);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(115, 12);
-            this.label16.TabIndex = 12;
-            this.label16.Text = "Lowering control mode";
-            // 
-            // LiftingControlModeR
-            // 
-            this.LiftingControlModeR.AutoSize = true;
-            this.LiftingControlModeR.Location = new System.Drawing.Point(205, 137);
-            this.LiftingControlModeR.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.LiftingControlModeR.Name = "LiftingControlModeR";
-            this.LiftingControlModeR.Size = new System.Drawing.Size(55, 12);
-            this.LiftingControlModeR.TabIndex = 11;
-            this.LiftingControlModeR.Text = "Rear axle: ";
-            // 
-            // LiftingControlModeF
-            // 
-            this.LiftingControlModeF.AutoSize = true;
-            this.LiftingControlModeF.Location = new System.Drawing.Point(28, 137);
-            this.LiftingControlModeF.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.LiftingControlModeF.Name = "LiftingControlModeF";
-            this.LiftingControlModeF.Size = new System.Drawing.Size(55, 12);
-            this.LiftingControlModeF.TabIndex = 10;
-            this.LiftingControlModeF.Text = "Front axle:";
+            this.SendTInterval.DecimalPlaces = 3;
+            this.SendTInterval.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            196608});
+            this.SendTInterval.Location = new System.Drawing.Point(267, 76);
+            this.SendTInterval.Name = "SendTInterval";
+            this.SendTInterval.Size = new System.Drawing.Size(56, 22);
+            this.SendTInterval.TabIndex = 119;
+            this.SendTInterval.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.SendTInterval.ValueChanged += new System.EventHandler(this.SendTInterval_ValueChanged);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 125);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Location = new System.Drawing.Point(265, 62);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(102, 12);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "Lifting control mode";
+            this.label11.Size = new System.Drawing.Size(41, 12);
+            this.label11.TabIndex = 118;
+            this.label11.Text = "Interval";
             // 
-            // BelowNominalLevelRearAxle
+            // SendBT
             // 
-            this.BelowNominalLevelRearAxle.AutoSize = true;
-            this.BelowNominalLevelRearAxle.Location = new System.Drawing.Point(205, 104);
-            this.BelowNominalLevelRearAxle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.BelowNominalLevelRearAxle.Name = "BelowNominalLevelRearAxle";
-            this.BelowNominalLevelRearAxle.Size = new System.Drawing.Size(55, 12);
-            this.BelowNominalLevelRearAxle.TabIndex = 8;
-            this.BelowNominalLevelRearAxle.Text = "Rear axle: ";
-            // 
-            // BelowNominalLevelFrontAxle
-            // 
-            this.BelowNominalLevelFrontAxle.AutoSize = true;
-            this.BelowNominalLevelFrontAxle.Location = new System.Drawing.Point(25, 104);
-            this.BelowNominalLevelFrontAxle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.BelowNominalLevelFrontAxle.Name = "BelowNominalLevelFrontAxle";
-            this.BelowNominalLevelFrontAxle.Size = new System.Drawing.Size(55, 12);
-            this.BelowNominalLevelFrontAxle.TabIndex = 7;
-            this.BelowNominalLevelFrontAxle.Text = "Front axle:";
+            this.SendBT.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SendBT.Location = new System.Drawing.Point(513, 43);
+            this.SendBT.Name = "SendBT";
+            this.SendBT.Size = new System.Drawing.Size(74, 44);
+            this.SendBT.TabIndex = 116;
+            this.SendBT.Text = "Start";
+            this.SendBT.UseVisualStyleBackColor = true;
+            this.SendBT.Click += new System.EventHandler(this.SendBT_Click);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 90);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Location = new System.Drawing.Point(139, 62);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(101, 12);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "Below nominal level";
+            this.label9.Size = new System.Drawing.Size(26, 12);
+            this.label9.TabIndex = 115;
+            this.label9.Text = "Data";
             // 
-            // label2
+            // Datatb
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 28);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 12);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Nominal level";
+            this.Datatb.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.Datatb.Location = new System.Drawing.Point(141, 76);
+            this.Datatb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Datatb.MaxLength = 128;
+            this.Datatb.Name = "Datatb";
+            this.Datatb.Size = new System.Drawing.Size(112, 22);
+            this.Datatb.TabIndex = 63;
+            this.Datatb.Text = "0";
+            this.Datatb.TextChanged += new System.EventHandler(this.Datatb_TextChanged);
+            this.Datatb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.hex_KeyPress);
+            // 
+            // IDtb
+            // 
+            this.IDtb.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.IDtb.Location = new System.Drawing.Point(6, 76);
+            this.IDtb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.IDtb.MaxLength = 8;
+            this.IDtb.Name = "IDtb";
+            this.IDtb.Size = new System.Drawing.Size(121, 22);
+            this.IDtb.TabIndex = 114;
+            this.IDtb.Text = "0";
+            this.IDtb.TextChanged += new System.EventHandler(this.IDtb_TextChanged);
+            this.IDtb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.hex_KeyPress);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 59);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(6, 62);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(102, 12);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Above nominal level";
+            this.label4.Size = new System.Drawing.Size(17, 12);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "ID";
             // 
-            // AboveNominalLevelFrontAxle
+            // ESIcb
             // 
-            this.AboveNominalLevelFrontAxle.AutoSize = true;
-            this.AboveNominalLevelFrontAxle.Location = new System.Drawing.Point(25, 71);
-            this.AboveNominalLevelFrontAxle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.AboveNominalLevelFrontAxle.Name = "AboveNominalLevelFrontAxle";
-            this.AboveNominalLevelFrontAxle.Size = new System.Drawing.Size(55, 12);
-            this.AboveNominalLevelFrontAxle.TabIndex = 3;
-            this.AboveNominalLevelFrontAxle.Text = "Front axle:";
+            this.ESIcb.AutoSize = true;
+            this.ESIcb.Location = new System.Drawing.Point(296, 35);
+            this.ESIcb.Name = "ESIcb";
+            this.ESIcb.Size = new System.Drawing.Size(41, 16);
+            this.ESIcb.TabIndex = 4;
+            this.ESIcb.Text = "ESI";
+            this.ESIcb.UseVisualStyleBackColor = true;
+            this.ESIcb.CheckedChanged += new System.EventHandler(this.ESIcb_CheckedChanged);
             // 
-            // AboveNominalLevelRearAxle
+            // BRScb
             // 
-            this.AboveNominalLevelRearAxle.AutoSize = true;
-            this.AboveNominalLevelRearAxle.Location = new System.Drawing.Point(205, 71);
-            this.AboveNominalLevelRearAxle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.AboveNominalLevelRearAxle.Name = "AboveNominalLevelRearAxle";
-            this.AboveNominalLevelRearAxle.Size = new System.Drawing.Size(55, 12);
-            this.AboveNominalLevelRearAxle.TabIndex = 2;
-            this.AboveNominalLevelRearAxle.Text = "Rear axle: ";
+            this.BRScb.AutoSize = true;
+            this.BRScb.Location = new System.Drawing.Point(244, 35);
+            this.BRScb.Name = "BRScb";
+            this.BRScb.Size = new System.Drawing.Size(46, 16);
+            this.BRScb.TabIndex = 3;
+            this.BRScb.Text = "BRS";
+            this.BRScb.UseVisualStyleBackColor = true;
+            this.BRScb.CheckedChanged += new System.EventHandler(this.BRScb_CheckedChanged);
             // 
-            // NominalLevelFrontAxle
+            // FDFcb
             // 
-            this.NominalLevelFrontAxle.AutoSize = true;
-            this.NominalLevelFrontAxle.Location = new System.Drawing.Point(25, 40);
-            this.NominalLevelFrontAxle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.NominalLevelFrontAxle.Name = "NominalLevelFrontAxle";
-            this.NominalLevelFrontAxle.Size = new System.Drawing.Size(58, 12);
-            this.NominalLevelFrontAxle.TabIndex = 1;
-            this.NominalLevelFrontAxle.Text = "Front axle: ";
+            this.FDFcb.AutoSize = true;
+            this.FDFcb.Location = new System.Drawing.Point(194, 35);
+            this.FDFcb.Name = "FDFcb";
+            this.FDFcb.Size = new System.Drawing.Size(44, 16);
+            this.FDFcb.TabIndex = 2;
+            this.FDFcb.Text = "FDF";
+            this.FDFcb.UseVisualStyleBackColor = true;
+            this.FDFcb.CheckedChanged += new System.EventHandler(this.FDFcb_CheckedChanged);
             // 
-            // NominalLevelRearAxle
+            // FrameTypecb
             // 
-            this.NominalLevelRearAxle.AutoSize = true;
-            this.NominalLevelRearAxle.Location = new System.Drawing.Point(205, 41);
-            this.NominalLevelRearAxle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.NominalLevelRearAxle.Name = "NominalLevelRearAxle";
-            this.NominalLevelRearAxle.Size = new System.Drawing.Size(52, 12);
-            this.NominalLevelRearAxle.TabIndex = 0;
-            this.NominalLevelRearAxle.Text = "Rear axle:";
+            this.FrameTypecb.FormattingEnabled = true;
+            this.FrameTypecb.Items.AddRange(new object[] {
+            "DATA",
+            "RTR",
+            "ERRFRAME"});
+            this.FrameTypecb.Location = new System.Drawing.Point(6, 33);
+            this.FrameTypecb.Name = "FrameTypecb";
+            this.FrameTypecb.Size = new System.Drawing.Size(182, 20);
+            this.FrameTypecb.TabIndex = 1;
+            this.FrameTypecb.SelectedIndexChanged += new System.EventHandler(this.FrameTypecb_SelectedIndexChanged);
             // 
-            // groupBox8
+            // label2
             // 
-            this.groupBox8.Controls.Add(this.ECASStop);
-            this.groupBox8.Controls.Add(this.ActivatecheckBox);
-            this.groupBox8.Controls.Add(this.kneeling);
-            this.groupBox8.Controls.Add(this.Normal1);
-            this.groupBox8.Controls.Add(this.DOWN);
-            this.groupBox8.Controls.Add(this.UP);
-            this.groupBox8.Location = new System.Drawing.Point(733, 296);
-            this.groupBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox8.Size = new System.Drawing.Size(323, 84);
-            this.groupBox8.TabIndex = 53;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Air Suspension control 2";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 12);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Frame Type";
             // 
-            // ECASStop
+            // SendQueueList
             // 
-            this.ECASStop.Location = new System.Drawing.Point(261, 29);
-            this.ECASStop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.ECASStop.Name = "ECASStop";
-            this.ECASStop.Size = new System.Drawing.Size(41, 33);
-            this.ECASStop.TabIndex = 55;
-            this.ECASStop.Text = "STOP";
-            this.ECASStop.UseVisualStyleBackColor = true;
-            this.ECASStop.Click += new System.EventHandler(this.ECASStop_Click);
+            this.SendQueueList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.QueueType,
+            this.QueueID,
+            this.QueueData});
+            this.SendQueueList.Location = new System.Drawing.Point(6, 112);
+            this.SendQueueList.Name = "SendQueueList";
+            this.SendQueueList.Size = new System.Drawing.Size(703, 141);
+            this.SendQueueList.TabIndex = 63;
+            this.SendQueueList.UseCompatibleStateImageBehavior = false;
+            this.SendQueueList.View = System.Windows.Forms.View.Details;
             // 
-            // ActivatecheckBox
+            // QueueType
             // 
-            this.ActivatecheckBox.AutoSize = true;
-            this.ActivatecheckBox.Location = new System.Drawing.Point(133, 0);
-            this.ActivatecheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.ActivatecheckBox.Name = "ActivatecheckBox";
-            this.ActivatecheckBox.Size = new System.Drawing.Size(62, 16);
-            this.ActivatecheckBox.TabIndex = 54;
-            this.ActivatecheckBox.Text = "Activate";
-            this.ActivatecheckBox.UseVisualStyleBackColor = true;
-            this.ActivatecheckBox.CheckedChanged += new System.EventHandler(this.ActivatecheckBox_CheckedChanged);
+            this.QueueType.Text = "Type";
+            this.QueueType.Width = 110;
             // 
-            // kneeling
+            // QueueID
             // 
-            this.kneeling.Location = new System.Drawing.Point(79, 29);
-            this.kneeling.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.kneeling.Name = "kneeling";
-            this.kneeling.Size = new System.Drawing.Size(67, 34);
-            this.kneeling.TabIndex = 3;
-            this.kneeling.Text = "kneeling";
-            this.kneeling.UseVisualStyleBackColor = true;
-            this.kneeling.Click += new System.EventHandler(this.kneeling_Click);
+            this.QueueID.Text = "ID";
+            this.QueueID.Width = 90;
             // 
-            // Normal1
+            // QueueData
             // 
-            this.Normal1.Location = new System.Drawing.Point(8, 29);
-            this.Normal1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Normal1.Name = "Normal1";
-            this.Normal1.Size = new System.Drawing.Size(67, 34);
-            this.Normal1.TabIndex = 2;
-            this.Normal1.Text = "Normal 1";
-            this.Normal1.UseVisualStyleBackColor = true;
-            this.Normal1.Click += new System.EventHandler(this.Normal1_Click);
+            this.QueueData.Text = "Data";
+            this.QueueData.Width = 170;
             // 
-            // DOWN
-            // 
-            this.DOWN.Location = new System.Drawing.Point(206, 29);
-            this.DOWN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.DOWN.Name = "DOWN";
-            this.DOWN.Size = new System.Drawing.Size(51, 34);
-            this.DOWN.TabIndex = 1;
-            this.DOWN.Text = "DOWN";
-            this.DOWN.UseVisualStyleBackColor = true;
-            this.DOWN.Click += new System.EventHandler(this.DOWN_Click);
-            // 
-            // UP
-            // 
-            this.UP.Location = new System.Drawing.Point(150, 29);
-            this.UP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.UP.Name = "UP";
-            this.UP.Size = new System.Drawing.Size(51, 34);
-            this.UP.TabIndex = 0;
-            this.UP.Text = "UP";
-            this.UP.UseVisualStyleBackColor = true;
-            this.UP.Click += new System.EventHandler(this.UP_Click);
-            // 
-            // tmrSend
-            // 
-            this.tmrSend.Tick += new System.EventHandler(this.tmrSend_Tick);
-            // 
-            // timer10ms
-            // 
-            this.timer10ms.Interval = 10;
-            this.timer10ms.Tick += new System.EventHandler(this.timer10ms_Tick);
-            // 
-            // timer250
-            // 
-            this.timer250.Interval = 250;
-            this.timer250.Tick += new System.EventHandler(this.timer250_Tick);
-            // 
-            // timer50ms
-            // 
-            this.timer50ms.Interval = 50;
-            this.timer50ms.Tick += new System.EventHandler(this.timer50ms_Tick);
-            // 
-            // Form1
+            // PCANForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1391, 617);
+            this.ClientSize = new System.Drawing.Size(1474, 617);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox7);
+            this.Controls.Add(this.SendChannelgroups);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -2669,7 +2865,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "PCANForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PCAN-Basic Sample";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -2687,10 +2883,13 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudLength)).EndInit();
+            this.SendChannelgroups.ResumeLayout(false);
+            this.SendChannelgroups.PerformLayout();
             this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Samples)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SendTInterval)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2834,47 +3033,51 @@
         private System.Windows.Forms.ComboBox cbbBaudrates;
         private System.Windows.Forms.Label laBaudrate;
         private System.Windows.Forms.CheckBox chbCanFD;
+        private System.Windows.Forms.GroupBox SendChannelgroups;
+        private System.Windows.Forms.CheckBox SendchbCanFD;
+        private System.Windows.Forms.ComboBox SendcbbHwType;
+        private System.Windows.Forms.ComboBox SendcbbInterrupt;
+        private System.Windows.Forms.Label SendlaInterrupt;
+        private System.Windows.Forms.ComboBox SendcbbIO;
+        private System.Windows.Forms.Label SendlaIOPort;
+        private System.Windows.Forms.Label SendlaHwType;
+        private System.Windows.Forms.ComboBox SendcbbBaudrates;
+        private System.Windows.Forms.Label SendlaBaudrate;
+        private System.Windows.Forms.TextBox SendtxtBitrate;
+        private System.Windows.Forms.Label SendlaBitrate;
+        private System.Windows.Forms.Button SendbtnHwRefresh;
+        private System.Windows.Forms.ComboBox SendcbbChannel;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button SendbtnInit;
+        private System.Windows.Forms.Button SendbtnRelease;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label AboveNominalLevelFrontAxle;
-        private System.Windows.Forms.Label AboveNominalLevelRearAxle;
-        private System.Windows.Forms.Label NominalLevelFrontAxle;
-        private System.Windows.Forms.Label NominalLevelRearAxle;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label BelowNominalLevelRearAxle;
-        private System.Windows.Forms.Label BelowNominalLevelFrontAxle;
-        private System.Windows.Forms.Label LiftAxle1Position;
-        private System.Windows.Forms.Label KneelingInfo;
-        private System.Windows.Forms.Label LevelControlMode;
-        private System.Windows.Forms.Label LoweringControlModeRearAxle;
-        private System.Windows.Forms.Label LoweringControlModeFrontAxle;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label LiftingControlModeR;
-        private System.Windows.Forms.Label LiftingControlModeF;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label DoorRelease;
-        private System.Windows.Forms.Label VehicleMotionInhibit;
-        private System.Windows.Forms.Label FrontAxleInBumperRange;
-        private System.Windows.Forms.Label RearAxleInBumperRange;
-        private System.Windows.Forms.Label LiftAxle2Position;
-        private System.Windows.Forms.Label SecurityDevice;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label SuspensionRemoteControl2;
-        private System.Windows.Forms.Label SuspensionRemoteControl1;
-        private System.Windows.Forms.Label SuspensionControlRefusalInfo;
+        private System.Windows.Forms.Button SendbtnReset;
+        private System.Windows.Forms.Button SendbtnStatus;
+        private System.Windows.Forms.Button SendbtnGetVersions;
+        private System.Windows.Forms.ListBox SendlbxInfo;
+        private System.Windows.Forms.Button SendbtnInfoClear;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.Button kneeling;
-        private System.Windows.Forms.Button Normal1;
-        private System.Windows.Forms.Button DOWN;
-        private System.Windows.Forms.Button UP;
-        private System.Windows.Forms.Timer tmrSend;
-        private System.Windows.Forms.Button ECASStop;
-        private System.Windows.Forms.Label ID0CFE5A2F;
-        private System.Windows.Forms.Timer timer10ms;
-        private System.Windows.Forms.Timer timer250;
-        private System.Windows.Forms.CheckBox ActivatecheckBox;
-        private System.Windows.Forms.Timer timer50ms;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox FrameTypecb;
+        private System.Windows.Forms.NumericUpDown SendTInterval;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button SendBT;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox Datatb;
+        private System.Windows.Forms.TextBox IDtb;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox ESIcb;
+        private System.Windows.Forms.CheckBox BRScb;
+        private System.Windows.Forms.CheckBox FDFcb;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.NumericUpDown Samples;
+        private System.Windows.Forms.CheckBox cBRandom;
+        private System.Windows.Forms.Button SendQueueBT;
+        private System.Windows.Forms.Button ClearQueueBT;
+        private System.Windows.Forms.ListView SendQueueList;
+        private System.Windows.Forms.ColumnHeader QueueType;
+        private System.Windows.Forms.ColumnHeader QueueID;
+        private System.Windows.Forms.ColumnHeader QueueData;
     }
 }
 

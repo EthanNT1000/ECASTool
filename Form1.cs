@@ -14,10 +14,11 @@ using Peak.Can.Basic;
 using TPCANHandle = System.UInt16;
 using TPCANBitrateFD = System.String;
 using TPCANTimestampFD = System.UInt64;
+using System.Threading;
 
-namespace ICDIBasic
+namespace GW.PACAN
 {
-    public partial class Form1 : Form
+    public partial class PCANForm : Form
     {
         #region Structures
         /// <summary>
@@ -25,8 +26,6 @@ namespace ICDIBasic
         /// in a ListView
         /// </summary>
         /// 
-
-        public uint ECASlevelChange;
 
         private class MessageStatus
         {
@@ -136,7 +135,7 @@ namespace ICDIBasic
                 if ((m_Msg.MSGTYPE & TPCANMessageType.PCAN_MESSAGE_RTR) == TPCANMessageType.PCAN_MESSAGE_RTR)
                     return "Remote Request";
                 else
-                    for (int i = 0; i < Form1.GetLengthFromDLC(m_Msg.DLC, (m_Msg.MSGTYPE & TPCANMessageType.PCAN_MESSAGE_FD) == 0); i++)
+                    for (int i = 0; i < PCANForm.GetLengthFromDLC(m_Msg.DLC, (m_Msg.MSGTYPE & TPCANMessageType.PCAN_MESSAGE_FD) == 0); i++)
                         strTemp += string.Format("{0:X2} ", m_Msg.DATA[i]);
 
                 return strTemp;
@@ -232,6 +231,19 @@ namespace ICDIBasic
         /// Handles of non plug and play PCAN-Hardware
         /// </summary>
         private TPCANHandle[] m_NonPnPHandles;
+
+
+        //Send Channel
+        public List<ShortCANMsg> ShortCANMsgs { get; set; }
+        private TPCANHandle Send_m_PcanHandle;
+        private TPCANBaudrate Send_m_Baudrate;
+        private TPCANType Send_m_HwType;
+        private bool Send_m_IsFD;
+        private TPCANMessageType Send_MessageType;
+        private uint Send_m_ID;
+        private List<byte> Send_m_Data;
+        private int Interval;
+
         #endregion
 
         #region Methods
@@ -346,6 +358,30 @@ namespace ICDIBasic
                 IncludeTextMessage(GetFormatedError(stsResult));
         }
 
+        private void ConfigureSendTraceFile()
+        {
+            UInt32 iBuffer;
+            TPCANStatus stsResult;
+
+            // Configure the maximum size of a trace file to 5 megabytes
+            //
+            iBuffer = 5;
+            stsResult = PCANBasic.SetValue(m_PcanHandle, TPCANParameter.PCAN_TRACE_SIZE, ref iBuffer, sizeof(UInt32));
+            if (stsResult != TPCANStatus.PCAN_ERROR_OK)
+                IncludeSendTextMessage(GetFormatedError(stsResult));
+
+            // Configure the way how trace files are created: 
+            // * Standard name is used
+            // * Existing file is ovewritten, 
+            // * Only one file is created.
+            // * Recording stopts when the file size reaches 5 megabytes.
+            //
+            iBuffer = PCANBasic.TRACE_FILE_SINGLE | PCANBasic.TRACE_FILE_OVERWRITE;
+            stsResult = PCANBasic.SetValue(m_PcanHandle, TPCANParameter.PCAN_TRACE_CONFIGURE, ref iBuffer, sizeof(UInt32));
+            if (stsResult != TPCANStatus.PCAN_ERROR_OK)
+                IncludeSendTextMessage(GetFormatedError(stsResult));
+        }
+
         /// <summary>
         /// Help Function used to get an error as text
         /// </summary>
@@ -376,6 +412,12 @@ namespace ICDIBasic
         {
             lbxInfo.Items.Add(strMsg);
             lbxInfo.SelectedIndex = lbxInfo.Items.Count - 1;
+        }
+
+        private void IncludeSendTextMessage(string strMsg)
+        {
+            SendlbxInfo.Items.Add(strMsg);
+            SendlbxInfo.SelectedIndex = SendlbxInfo.Items.Count - 1;
         }
 
         /// <summary>
@@ -409,28 +451,34 @@ namespace ICDIBasic
             // Channels will be check
             //
             btnHwRefresh_Click(this, new EventArgs());
+            SendbtnHwRefresh_Click(this, new EventArgs());
 
             // FD Bitrate: 
             //      Arbitration: 1 Mbit/sec 
             //      Data: 2 Mbit/sec
             //
             txtBitrate.Text = "f_clock_mhz=20, nom_brp=5, nom_tseg1=2, nom_tseg2=1, nom_sjw=1, data_brp=2, data_tseg1=3, data_tseg2=1, data_sjw=1";
+            SendtxtBitrate.Text = "f_clock_mhz=20, nom_brp=5, nom_tseg1=2, nom_tseg2=1, nom_sjw=1, data_brp=2, data_tseg1=3, data_tseg2=1, data_sjw=1";
 
             // Baudrates 
             //
             cbbBaudrates.SelectedIndex = 2; // 500 K
+            SendcbbBaudrates.SelectedIndex = 2; // 500 K
 
             // Hardware Type for no plugAndplay hardware
             //
             cbbHwType.SelectedIndex = 0;
+            SendcbbHwType.SelectedIndex = 0;
 
             // Interrupt for no plugAndplay hardware
             //
             cbbInterrupt.SelectedIndex = 0;
+            SendcbbInterrupt.SelectedIndex = 0;
 
             // IO Port for no plugAndplay hardware
             //
             cbbIO.SelectedIndex = 0;
+            SendcbbIO.SelectedIndex = 0;
 
             // Parameters for GetValue and SetValue function calls
             //
@@ -479,6 +527,35 @@ namespace ICDIBasic
             // Display messages in grid
             //
             tmrDisplay.Enabled = bConnected;
+        }
+
+        private void SetSendConnectionStatus(bool bConnected)
+        {
+            // Buttons
+            //
+            SendbtnInit.Enabled = !bConnected;
+            SendbtnRelease.Enabled = bConnected;
+            SendbtnGetVersions.Enabled = bConnected;
+            SendbtnHwRefresh.Enabled = !bConnected;
+            SendbtnStatus.Enabled = bConnected;
+            SendbtnReset.Enabled = bConnected;
+
+            // ComboBoxs
+            //
+            SendcbbChannel.Enabled = !bConnected;
+            SendcbbBaudrates.Enabled = !bConnected;
+            SendcbbHwType.Enabled = !bConnected;
+            SendcbbIO.Enabled = !bConnected;
+            SendcbbInterrupt.Enabled = !bConnected;
+
+            // Check-Buttons
+            //
+            SendchbCanFD.Enabled = !bConnected;
+
+            // Hardware configuration and read mode
+            //
+            if (!bConnected)
+                SendcbbChannel_SelectedIndexChanged(this, new EventArgs());
         }
 
         /// <summary>
@@ -599,89 +676,7 @@ namespace ICDIBasic
         /// <returns>True if the message must be created, false if it must be modified</returns>
         
         private void ProcessMessage(TPCANMsgFD theMsg, TPCANTimestampFD itsTimeStamp)
-        {           
-            string[] LCM = { "Normal operation", "Traction help (load transfer)", "Load fixing",
-                                 "Pressure ratio 1", "Pressure ratio 2", "Optimum Traction 1",
-                                 "Optimum Traction 2", "Traction help (Load reduce)",
-                                 "Exhausting bellow function", "not defined","not defined","not defined",
-                                 "not defined","not defined","error state, level control not possible","not available"};
-
-            string[] NL = { "Level not specified", "Normal Level 1", "Normal Level 2", "Normal Level 3", "Preset Level",
-                                 "Customer Level", "Upper Level", "Lower Level","not defined","not defined","not defined",
-                                 "not defined","not defined","not defined","not defined","not defined","not available" };
-
-            string[] ANL = { "Not above", "Above", "not defined", "not defined", "not defined" };
-
-            string[] BNL = { "Not below", "Below", "not defined", "not defined", "not defined" };
-
-            string[] LiftCM = { "Lifting not active", "Lifting active", "Error state lifting not possible", "not defined", "not defined" };
-
-            string[] LowerCM = { "Lowering", "Lowering active", "Error state lowering not possible", "not defined", "not defined" };
-
-            string[] KI = { "Not active", "Lowering active", "Kneeling level reached", "lifting active", "Kneeling aborted",
-                                "not defined", "not defined", "not defined", "not defined", "not defined", "not defined", "not defined",
-                                "not defined", "not defined", "not defined", "not available" };
-
-            string[] LAP = { "Lift axle position down / tag axle laden", "Lift axle position up / tag axle unladen", "not defined", "not defined", "not defined" };
-
-            string[] DR = { "Doors may not be opened", "Doors may be opened", "not defined", "not defined", "not defined" };
-
-            string[] VMI = { "Vehicle may be moved", "Vehicle motion is inhibited", "not defined", "not defined", "not defined" };
-
-            string[] SD = { "Not active", "Active", "not defined", "not defined", "not defined" };
-
-            string[] RB = { "Actual level out of bumper range", "Actual level within bumper range", "not defined", "not defined", "not defined" };
-
-            string[] SCRI = { "Actual request not refused", "Axle load limit reached (load transfer)", "Would exceed load limit (tag axle)",
-                                  "Bogie differential not locked","Above speed limit","Below speed limit","General reject","not defined", "not defined",
-                                  "not defined", "not defined", "not defined","not defined",
-                                  "not defined", "not defined", "not defined", "not available"};
-
-            switch (theMsg.ID)
-            {
-                case 0x0CFE5A2F:
-                    string newdata = "";                    
-                    for (int i = 0; i < 8; i++)
-                        newdata += theMsg.DATA[i].ToString("X2") +" ";
-
-                    ID0CFE5A2F.Text = "0x0CFE5A2F: " + newdata;
-
-                    NominalLevelRearAxle.Text = "Rear axle: " + Convert.ToString(NL[theMsg.DATA[0] >> 4]);
-                    NominalLevelFrontAxle.Text = "Front axle: " + Convert.ToString(NL[theMsg.DATA[0] & 0x0F]);
-
-                    AboveNominalLevelRearAxle.Text = "Rear axle: " + Convert.ToString(ANL[theMsg.DATA[1] >> 6]);
-                    AboveNominalLevelFrontAxle.Text = "Front axle: " + Convert.ToString(ANL[theMsg.DATA[1] >> 4 & 3]);
-                    BelowNominalLevelRearAxle.Text = "Rear axle: " + Convert.ToString(BNL[theMsg.DATA[1] & 0x0F >> 2]);
-                    BelowNominalLevelFrontAxle.Text = "Front axle: " + Convert.ToString(BNL[theMsg.DATA[1] & 0x03]);
-
-                    LiftingControlModeR.Text = "Rear axle: " + Convert.ToString(LiftCM[theMsg.DATA[2] >> 6]);
-                    LiftingControlModeF.Text = "Front axle: " + Convert.ToString(LiftCM[theMsg.DATA[2] >> 4 & 3]);
-                    LoweringControlModeRearAxle.Text = "Rear axle: " + Convert.ToString(LowerCM[theMsg.DATA[2] & 0x0F >> 2]);
-                    LoweringControlModeFrontAxle.Text = "Front axle: " + Convert.ToString(LowerCM[theMsg.DATA[2] & 0x03]);
-
-                    LevelControlMode.Text = "Level control mode: " + Convert.ToString(LCM[theMsg.DATA[3] >> 4]);
-                    KneelingInfo.Text = "Kneeling information: " + Convert.ToString(KI[theMsg.DATA[3] & 0x0F]);
-
-                    LiftAxle1Position.Text = "Lift axle 1 position: " + Convert.ToString(LAP[theMsg.DATA[4] >> 6]);
-                    DoorRelease.Text = "Door release: " + Convert.ToString(DR[theMsg.DATA[4] >> 4 & 3]);
-                    VehicleMotionInhibit.Text = "Vehicle motion inhibit: " + Convert.ToString(VMI[theMsg.DATA[4] & 0x0F >> 2]);
-                    SecurityDevice.Text = "Security device: " + Convert.ToString(SD[theMsg.DATA[4] & 0x03]);
-
-                    LiftAxle2Position.Text = "Lift axle 2 position: " + Convert.ToString(LAP[theMsg.DATA[5] >> 6]);
-                    RearAxleInBumperRange.Text = "Rear axle: " + Convert.ToString(RB[theMsg.DATA[5] & 0x0F >> 2]);
-                    FrontAxleInBumperRange.Text = "Front axle: " + Convert.ToString(RB[theMsg.DATA[5] & 0x03]);
-
-                    SuspensionRemoteControl2.Text = "Suspension Remote control #2: " + Convert.ToString(SD[theMsg.DATA[6] & 0x0F >> 2]);
-                    SuspensionRemoteControl1.Text = "Suspension Remote control #1: " + Convert.ToString(SD[theMsg.DATA[6] & 0x03]);
-
-                    SuspensionControlRefusalInfo.Text = "Suspension control refusal information: " + Convert.ToString(SCRI[theMsg.DATA[7] & 0x0F]);
-
-                    break;
-
-                default:
-                    break;
-            }
-
+        {                               
             // We search if a message (Same ID and Type) is 
             // already received or if this is a new message
             //
@@ -827,7 +822,7 @@ namespace ICDIBasic
         /// <summary>
         /// Consturctor
         /// </summary>
-        public Form1()
+        public PCANForm()
         {
             // Initializes Form's component
             //
@@ -835,6 +830,13 @@ namespace ICDIBasic
             // Initializes specific components
             //
             InitializeBasicComponents();
+
+            Send_MessageType = TPCANMessageType.PCAN_MESSAGE_STANDARD;
+            Send_m_ID = 0;
+            Send_m_Data = new List<byte>();
+            FrameTypecb.SelectedIndex = 0;
+            Interval = 100;
+            ShortCANMsgs = new List<ShortCANMsg>();
         }
 
         /// <summary>
@@ -846,6 +848,12 @@ namespace ICDIBasic
             //
             if (btnRelease.Enabled)
                 btnRelease_Click(this, new EventArgs());
+
+            if (SendbtnRelease.Enabled)
+                SendbtnRelease_Click(this, new EventArgs());
+
+            if (tmrSend != null)
+                tmrSend.Abort();
         }
         #endregion
 
@@ -872,6 +880,30 @@ namespace ICDIBasic
             cbbHwType.Enabled = bNonPnP;
             cbbIO.Enabled = bNonPnP;
             cbbInterrupt.Enabled = bNonPnP;
+        }
+
+        private void SendcbbChannel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bool bNonPnP;
+            string strTemp;
+
+            // Get the handle fromt he text being shown
+            //
+            strTemp = SendcbbChannel.Text;
+            strTemp = strTemp.Substring(strTemp.IndexOf('(') + 1, 3);
+
+            strTemp = strTemp.Replace('h', ' ').Trim(' ');
+
+            // Determines if the handle belong to a No Plug&Play hardware 
+            //
+            Send_m_PcanHandle = Convert.ToUInt16(strTemp, 16);
+            bNonPnP = Send_m_PcanHandle <= PCANBasic.PCAN_DNGBUS1;
+            // Activates/deactivates configuration controls according with the 
+            // kind of hardware
+            //
+            SendcbbHwType.Enabled = bNonPnP;
+            SendcbbIO.Enabled = bNonPnP;
+            SendcbbInterrupt.Enabled = bNonPnP;
         }
 
         private void cbbBaudrates_SelectedIndexChanged(object sender, EventArgs e)
@@ -925,6 +957,57 @@ namespace ICDIBasic
             }
         }
 
+        private void SendcbbBaudrates_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Saves the current selected baudrate register code
+            //
+            switch (SendcbbBaudrates.SelectedIndex)
+            {
+                case 0:
+                    Send_m_Baudrate = TPCANBaudrate.PCAN_BAUD_1M;
+                    break;
+                case 1:
+                    Send_m_Baudrate = TPCANBaudrate.PCAN_BAUD_800K;
+                    break;
+                case 2:
+                    Send_m_Baudrate = TPCANBaudrate.PCAN_BAUD_500K;
+                    break;
+                case 3:
+                    Send_m_Baudrate = TPCANBaudrate.PCAN_BAUD_250K;
+                    break;
+                case 4:
+                    Send_m_Baudrate = TPCANBaudrate.PCAN_BAUD_125K;
+                    break;
+                case 5:
+                    Send_m_Baudrate = TPCANBaudrate.PCAN_BAUD_100K;
+                    break;
+                case 6:
+                    Send_m_Baudrate = TPCANBaudrate.PCAN_BAUD_95K;
+                    break;
+                case 7:
+                    Send_m_Baudrate = TPCANBaudrate.PCAN_BAUD_83K;
+                    break;
+                case 8:
+                    Send_m_Baudrate = TPCANBaudrate.PCAN_BAUD_50K;
+                    break;
+                case 9:
+                    Send_m_Baudrate = TPCANBaudrate.PCAN_BAUD_47K;
+                    break;
+                case 10:
+                    Send_m_Baudrate = TPCANBaudrate.PCAN_BAUD_33K;
+                    break;
+                case 11:
+                    Send_m_Baudrate = TPCANBaudrate.PCAN_BAUD_20K;
+                    break;
+                case 12:
+                    Send_m_Baudrate = TPCANBaudrate.PCAN_BAUD_10K;
+                    break;
+                case 13:
+                    Send_m_Baudrate = TPCANBaudrate.PCAN_BAUD_5K;
+                    break;
+            }
+        }
+
         private void cbbHwType_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Saves the current type for a no-Plug&Play hardware
@@ -951,6 +1034,36 @@ namespace ICDIBasic
                     break;
                 case 6:
                     m_HwType = TPCANType.PCAN_TYPE_DNG_SJA_EPP;
+                    break;
+            }
+        }
+
+        private void SendcbbHwType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Saves the current type for a no-Plug&Play hardware
+            //
+            switch (SendcbbHwType.SelectedIndex)
+            {
+                case 0:
+                    Send_m_HwType = TPCANType.PCAN_TYPE_ISA;
+                    break;
+                case 1:
+                    Send_m_HwType = TPCANType.PCAN_TYPE_ISA_SJA;
+                    break;
+                case 2:
+                    Send_m_HwType = TPCANType.PCAN_TYPE_ISA_PHYTEC;
+                    break;
+                case 3:
+                    Send_m_HwType = TPCANType.PCAN_TYPE_DNG;
+                    break;
+                case 4:
+                    Send_m_HwType = TPCANType.PCAN_TYPE_DNG_EPP;
+                    break;
+                case 5:
+                    Send_m_HwType = TPCANType.PCAN_TYPE_DNG_SJA;
+                    break;
+                case 6:
+                    Send_m_HwType = TPCANType.PCAN_TYPE_DNG_SJA_EPP;
                     break;
             }
         }
@@ -1017,6 +1130,55 @@ namespace ICDIBasic
             }
         }
 
+        private void SendbtnHwRefresh_Click(object sender, EventArgs e)
+        {
+            TPCANStatus stsResult;
+            uint iChannelsCount;
+            bool bIsFD;
+
+            // Clears the Channel comboBox and fill it again with 
+            // the PCAN-Basic handles for no-Plug&Play hardware and
+            // the detected Plug&Play hardware
+            //
+            SendcbbChannel.Items.Clear();
+            try
+            {
+                // Includes all no-Plug&Play Handles
+                for (int i = 0; i < m_NonPnPHandles.Length; i++)
+                    SendcbbChannel.Items.Add(FormatChannelName(m_NonPnPHandles[i]));
+
+                // Checks for available Plug&Play channels
+                //
+                stsResult = PCANBasic.GetValue(PCANBasic.PCAN_NONEBUS, TPCANParameter.PCAN_ATTACHED_CHANNELS_COUNT, out iChannelsCount, sizeof(uint));
+                if (stsResult == TPCANStatus.PCAN_ERROR_OK)
+                {
+                    TPCANChannelInformation[] info = new TPCANChannelInformation[iChannelsCount];
+
+                    stsResult = PCANBasic.GetValue(PCANBasic.PCAN_NONEBUS, TPCANParameter.PCAN_ATTACHED_CHANNELS, info);
+                    if (stsResult == TPCANStatus.PCAN_ERROR_OK)
+                        // Include only connectable channels
+                        //
+                        foreach (TPCANChannelInformation channel in info)
+                            if ((channel.channel_condition & PCANBasic.PCAN_CHANNEL_AVAILABLE) == PCANBasic.PCAN_CHANNEL_AVAILABLE)
+                            {
+                                bIsFD = (channel.device_features & PCANBasic.FEATURE_FD_CAPABLE) == PCANBasic.FEATURE_FD_CAPABLE;
+                                SendcbbChannel.Items.Add(FormatChannelName(channel.channel_handle, bIsFD));
+                            }
+                }
+
+                SendcbbChannel.SelectedIndex = SendcbbChannel.Items.Count - 1;
+                SendbtnInit.Enabled = SendcbbChannel.Items.Count > 0;
+
+                if (stsResult != TPCANStatus.PCAN_ERROR_OK)
+                    MessageBox.Show(GetFormatedError(stsResult));
+            }
+            catch (DllNotFoundException)
+            {
+                MessageBox.Show("Unable to find the library: PCANBasic.dll !", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Environment.Exit(-1);
+            }
+        }
+
         private void btnInit_Click(object sender, EventArgs e)
         {
             TPCANStatus stsResult;
@@ -1055,9 +1217,64 @@ namespace ICDIBasic
             SetConnectionStatus(stsResult == TPCANStatus.PCAN_ERROR_OK);
         }
 
+        private void SendbtnInit_Click(object sender, EventArgs e)
+        {
+            TPCANStatus stsResult;
+
+            // Connects a selected PCAN-Basic channel
+            //
+            if (Send_m_IsFD)
+            {
+                stsResult = PCANBasic.InitializeFD(
+                    Send_m_PcanHandle,
+                    SendtxtBitrate.Text);
+
+                FDFcb.Enabled = true;
+                BRScb.Enabled = true;
+                ESIcb.Enabled = true;
+            }
+
+            else
+            {
+                stsResult = PCANBasic.Initialize(
+                    Send_m_PcanHandle,
+                    Send_m_Baudrate,
+                    Send_m_HwType,
+                    Convert.ToUInt32(SendcbbIO.Text, 16),
+                    Convert.ToUInt16(SendcbbInterrupt.Text));
+
+                FDFcb.Enabled = false;
+                BRScb.Enabled = false;
+                ESIcb.Enabled = false;
+
+                FDFcb.Checked = false;
+                BRScb.Checked = false;
+                ESIcb.Checked = false;
+            }
+
+
+            if (stsResult != TPCANStatus.PCAN_ERROR_OK)
+                if (stsResult != TPCANStatus.PCAN_ERROR_CAUTION)
+                    MessageBox.Show(GetFormatedError(stsResult));
+                else
+                {
+                    IncludeSendTextMessage("******************************************************");
+                    IncludeSendTextMessage("The bitrate being used is different than the given one");
+                    IncludeSendTextMessage("******************************************************");
+                    stsResult = TPCANStatus.PCAN_ERROR_OK;
+                }
+            else
+                // Prepares the PCAN-Basic's PCAN-Trace file
+                //
+                ConfigureSendTraceFile();
+
+            // Sets the connection status of the main-form
+            //
+            SetSendConnectionStatus(stsResult == TPCANStatus.PCAN_ERROR_OK);
+        }
+
         private void btnRelease_Click(object sender, EventArgs e)
         {
-            ActivatecheckBox.Checked = false;
             // Releases a current connected PCAN-Basic channel
             //
             PCANBasic.Uninitialize(m_PcanHandle);
@@ -1072,6 +1289,20 @@ namespace ICDIBasic
             // Sets the connection status of the main-form
             //
             SetConnectionStatus(false);
+        }
+
+        private void SendbtnRelease_Click(object sender, EventArgs e)
+        {
+            // Releases a current connected PCAN-Basic channel
+            //
+            PCANBasic.Uninitialize(Send_m_PcanHandle);
+
+            if (tmrSend != null)
+                tmrSend.Abort();
+
+            // Sets the connection status of the main-form
+            //
+            SetSendConnectionStatus(false);
         }
 
         private void btnFilterApply_Click(object sender, EventArgs e)
@@ -1534,6 +1765,48 @@ namespace ICDIBasic
                 MessageBox.Show(GetFormatedError(stsResult));
         }
 
+        private void SendbtnGetVersions_Click(object sender, EventArgs e)
+        {
+            TPCANStatus stsResult;
+            StringBuilder strTemp;
+            string[] strArrayVersion;
+
+            strTemp = new StringBuilder(256);
+
+            // We get the vesion of the PCAN-Basic API
+            //
+            stsResult = PCANBasic.GetValue(PCANBasic.PCAN_NONEBUS, TPCANParameter.PCAN_API_VERSION, strTemp, 256);
+            if (stsResult == TPCANStatus.PCAN_ERROR_OK)
+            {
+                IncludeSendTextMessage("API Version: " + strTemp.ToString());
+
+                // We get the version of the firmware on the device
+                //
+                stsResult = PCANBasic.GetValue(Send_m_PcanHandle, TPCANParameter.PCAN_FIRMWARE_VERSION, strTemp, 256);
+                if (stsResult == TPCANStatus.PCAN_ERROR_OK)
+                    IncludeSendTextMessage("Firmare Version: " + strTemp.ToString());
+
+                // We get the driver version of the channel being used
+                //
+                stsResult = PCANBasic.GetValue(Send_m_PcanHandle, TPCANParameter.PCAN_CHANNEL_VERSION, strTemp, 256);
+                if (stsResult == TPCANStatus.PCAN_ERROR_OK)
+                {
+                    // Because this information contains line control characters (several lines)
+                    // we split this also in several entries in the Information List-Box
+                    //
+                    strArrayVersion = strTemp.ToString().Split(new char[] { '\n' });
+                    IncludeSendTextMessage("Channel/Driver Version: ");
+                    for (int i = 0; i < strArrayVersion.Length; i++)
+                        IncludeSendTextMessage("     * " + strArrayVersion[i]);
+                }
+            }
+
+            // If an error ccurred, a message is shown
+            //
+            if (stsResult != TPCANStatus.PCAN_ERROR_OK)
+                MessageBox.Show(GetFormatedError(stsResult));
+        }
+
         private void btnMsgClear_Click(object sender, EventArgs e)
         {
             // The information contained in the messages List-View
@@ -1554,6 +1827,14 @@ namespace ICDIBasic
             lbxInfo.Items.Clear();
         }
 
+        private void SendbtnInfoClear_Click(object sender, EventArgs e)
+        {
+            // The information contained in the Information List-Box 
+            // is cleared
+            //
+            SendlbxInfo.Items.Clear();
+        }
+
         private void CANSEND(uint ID, byte[] data,byte len)
         {
             TPCANStatus stsResult;
@@ -1566,15 +1847,92 @@ namespace ICDIBasic
             //
             if (stsResult != TPCANStatus.PCAN_ERROR_OK)
             {
-                ActivatecheckBox.Checked = false;
+                if (tmrSend != null)
+                    tmrSend.Abort();
+
+                SendBT.Text = "Start";
+                SendFlag = false;
                 MessageBox.Show(GetFormatedError(stsResult));
             }
                 
         }
 
+        private Thread tmrSend;
 
+        private void CANSEND(TPCANMessageType Type, uint ID, List<byte> data)
+        {
+            TPCANStatus stsResult;
 
-        private TPCANStatus CANWrite(uint ID,byte[] data,byte len)
+            if(Send_m_IsFD)            
+                stsResult = CANWriteFD(Type, ID, data);            
+            else
+                stsResult = CANWrite(Type, ID, data);
+
+            if (stsResult != TPCANStatus.PCAN_ERROR_OK)
+            {
+                if (tmrSend != null)
+                    tmrSend.Abort();
+
+                SendBT.Text = "Start";
+                SendFlag = false;
+                MessageBox.Show(GetFormatedError(stsResult));
+            }
+
+        }
+
+        private TPCANStatus CANWrite(TPCANMessageType Type, uint ID, List<byte> data)
+        {
+            TPCANMsg CANMsg;
+            CANMsg = new TPCANMsg();
+            CANMsg.DATA = new byte[8];
+
+            CANMsg.ID = ID;
+            CANMsg.LEN = (byte)data.Count;
+            for (int i = 0; i < GetLengthFromDLC(CANMsg.LEN, true); i++)
+            {
+                CANMsg.DATA[i] = data[i];
+            }
+            CANMsg.MSGTYPE = Type;
+            if (CANMsg.ID > 4095)
+                CANMsg.MSGTYPE |= TPCANMessageType.PCAN_MESSAGE_EXTENDED;
+
+            return PCANBasic.Write(Send_m_PcanHandle, ref CANMsg);
+        }
+
+        private TPCANStatus CANWriteFD(TPCANMessageType Type, uint ID, List<byte> data)
+        {
+            TPCANMsgFD CANMsg;
+            int iLength;
+
+            // We create a TPCANMsgFD message structure 
+            //
+            CANMsg = new TPCANMsgFD();
+            CANMsg.DATA = new byte[64];
+
+            // We configurate the Message.  The ID,
+            // Length of the Data, Message Type 
+            // and the data
+            //
+            CANMsg.ID = ID;
+            CANMsg.DLC = (byte)data.Count;
+            CANMsg.MSGTYPE = Type;
+            if (CANMsg.ID > 4095)
+                CANMsg.MSGTYPE |= TPCANMessageType.PCAN_MESSAGE_EXTENDED;
+
+            // We get so much data as the Len of the message
+            //
+            iLength = GetLengthFromDLC(CANMsg.DLC, (CANMsg.MSGTYPE & TPCANMessageType.PCAN_MESSAGE_FD) == 0);
+            for (int i = 0; i < iLength; i++)
+            {
+                CANMsg.DATA[i] = data[i];
+            }
+            
+            // The message is sent to the configured hardware
+            //
+            return PCANBasic.WriteFD(Send_m_PcanHandle, ref CANMsg);
+        }
+
+        private TPCANStatus CANWrite(uint ID,byte[] data, byte len)
         {
             TPCANMsg CANMsg;
             CANMsg = new TPCANMsg();
@@ -1588,28 +1946,9 @@ namespace ICDIBasic
             }
             CANMsg.MSGTYPE = CANMsg.ID > 4095 ? TPCANMessageType.PCAN_MESSAGE_EXTENDED : TPCANMessageType.PCAN_MESSAGE_STANDARD;
 
-            return PCANBasic.Write(m_PcanHandle, ref CANMsg);
+            return PCANBasic.Write(Send_m_PcanHandle, ref CANMsg);
         }
-
-        private TPCANStatus CANWriteFD(uint ID, byte[] data)
-        {
-            TPCANMsgFD CANMsg;
-            CANMsg = new TPCANMsgFD();
-            CANMsg.DATA = new byte[8];
-            byte len = 8;
-            CANMsg.ID = ID;
-            CANMsg.DLC = len;
-            for (int i = 0; i < len; i++)
-            {
-                CANMsg.DATA[i] = data[i];
-            }
-            CANMsg.MSGTYPE = (chbExtended.Checked) ? TPCANMessageType.PCAN_MESSAGE_EXTENDED : TPCANMessageType.PCAN_MESSAGE_STANDARD;
-
-            return PCANBasic.WriteFD(m_PcanHandle, ref CANMsg);
-        }
-
-
-
+       
         private TPCANStatus WriteFrame()
         {
             TPCANMsg CANMsg;
@@ -1723,6 +2062,22 @@ namespace ICDIBasic
                 IncludeTextMessage("Receive and transmit queues successfully reset");
         }
 
+        private void SendbtnReset_Click(object sender, EventArgs e)
+        {
+            TPCANStatus stsResult;
+
+            // Resets the receive and transmit queues of a PCAN Channel.
+            //
+            stsResult = PCANBasic.Reset(Send_m_PcanHandle);
+
+            // If it fails, a error message is shown
+            //
+            if (stsResult != TPCANStatus.PCAN_ERROR_OK)
+                MessageBox.Show(GetFormatedError(stsResult));
+            else
+                IncludeSendTextMessage("Receive and transmit queues successfully reset");
+        }
+
         private void btnStatus_Click(object sender, EventArgs e)
         {
             TPCANStatus stsResult;
@@ -1768,6 +2123,53 @@ namespace ICDIBasic
             // Display Message
             //
             IncludeTextMessage(String.Format("Status: {0} ({1:X}h)", errorName, stsResult));
+        }
+
+        private void SendbtnStatus_Click(object sender, EventArgs e)
+        {
+            TPCANStatus stsResult;
+            String errorName;
+
+            // Gets the current BUS status of a PCAN Channel.
+            //
+            stsResult = PCANBasic.GetStatus(Send_m_PcanHandle);
+
+            // Switch On Error Name
+            //
+            switch (stsResult)
+            {
+                case TPCANStatus.PCAN_ERROR_INITIALIZE:
+                    errorName = "PCAN_ERROR_INITIALIZE";
+                    break;
+
+                case TPCANStatus.PCAN_ERROR_BUSLIGHT:
+                    errorName = "PCAN_ERROR_BUSLIGHT";
+                    break;
+
+                case TPCANStatus.PCAN_ERROR_BUSHEAVY: // TPCANStatus.PCAN_ERROR_BUSWARNING
+                    errorName = Send_m_IsFD ? "PCAN_ERROR_BUSWARNING" : "PCAN_ERROR_BUSHEAVY";
+                    break;
+
+                case TPCANStatus.PCAN_ERROR_BUSPASSIVE:
+                    errorName = "PCAN_ERROR_BUSPASSIVE";
+                    break;
+
+                case TPCANStatus.PCAN_ERROR_BUSOFF:
+                    errorName = "PCAN_ERROR_BUSOFF";
+                    break;
+
+                case TPCANStatus.PCAN_ERROR_OK:
+                    errorName = "PCAN_ERROR_OK";
+                    break;
+
+                default:
+                    errorName = "See Documentation";
+                    break;
+            }
+
+            // Display Message
+            //
+            IncludeSendTextMessage(String.Format("Status: {0} ({1:X}h)", errorName, stsResult));
         }
         #endregion
 
@@ -2026,6 +2428,23 @@ namespace ICDIBasic
                 chbFD.Checked = false;
         }
 
+        private void SendchbCanFD_CheckedChanged(object sender, EventArgs e)
+        {
+            Send_m_IsFD = SendchbCanFD.Checked;
+
+            SendcbbBaudrates.Visible = !Send_m_IsFD;
+            SendcbbHwType.Visible = !Send_m_IsFD;
+            SendcbbInterrupt.Visible = !Send_m_IsFD;
+            SendcbbIO.Visible = !Send_m_IsFD;
+            SendlaBaudrate.Visible = !Send_m_IsFD;
+            SendlaHwType.Visible = !Send_m_IsFD;
+            SendlaIOPort.Visible = !Send_m_IsFD;
+            SendlaInterrupt.Visible = !Send_m_IsFD;
+
+            SendtxtBitrate.Visible = Send_m_IsFD;
+            SendlaBitrate.Visible = Send_m_IsFD;
+        }
+
         private void nudLength_ValueChanged(object sender, EventArgs e)
         {
             TextBox txtbCurrentTextBox;
@@ -2051,110 +2470,250 @@ namespace ICDIBasic
 
         #endregion
 
-        private void ActivatecheckBox_CheckedChanged(object sender, EventArgs e)
+        bool SendFlag = false;
+        private void SendBT_Click(object sender, EventArgs e)
         {
-            if (ActivatecheckBox.Checked)
+            if (SendFlag)
             {
-                tmrSend.Enabled = true;
-                timer10ms.Enabled = true;
-                timer250.Enabled = true;
-                timer50ms.Enabled = true;
-            }
+                if (tmrSend != null)
+                    tmrSend.Abort();
+
+                SendBT.Text = "Start";
+            }                
             else
             {
-                tmrSend.Enabled = false;
-                timer10ms.Enabled = false;
-                timer250.Enabled = false;
-                timer50ms.Enabled = false;
+                if (tmrSend != null)
+                    tmrSend.Abort();
+
+                tmrSend = new Thread(tmrSend_Tick);
+                tmrSend.Start();
+                SendBT.Text = "Stop";
             }
+                
+            SendFlag = !SendFlag;
         }
 
-        private void tmrSend_Tick(object sender, EventArgs e)
+        private void tmrSend_Tick()
+        {           
+            Random ran = new Random();
+            TPCANMsgFD msg;
+
+            while (true)
+            {
+                if (cBRandom.Checked)
+                {
+                    for (int i = 0; i < Samples.Value; i++)
+                    {
+                        TPCANMessageType type = 0;
+
+                        uint ID = (uint)ran.Next(0x20000000);
+                        if (ID > 0xFFF)
+                            type |= TPCANMessageType.PCAN_MESSAGE_EXTENDED;
+
+                        List<byte> data;
+
+                        bool RTR = RandomBool(ran);
+                        if (RTR)
+                        {
+                            type |= TPCANMessageType.PCAN_MESSAGE_RTR;
+                            data = new List<byte>();
+                        }
+                        else
+                        {
+                            bool FDF = RandomBool(ran);
+                            if (FDF)
+                            {
+                                type |= TPCANMessageType.PCAN_MESSAGE_FD;
+                                if (RandomBool(ran))
+                                    type |= TPCANMessageType.PCAN_MESSAGE_BRS;
+
+                                if (RandomBool(ran))
+                                    type |= TPCANMessageType.PCAN_MESSAGE_ESI;
+
+                                data = RandomFDData(ran);
+                            }
+                            else
+                            {
+                                data = RandomData(ran);
+                            }
+
+                        }
+                        CANSEND(type, ID, data);
+                    }
+                }
+                else
+                {
+                    foreach(ShortCANMsg m in ShortCANMsgs )
+                    {
+                        CANSEND(m.MSGTYPE, m.ID, m.DATA);
+                    }
+                }
+                    
+
+                Thread.Sleep(Interval);
+            }
+               
+        }
+
+        private void FrameTypecb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            byte[] AIR1 = { 00, 00, 0x70 ,0x70, 00, 00, 00 ,00 };
-            CANSEND(0x18FEAE30, AIR1,8);
-
-            byte[] CCVS= { 04, 00, 00, 00, 00, 00, 00, 00 };
-            CANSEND(0x18FEF100, CCVS,8);
-
-            byte[] DC = { 02, 00, 00, 00, 00, 00, 00, 00 };
-            CANSEND(0x18FE4EEC, DC, 8);
-
-            
-            switch (ECASlevelChange)
+            switch(FrameTypecb.SelectedIndex)
             {
                 case 0:
-                    byte[] data4 = { 0x40, 00 ,0xF0, 0xFF ,0xFF ,0xFF ,00 ,0xFF };
-                    CANSEND(0x0CD22F27, data4,8);                    
+                    Send_MessageType &= (TPCANMessageType)0xFE;
                     break;
                 case 1:
-                    byte[] data5 = { 0x40, 0x11, 0xF0, 0xFF, 0xFF, 0xFF, 00, 0xFF };
-                    CANSEND(0x0CD22F27, data5,8);
+                    Send_MessageType |= TPCANMessageType.PCAN_MESSAGE_RTR;
+                    Send_MessageType &= (TPCANMessageType)3;
                     break;
                 case 2:
-                    byte[] data6 = { 0x50, 00, 0xF0, 0xFF, 0xFF, 0xFF, 0x05, 0xFF };
-                    CANSEND(0x0CD22F27, data6,8);
+                    Send_MessageType = TPCANMessageType.PCAN_MESSAGE_ERRFRAME;
                     break;
-                case 3:
-                    byte[] data7 = { 0x40, 0x66, 0x00, 0xFF, 0xFF, 0xFF, 00, 0xFF };
-                    CANSEND(0x0CD22F27, data7,8);
-                    break;
-                case 4:
-                    byte[] data8 = { 0x40, 0x77, 0x50, 0xFF, 0xFF, 0xFF, 00, 0xFF };
-                    CANSEND(0x0CD22F27, data8,8);
-                    break;
-                case 5:
-                    byte[] data9 = { 0x40, 00, 0xF0, 0xFF, 0xFF, 0xFF, 00, 0xFF };                   
-                    CANSEND(0x0CD22F27, data9,8);
-                    break;
-                default:
-                    byte[] data10 = { 0x40, 00, 0xF0, 0xFF, 0xFF, 0xFF, 00, 0xFF };
-                    CANSEND(0x0CD22F27, data10,8);
-                    break;
+            }           
+        }
+
+        private void FDFcb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (FDFcb.Checked)
+                Send_MessageType |= TPCANMessageType.PCAN_MESSAGE_FD;
+            else
+                Send_MessageType &= (TPCANMessageType)0xFB;
+        }
+
+        private void BRScb_CheckedChanged(object sender, EventArgs e)
+        {
+            if(BRScb.Checked)
+                Send_MessageType |= TPCANMessageType.PCAN_MESSAGE_BRS;
+            else
+                Send_MessageType &= (TPCANMessageType)0xF7;
+        }
+
+        private void ESIcb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ESIcb.Checked)
+                Send_MessageType |= TPCANMessageType.PCAN_MESSAGE_ESI;
+            else
+                Send_MessageType &= (TPCANMessageType)0xEF;
+        }
+
+        private void IDtb_TextChanged(object sender, EventArgs e)
+        {
+            string t = IDtb.Text;
+            if (IDTextCheck(IDtb))
+                Send_m_ID = uint.Parse(IDtb.Text, System.Globalization.NumberStyles.HexNumber);
+            else Send_m_ID = 0;
+        }
+
+        private bool IDTextCheck(TextBox t)
+        {
+            bool b = false;
+            if (t.Text.Length > 0 & t.Text.Length < 8)
+            {
+                b = true;
+            }
+            else if (t.Text.Length == 8)
+            {
+                if (t.Text[0] == '1' | t.Text[0] == '0')
+                    b = true;
+            }
+            return b;
+        }
+
+        private void Datatb_TextChanged(object sender, EventArgs e)
+        {
+            Send_m_Data = HexString2ByteList(Datatb.Text);
+        }
+
+        public List<byte> HexString2ByteList(string text)
+        {
+            List<byte> data = new List<byte>();
+            for (int i = 0; i < text.Length; i += 2)
+            {
+                if (i < text.Length - 1)
+                {
+                    data.Add(byte.Parse(text.Substring(i, 2), System.Globalization.NumberStyles.HexNumber));
+                }
+                else data.Add(byte.Parse(text.Substring(i, 1), System.Globalization.NumberStyles.HexNumber));
+            }
+            return data;
+        }
+
+        private void hex_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((int)e.KeyChar < 48 | (int)e.KeyChar > 57) & (int)e.KeyChar != 8 & ((int)e.KeyChar < 65 | (int)e.KeyChar > 70) & ((int)e.KeyChar < 97 | (int)e.KeyChar > 102))
+            {
+                e.Handled = true;
             }
         }
 
-        private void Normal1_Click(object sender, EventArgs e)
+        private List<byte> RandomData(Random ran)
         {
-            ECASlevelChange = 1;
+            int count = ran.Next(0, 9);
+
+            List<byte> bytes = new List<byte>();
+            for (int i = 0; i < count; i++)
+            {
+                bytes.Add((byte)ran.Next(0, 0x100));
+            }
+            return bytes;
         }
 
-        private void kneeling_Click(object sender, EventArgs e)
+
+        private List<byte> RandomFDData(Random ran)
         {
-            ECASlevelChange = 2;
+            int count = ran.Next(0, 16);
+            byte[] DLCList = { 12, 16, 20, 24, 32, 48, 64 };
+            if (count > 8)
+                count = DLCList[count - 9];
+            List<byte> bytes = new List<byte>();
+            for (int i = 0; i < count; i++)
+            {
+                bytes.Add((byte)ran.Next(0, 0x100));
+            }
+            return bytes;
         }
 
-        private void UP_Click(object sender, EventArgs e)
+        private bool RandomBool(Random ran)
         {
-            ECASlevelChange = 3;
+            return Convert.ToBoolean(ran.Next(0, 2));
         }
 
-        private void DOWN_Click(object sender, EventArgs e)
+        private void SendTInterval_ValueChanged(object sender, EventArgs e)
         {
-            ECASlevelChange = 4;
+            if (SendTInterval.Value > 0)
+                Interval = (int)(SendTInterval.Value * 1000);
         }
 
-        private void ECASStop_Click(object sender, EventArgs e)
+        private void SendQueueBT_Click(object sender, EventArgs e)
         {
-            ECASlevelChange = 5;
+            ShortCANMsgs.Add(new ShortCANMsg { MSGTYPE = Send_MessageType, ID = Send_m_ID, DATA = Send_m_Data });
+
+            TPCANMsgFD msg = new TPCANMsgFD { MSGTYPE = Send_MessageType, ID = Send_m_ID, DATA = Send_m_Data.ToArray(), DLC = (byte)Send_m_Data.Count };
+            MessageStatus Msg = new MessageStatus(msg, 0, 0);
+
+            ListViewItem item = SendQueueList.Items.Add(Msg.TypeString);
+            item.SubItems.Add(Msg.IdString);
+            item.SubItems.Add(Msg.DataString);
         }
 
-        private void timer10ms_Tick(object sender, EventArgs e)
+        private void ClearQueueBT_Click(object sender, EventArgs e)
         {
-            byte[] EEC1 = { 0x00, 0x00, 0x00, 0xE0, 0x15, 0x00, 0x00, 0x00 };
-            CANSEND(0x0CF00400, EEC1, 8);
+            ShortCANMsgs.Clear();
+            SendQueueList.Items.Clear();
         }
+    }
 
-        private void timer250_Tick(object sender, EventArgs e)
-        {
-            byte[] AC = { 00, 00, 00, 00, 00, 00, 00, 00 };
-            CANSEND(0x18FEA81B, AC, 8);
-        }
+    public class ShortCANMsg
+    {
+        public uint ID { get; set; }
+        public List<byte> DATA { get; set; }
+        public TPCANMessageType MSGTYPE { get; set; }
 
-        private void timer50ms_Tick(object sender, EventArgs e)
+        public ShortCANMsg()
         {
-            byte[] TCO1 = { 00, 00, 00, 00, 00, 00, 00, 00 };
-            CANSEND(0x0CFE6CEE, TCO1, 8);
+            ID = 0;
+            DATA = new List<byte>();
+            MSGTYPE = 0;
         }
     }
 }

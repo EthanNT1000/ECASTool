@@ -7,3 +7,15 @@ D:\ECASTool\obj\Debug\PCANBasicExample.csproj.GenerateResource.cache
 D:\ECASTool\obj\Debug\PCANBasicExample.csproj.CoreCompileInputs.cache
 D:\ECASTool\obj\Debug\PCANBasicExample.exe
 D:\ECASTool\obj\Debug\PCANBasicExample.pdb
+D:\交接\DSO\CAN Bus\ECASTool\obj\Debug\PCANBasicExample.exe
+D:\交接\DSO\CAN Bus\ECASTool\obj\Debug\PCANBasicExample.pdb
+C:\Users\ethan_chiang\Desktop\ECASTool\obj\Debug\PCANBasicExample.csprojResolveAssemblyReference.cache
+C:\Users\ethan_chiang\Desktop\ECASTool\obj\Debug\GW.PACAN.PCANForm.resources
+C:\Users\ethan_chiang\Desktop\ECASTool\obj\Debug\PCANBasicExample.Properties.Resources.resources
+C:\Users\ethan_chiang\Desktop\ECASTool\obj\Debug\PCANBasicExample.csproj.GenerateResource.Cache
+C:\Users\ethan_chiang\Desktop\ECASTool\obj\Debug\PCANBasicExample.exe
+C:\Users\ethan_chiang\Desktop\ECASTool\obj\Debug\PCANBasicExample.pdb
+C:\Users\ethan_chiang\Desktop\ECASTool\bin\Debug (Any CPU)\PCANBasicExample.exe
+C:\Users\ethan_chiang\Desktop\ECASTool\bin\Debug (Any CPU)\PCANBasicExample.pdb
+C:\Users\ethan_chiang\Desktop\CAN\PCAN 2 Channel\obj\Debug\PCANBasicExample.exe
+C:\Users\ethan_chiang\Desktop\CAN\PCAN 2 Channel\obj\Debug\PCANBasicExample.pdb
